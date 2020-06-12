@@ -14,4 +14,5 @@ namespace Home_Work
             Console.WriteLine("Картинок в остатке - " + picturesLeft);
         }
     }
+    }
 }
