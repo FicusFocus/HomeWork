@@ -1,0 +1,3 @@
+D:\DoNotComeIn\projects\GitHub Repositories\HomeWork\Home Work\obj\Debug\netcoreapp3.0\Home Work.csprojAssemblyReference.cache
+D:\DoNotComeIn\projects\GitHub Repositories\HomeWork\Home Work\obj\Debug\netcoreapp3.0\Home Work.AssemblyInfoInputs.cache
+D:\DoNotComeIn\projects\GitHub Repositories\HomeWork\Home Work\obj\Debug\netcoreapp3.0\Home Work.AssemblyInfo.cs
