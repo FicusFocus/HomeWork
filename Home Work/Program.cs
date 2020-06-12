@@ -8,8 +8,8 @@ namespace Home_Work
         {
             int numOfPictures = 52;
             int abreast = 3;
-            float numOfAbreast = 52 / 3;
-            float picturesLeft = 52 % 3;
+            float numOfAbreast = numOfPictures / abreast;
+            float picturesLeft = numOfPictures % abreast;
             Console.WriteLine("Картинок в ряд - " + numOfAbreast);
             Console.WriteLine("Картинок в остатке - " + picturesLeft);
         }
