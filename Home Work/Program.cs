@@ -6,10 +6,12 @@ namespace Home_Work
     {
         static void Main(string[] args)
         {
-            int a = 10;
-            int b = 38 * 17;
-            int c = (31 – 5 * a) / b;
-            Console.WriteLine(c);
+            int numOfPictures = 52;
+            int abreast = 3;
+            float numOfAbreast = 52 / 3;
+            float picturesLeft = 52 % 3;
+            Console.WriteLine("Картинок в ряд - " + numOfAbreast);
+            Console.WriteLine("Картинок в остатке - " + picturesLeft);
         }
     }
 }
