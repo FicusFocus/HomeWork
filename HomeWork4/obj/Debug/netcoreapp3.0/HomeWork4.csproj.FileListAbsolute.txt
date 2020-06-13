@@ -1,0 +1,11 @@
+D:\DoNotComeIn\projects\GitHub Repositories\HomeWork\HomeWork4\bin\Debug\netcoreapp3.0\HomeWork4.exe
+D:\DoNotComeIn\projects\GitHub Repositories\HomeWork\HomeWork4\bin\Debug\netcoreapp3.0\HomeWork4.deps.json
+D:\DoNotComeIn\projects\GitHub Repositories\HomeWork\HomeWork4\bin\Debug\netcoreapp3.0\HomeWork4.runtimeconfig.json
+D:\DoNotComeIn\projects\GitHub Repositories\HomeWork\HomeWork4\bin\Debug\netcoreapp3.0\HomeWork4.runtimeconfig.dev.json
+D:\DoNotComeIn\projects\GitHub Repositories\HomeWork\HomeWork4\bin\Debug\netcoreapp3.0\HomeWork4.dll
+D:\DoNotComeIn\projects\GitHub Repositories\HomeWork\HomeWork4\bin\Debug\netcoreapp3.0\HomeWork4.pdb
+D:\DoNotComeIn\projects\GitHub Repositories\HomeWork\HomeWork4\obj\Debug\netcoreapp3.0\HomeWork4.csprojAssemblyReference.cache
+D:\DoNotComeIn\projects\GitHub Repositories\HomeWork\HomeWork4\obj\Debug\netcoreapp3.0\HomeWork4.AssemblyInfoInputs.cache
+D:\DoNotComeIn\projects\GitHub Repositories\HomeWork\HomeWork4\obj\Debug\netcoreapp3.0\HomeWork4.AssemblyInfo.cs
+D:\DoNotComeIn\projects\GitHub Repositories\HomeWork\HomeWork4\obj\Debug\netcoreapp3.0\HomeWork4.dll
+D:\DoNotComeIn\projects\GitHub Repositories\HomeWork\HomeWork4\obj\Debug\netcoreapp3.0\HomeWork4.pdb
