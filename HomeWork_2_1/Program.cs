@@ -21,7 +21,8 @@ namespace HomeWork_2_1
             Console.Write("Введите баланс в евро: ");
             eur = Convert.ToInt32(Console.ReadLine());
 
-            while (endProgram == true) {
+            while (endProgram == true) 
+            {
                 Console.WriteLine("Выберите какую валюту желаете продать");
                 Console.WriteLine("1 - рубли, 2 - доллары, 3 - евро");
                 Console.WriteLine("нажмите 0 для выхода");
@@ -121,7 +122,7 @@ namespace HomeWork_2_1
                                 else Console.WriteLine("У Вас недостаточно средств для покупки такого количества валюты");
                                 break;
                         }
-                    case (0):
+                    case 0:
                         endProgram = false;
                         break;
                 }
