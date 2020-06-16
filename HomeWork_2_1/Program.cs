@@ -22,7 +22,8 @@ namespace HomeWork_2_1
             Console.Write("Введите баланс в евро: ");
             eur = Convert.ToInt32(Console.ReadLine());
 
-            while (endProgram == true) {
+            while (endProgram == true) 
+            {
                 Console.WriteLine("Выберите какую валюту желаете продать");
                 Console.WriteLine("1 - рубли, 2 - доллары, 3 - евро");
                 Console.WriteLine("нажмите 0 для выхода");
@@ -30,14 +31,14 @@ namespace HomeWork_2_1
 
                 switch (sale)
                 {
-                    case (1):
+                    case 1:
                         Console.WriteLine("Какую валюту желаете купить");
                         Console.Write("1 - доллары, 2 - евро: ");
                         buy = Convert.ToInt32(Console.ReadLine());
 
                         switch (buy)
                         {
-                            case (1):
+                            case 1:
                                 Console.Write("Сколько желаете купить: ");
                                 currencyCount = Convert.ToSingle(Console.ReadLine());
                                 if (rub >= currencyCount * rubToUsd)
@@ -48,7 +49,7 @@ namespace HomeWork_2_1
                                 }
                                 else Console.WriteLine("У Вас недостаточно средств для покупки такого количества валюты");
                                 break;
-                            case (2):
+                            case 2:
                                 Console.Write("Сколько желаете купить: ");
                                 currencyCount = Convert.ToSingle(Console.ReadLine());
                                 if (rub >= currencyCount * rubToEur) 
@@ -62,14 +63,14 @@ namespace HomeWork_2_1
 
                         }
                         break;
-                    case (2):
+                    case 2:
                         Console.WriteLine("Какую валюту желаете купить");
                         Console.Write("1 - рубли, 2 - евро: ");
                         buy = Convert.ToInt32(Console.ReadLine());
 
                         switch (buy)
                         {
-                            case (1):
+                            case 1:
                                 Console.Write("Сколько желаете купить: ");
                                 currencyCount = Convert.ToSingle(Console.ReadLine());
                                 if (usd >= currencyCount / rubToUsd)
@@ -80,7 +81,7 @@ namespace HomeWork_2_1
                                 }
                                 else Console.WriteLine("У Вас недостаточно средств для покупки такого количества валюты");
                                 break;
-                            case (2):
+                            case 2:
                                 Console.Write("Сколько желаете купить: ");
                                 currencyCount = Convert.ToSingle(Console.ReadLine());
                                 if (usd >= currencyCount / usdToEur)
@@ -92,14 +93,14 @@ namespace HomeWork_2_1
                                 else Console.WriteLine("У Вас недостаточно средств для покупки такого количества валюты");
                                 break;
                         }
-                    case (3):
+                    case 3:
                         Console.WriteLine("Какую валюту желаете купить");
                         Console.Write("1 - рубли, 2 - доллары: ");
                         buy = Convert.ToInt32(Console.ReadLine());
 
                         switch (buy)
                         {
-                            case (1):
+                            case 1:
                                 Console.Write("Сколько желаете купить: ");
                                 currencyCount = Convert.ToSingle(Console.ReadLine());
                                 if (eur >= currencyCount / rubToEur)
@@ -110,7 +111,7 @@ namespace HomeWork_2_1
                                 }
                                 else Console.WriteLine("У Вас недостаточно средств для покупки такого количества валюты");
                                 break;
-                            case (2):
+                            case 2:
                                 Console.Write("Сколько желаете купить: ");
                                 currencyCount = Convert.ToSingle(Console.ReadLine());
                                 if (eur >= currencyCount / usdToEur)
@@ -122,7 +123,7 @@ namespace HomeWork_2_1
                                 else Console.WriteLine("У Вас недостаточно средств для покупки такого количества валюты");
                                 break;
                         }
-                    case (0):
+                    case 0:
                         endProgram = false;
                         break;
                 }
