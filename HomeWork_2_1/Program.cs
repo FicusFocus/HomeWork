@@ -56,6 +56,10 @@ namespace HomeWork_2_1
                                 }
                                 else Console.WriteLine("У Вас недостаточно средств для покупки такого количества валюты");
                                 break;
+
+                            default:
+                                Console.WriteLine("Шо за слово непонятный???");
+                                break;
                         }
                         break;
 
@@ -83,6 +87,10 @@ namespace HomeWork_2_1
                                     eur += currencyCount;
                                     usd -= currencyCount * usdToEur;
                                 }
+                                break;
+
+                            default:
+                                Console.WriteLine("Шо за слово непонятный???");
                                 break;
                         }
                         break;
@@ -112,11 +120,19 @@ namespace HomeWork_2_1
                                     eur -= currencyCount / usdToEur;
                                 }
                                 break;
+
+                            default:
+                                Console.WriteLine("Шо за слово непонятный???");
+                                break;
                         }
                         break;
                         
                     case 0:
                         endProgram = false;
+                        break;
+
+                    default:
+                        Console.WriteLine("Шо за слово непонятный???");
                         break;
                 }
 
