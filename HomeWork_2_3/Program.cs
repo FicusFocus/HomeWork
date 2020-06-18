@@ -17,6 +17,12 @@ namespace HomeWork_2_3
                 num += 7;
             }
 
+            for (; iterationCount > 0; iterationCount--)
+            {
+                Console.Write(num + ", ");
+                num += 7;
+            }
+
             for (int i = iterationCount; iterationCount > 0; iterationCount--)
             {
                 Console.Write(num + ", ");
