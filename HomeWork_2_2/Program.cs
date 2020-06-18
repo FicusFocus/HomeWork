@@ -132,6 +132,10 @@ namespace HomeWork_2_2
                             case "Black":
                                 Console.BackgroundColor = ConsoleColor.Black;
                                 break;
+
+                            default:
+                                Console.WriteLine("Такого цвета нет.");
+                                break;
                         }
                         break;
 
@@ -142,6 +146,10 @@ namespace HomeWork_2_2
 
                     case "esc":
                         consoleActive = false;
+                        break;
+
+                    default:
+                        Console.WriteLine("Неизвестная команда.");
                         break;
                 }
 
