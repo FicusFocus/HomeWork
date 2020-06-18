@@ -6,9 +6,9 @@ namespace HomeWork_2_2
     {
         static void Main(string[] args)
         {
-            string consoleComand, message, userName, userPassword, userAttemptLogg, userAttemptPW;
+            string consoleComand, message = "", userName, userPassword, userAttemptLogg, userAttemptPW, consoleColor;
             bool consoleActive = true;
-            bool logIn = false;
+            bool logIn = false, setMessege = false;
 
             Console.WriteLine("для пользования консолью необходимо зарегистрироваться.");
             Console.Write("Придумайте имя пользователя: ");
@@ -28,13 +28,12 @@ namespace HomeWork_2_2
                         Console.WriteLine("1) changeAccount - Изменить данные учетной записи\n" +
                                           "2) logIn - войти в учетную запись\n" +
                                           "3) logOut - выйти из учетной записи\n" +
-                                          "4) enterMessage - ввеcти скрытое послание\n" +
+                                          "4) setMessage - ввеcти скрытое послание\n" +
                                           "5) showAccountInfo - вывести логин и пароль\n" +
                                           "6) showMessage - вывести скрытое послание\n" +
-                                          "7) changeSize - изменить размер\n" +
-                                          "8) changeColor - изменить цвет конслои\n" +
-                                          "9) clear - очистить консоль\n" +
-                                          "10) esc - выход");
+                                          "7) changeColor - изменить цвет конслои\n" +
+                                          "8) clear - очистить консоль\n" +
+                                          "9) esc - выход");
                         break;
 
                     case "changeAccount":
@@ -54,10 +53,9 @@ namespace HomeWork_2_2
 
                             if (userAttemptLogg == userName && userAttemptPW == userPassword)
                             {
-                                Console.WriteLine("Вы успешно авторизовались");
+                                Console.WriteLine("Вы успешно авторизовались!");
                                 logIn = true;
-
-                                //TODO: желаете оставить секретное послание?
+                                break;
                             }
                             else
                             {
@@ -72,6 +70,7 @@ namespace HomeWork_2_2
                         if(choice == 'y')
                         {
                             logIn = false;
+                            Console.WriteLine("Пока, пока!");
                         }
                         else
                         {
@@ -79,22 +78,66 @@ namespace HomeWork_2_2
                         }
                         break;
 
-                    case "enterMessage":
+                    case "setMessage":
+                        Console.Write("Введите сообщение: ");
+                        message = Console.ReadLine();
+                        setMessege = true;
                         break;
 
                     case "showAccountInfo":
+                        if (logIn == true)
+                        {
+                            Console.WriteLine($"Имя пользователя - {userName}, Пароль - {userPassword}.");
+                        }
+                        else
+                        {
+                            Console.WriteLine("Для начала необходимо авторизоваться");
+                        }
                         break;
 
                     case "showMessage":
-                        break;
-
-                    case "changeSize":
+                        if (setMessege == true)
+                        {
+                            Console.WriteLine(message);
+                        }
+                        else
+                        {
+                            Console.WriteLine("для начала необходимо ввести сообщение.");
+                        }
                         break;
 
                     case "changeColor":
+                        Console.WriteLine("выберете цвет консоли:");
+                        Console.WriteLine("1)Blue. 2)Red. 3)Green. 4)White. 5)Black");
+                        consoleColor = Console.ReadLine();
+
+                        switch (consoleColor)
+                        {
+                            case "Blue":
+                                Console.BackgroundColor = ConsoleColor.Blue;
+                                break;
+
+                            case "Red":
+                                Console.BackgroundColor = ConsoleColor.Red;
+                                break;
+
+                            case "Green":
+                                Console.BackgroundColor = ConsoleColor.Green;
+                                break;
+
+                            case "White":
+                                Console.BackgroundColor = ConsoleColor.White;
+                                break;
+
+                            case "Black":
+                                Console.BackgroundColor = ConsoleColor.Black;
+                                break;
+                        }
                         break;
 
                     case "clear":
+                        Console.Clear();
+                        Console.WriteLine("Для отображения списка команд введите help");
                         break;
 
                     case "esc":
