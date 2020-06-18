@@ -11,7 +11,7 @@ namespace HomeWork_2_3
             Console.Write("Введите количество итераций: ");
             iterationCount = Convert.ToInt32(Console.ReadLine());
 
-            for (; iterationCount > 0; iterationCount--)
+            while (iterationCount-- > 0)
             {
                 Console.Write(num + ", ");
                 num += 7;
