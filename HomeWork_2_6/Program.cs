@@ -39,6 +39,7 @@ namespace HomeWork_2_6
             {
                 Console.WriteLine($"Здоровье игрока - {playerHelth}, здоровье босса - {enemyHelth}");
                 Console.WriteLine("Выберите способность которую ходтите использовать: 1 - wrathLightning, 2 - thunderstorm, 3 - darkAndLight, 4 - rejection");
+
                 abilitySelection = Convert.ToInt32(Console.ReadLine());
 
                 switch(abilitySelection)
@@ -64,12 +65,14 @@ namespace HomeWork_2_6
                         enemyHelth -= plauerDamage;
                         shockOn = true;
                         shock = 7;
+
                         Console.WriteLine($"Вы нанесли {plauerDamage} урона способностью thunderstorm");
                         break;
                     case 3:
                         if (darkAndLight > 0)
                         {
                             Console.WriteLine("1 - применить на врага. 2 - применить на себя.");
+
                             abilitySelection = Convert.ToInt32(Console.ReadLine());
 
                             if (abilitySelection == 1)
@@ -77,6 +80,7 @@ namespace HomeWork_2_6
                                 plauerDamage = playerHelth;
                                 enemyHelth -= plauerDamage;
                                 playerHelth -= darkAndLight / 100 * 15;
+
                                 Console.WriteLine($"Вы нанесли {plauerDamage} урона.");
                             }
                             else
@@ -84,6 +88,7 @@ namespace HomeWork_2_6
                                 playerHelth += 3000;
                             }
                             darkAndLight--;
+
                             Console.WriteLine($"возможно использовать данное заклинание еще {darkAndLight} раз");
                         }
                         else
