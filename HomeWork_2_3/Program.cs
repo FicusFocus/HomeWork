@@ -6,13 +6,15 @@ namespace HomeWork_2_3
     {
         static void Main(string[] args)
         {
-            int num = 7;
+            int num1 = 7, num2 = 7;
+            int iterationCount = 14;
 
-            for (int iterationCount = 14; iterationCount > 0; iterationCount --)
+            for (int i = 0; i < iterationCount; i++)
             {
-                Console.Write(num + "; ");
-                num += 7;
+                Console.Write(num1 + "; ");
+                num1 += num2;
             }
         }
+
     }
 }
