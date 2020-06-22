@@ -35,7 +35,7 @@ namespace HomeWork_2_6
                               "4) rejection - накладывает на героя щит который отражает 40% урона,\n" +
                               "дает вампиризм способностей 25%. Длительность 5 ходов.\n");
 
-            while(playerHelth >0 && enemyHelth > 0)
+            while(playerHelth > 0 && enemyHelth > 0)
             {
                 Console.WriteLine($"Здоровье игрока - {playerHelth}, здоровье босса - {enemyHelth}");
                 Console.WriteLine("Выберите способность которую ходтите использовать: 1 - wrathLightning, 2 - thunderstorm, 3 - darkAndLight, 4 - rejection");
