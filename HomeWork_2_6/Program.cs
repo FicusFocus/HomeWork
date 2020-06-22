@@ -15,7 +15,7 @@ namespace HomeWork_2_6
             int enemyDamage;
             int shock = 0;
             int shield = 0;
-            int vampirism = 0;
+            int vampirism;
             int abilitySelection;
 
             bool shockOn = false;
