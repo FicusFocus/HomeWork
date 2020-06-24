@@ -10,7 +10,6 @@ namespace HomeWork_2_1
             float rub, usd, eur;
             float currencyCount;
             int sale, buy;
-
             bool endProgram = true;
 
             Console.WriteLine("Доброго времени суток, введите Ваш баланс");
@@ -45,21 +44,30 @@ namespace HomeWork_2_1
                                     usd += currencyCount;
                                     rub -= currencyCount * rubToUsd;
                                 }
-                                else Console.WriteLine("У Вас недостаточно средств для покупки такого количества валюты");
+                                else
+                                {
+                                    Console.WriteLine("У Вас недостаточно средств для покупки такого количества валюты");
+                                }
                                 break;
                             case 2:
-                                if (rub >= currencyCount * rubToEur) 
+                                if (rub >= currencyCount * rubToEur)
                                 {
                                     eur += currencyCount;
                                     rub -= currencyCount * rubToEur;
                                 }
-                                else Console.WriteLine("У Вас недостаточно средств для покупки такого количества валюты");
+                                else
+                                {
+                                    Console.WriteLine("У Вас недостаточно средств для покупки такого количества валюты");
+                                }
+                                break;
+                            default:
+                                Console.WriteLine("Шо за слово непонятный???");
                                 break;
                         }
                         break;
                     case 2:
-                        Console.WriteLine("Какую валюту желаете купить");
-                        Console.Write("1 - рубли, 2 - евро: ");
+                        Console.WriteLine("Какую валюту желаете купить: 1 - рубли, 2 - евро");
+                        Console.Write("1 - рубли, 2 - евро");
                         buy = Convert.ToInt32(Console.ReadLine());
                         Console.Write("Сколько желаете купить: ");
                         currencyCount = Convert.ToSingle(Console.ReadLine());
@@ -72,15 +80,20 @@ namespace HomeWork_2_1
                                     rub += currencyCount;
                                     usd -= currencyCount / rubToUsd;
                                 }
-                                else Console.WriteLine("У Вас недостаточно средств для покупки такого количества валюты");
+                                else
+                                {
+                                    Console.WriteLine("У Вас недостаточно средств для покупки такого количества валюты");
+                                }
                                 break;
-
                             case 2:
                                 if (usd >= currencyCount * usdToEur)
                                 {
                                     eur += currencyCount;
                                     usd -= currencyCount * usdToEur;
                                 }
+                                break;
+                            default:
+                                Console.WriteLine("Шо за слово непонятный???");
                                 break;
                         }
                         break;
@@ -99,9 +112,11 @@ namespace HomeWork_2_1
                                     rub += currencyCount;
                                     eur -= currencyCount / rubToEur;
                                 }
-                                else Console.WriteLine("У Вас недостаточно средств для покупки такого количества валюты");
+                                else
+                                {
+                                    Console.WriteLine("У Вас недостаточно средств для покупки такого количества валюты");
+                                }
                                 break;
-
                             case 2:
                                 if (eur >= currencyCount / usdToEur)
                                 {
@@ -109,17 +124,21 @@ namespace HomeWork_2_1
                                     eur -= currencyCount / usdToEur;
                                 }
                                 break;
+                            default:
+                                Console.WriteLine("Шо за слово непонятный???");
+                                break;
                         }
-                        
                         break;
                     case 0:
                         endProgram = false;
                         break;
+                    default:
+                        Console.WriteLine("Шо за слово непонятный???");
+                        break;
                 }
 
                 Console.WriteLine($"баланс в рублях после операции - {rub}, баланс в долларах после операции - {usd}," +
-                                          $"Баланс в евро после операции {eur}");
-                Console.WriteLine(" ");
+                                          $"Баланс в евро после операции {eur} \n");
             }
         }
     }
