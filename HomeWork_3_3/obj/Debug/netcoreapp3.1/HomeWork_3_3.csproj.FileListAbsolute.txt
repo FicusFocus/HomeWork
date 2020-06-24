@@ -9,3 +9,16 @@ D:\Програмирование\Visual_Studio_Projects\c# light\Less1\HomeWork
 D:\Програмирование\Visual_Studio_Projects\c# light\Less1\HomeWork\HomeWork_3_3\obj\Debug\netcoreapp3.1\HomeWork_3_3.AssemblyInfo.cs
 D:\Програмирование\Visual_Studio_Projects\c# light\Less1\HomeWork\HomeWork_3_3\obj\Debug\netcoreapp3.1\HomeWork_3_3.dll
 D:\Програмирование\Visual_Studio_Projects\c# light\Less1\HomeWork\HomeWork_3_3\obj\Debug\netcoreapp3.1\HomeWork_3_3.pdb
+D:\DoNotComeIn\projects\GitHub Repositories\HomeWork\HomeWork_3_3\bin\Debug\netcoreapp3.1\HomeWork_3_3.exe
+D:\DoNotComeIn\projects\GitHub Repositories\HomeWork\HomeWork_3_3\bin\Debug\netcoreapp3.1\HomeWork_3_3.deps.json
+D:\DoNotComeIn\projects\GitHub Repositories\HomeWork\HomeWork_3_3\bin\Debug\netcoreapp3.1\HomeWork_3_3.runtimeconfig.json
+D:\DoNotComeIn\projects\GitHub Repositories\HomeWork\HomeWork_3_3\bin\Debug\netcoreapp3.1\HomeWork_3_3.runtimeconfig.dev.json
+D:\DoNotComeIn\projects\GitHub Repositories\HomeWork\HomeWork_3_3\bin\Debug\netcoreapp3.1\HomeWork_3_3.dll
+D:\DoNotComeIn\projects\GitHub Repositories\HomeWork\HomeWork_3_3\bin\Debug\netcoreapp3.1\HomeWork_3_3.pdb
+D:\DoNotComeIn\projects\GitHub Repositories\HomeWork\HomeWork_3_3\obj\Debug\netcoreapp3.1\HomeWork_3_3.csprojAssemblyReference.cache
+D:\DoNotComeIn\projects\GitHub Repositories\HomeWork\HomeWork_3_3\obj\Debug\netcoreapp3.1\HomeWork_3_3.AssemblyInfoInputs.cache
+D:\DoNotComeIn\projects\GitHub Repositories\HomeWork\HomeWork_3_3\obj\Debug\netcoreapp3.1\HomeWork_3_3.AssemblyInfo.cs
+D:\DoNotComeIn\projects\GitHub Repositories\HomeWork\HomeWork_3_3\obj\Debug\netcoreapp3.1\HomeWork_3_3.csproj.CoreCompileInputs.cache
+D:\DoNotComeIn\projects\GitHub Repositories\HomeWork\HomeWork_3_3\obj\Debug\netcoreapp3.1\HomeWork_3_3.dll
+D:\DoNotComeIn\projects\GitHub Repositories\HomeWork\HomeWork_3_3\obj\Debug\netcoreapp3.1\HomeWork_3_3.pdb
+D:\DoNotComeIn\projects\GitHub Repositories\HomeWork\HomeWork_3_3\obj\Debug\netcoreapp3.1\HomeWork_3_3.genruntimeconfig.cache

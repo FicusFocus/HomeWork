@@ -16,9 +16,9 @@ namespace HomeWork_3_3
             }
             Console.WriteLine();
 
-            for(int i = 0; i < arrey.Length; i++)
+            for(int i = 1; i < arrey.Length - 1; i++)
             {
-                if(arrey[i] > arrey[i + 1] && arrey[i + 1] <= arrey.Length)
+                if(arrey[i] > arrey[i + 1] && arrey[i] > arrey[i - 1])
                 {
                     Console.WriteLine(arrey[i]);
                 }
