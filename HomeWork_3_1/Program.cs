@@ -20,11 +20,11 @@ namespace HomeWork_3_1
                 Console.WriteLine();
             }
             int mult = array[0, 0];
+
             for (int i = 1; i < array.GetLength(0); i++ )
             {
                 mult *= array[i,0];
             }
-
             for (int i = 0; i < array.GetLength(1); i++)
             {
                 summ += array[1, i]; 
