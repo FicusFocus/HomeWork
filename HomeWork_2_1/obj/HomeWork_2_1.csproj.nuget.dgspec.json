@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\user\\source\\repos\\HomeWork_2_1\\HomeWork_2_1.csproj": {}
+    "D:\\DoNotComeIn\\projects\\GitHub Repositories\\HomeWork\\HomeWork_2_1\\HomeWork_2_1.csproj": {}
   },
   "projects": {
-    "C:\\Users\\user\\source\\repos\\HomeWork_2_1\\HomeWork_2_1.csproj": {
+    "D:\\DoNotComeIn\\projects\\GitHub Repositories\\HomeWork\\HomeWork_2_1\\HomeWork_2_1.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\user\\source\\repos\\HomeWork_2_1\\HomeWork_2_1.csproj",
+        "projectUniqueName": "D:\\DoNotComeIn\\projects\\GitHub Repositories\\HomeWork\\HomeWork_2_1\\HomeWork_2_1.csproj",
         "projectName": "HomeWork_2_1",
-        "projectPath": "C:\\Users\\user\\source\\repos\\HomeWork_2_1\\HomeWork_2_1.csproj",
+        "projectPath": "D:\\DoNotComeIn\\projects\\GitHub Repositories\\HomeWork\\HomeWork_2_1\\HomeWork_2_1.csproj",
         "packagesPath": "C:\\Users\\user\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\user\\source\\repos\\HomeWork_2_1\\obj\\",
+        "outputPath": "D:\\DoNotComeIn\\projects\\GitHub Repositories\\HomeWork\\HomeWork_2_1\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\user\\AppData\\Roaming\\NuGet\\NuGet.Config",
