@@ -12,15 +12,7 @@ namespace HomeWork_3_4
 
             while (isWork)
             {
-                Console.WriteLine()
-
-                switch (Console.ReadLine())
-                {
-                    case "summ":
-                        break;
-                    case "exit":
-                        break;
-                }
+                Console.WriteLine();
                     
             }
             
