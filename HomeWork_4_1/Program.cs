@@ -46,6 +46,9 @@ namespace HomeWork_4_1
                         }
                         break;
                     case "deleteFile":
+                        Console.Write("Введите название файла который желаете удалить (Фамилию и имя): ");
+                        fullName = DeleteFile(fullName);
+                        Console.WriteLine("файл удален.");
                         break;
                     case "exit":
                         isWork = false;
@@ -58,14 +61,54 @@ namespace HomeWork_4_1
 
         static string[] AddFile(string[] array)
         {
-            string[] tempArrey = new string[array.Length + 1];
+            string[] tempArray = new string[array.Length + 1];
 
             for(int i = 0; i < array.Length; i++)
             {
-                tempArrey[i] = array[i];
+                tempArray[i] = array[i];
             }
-            tempArrey[tempArrey.Length - 1] = Console.ReadLine();
-            array = tempArrey;
+            tempArray[tempArray.Length - 1] = Console.ReadLine();
+            array = tempArray;
+
+            return array;
+        }
+
+        static string[] DeleteFile(string[] array)
+        {
+            string[] tempArray = new string[array.Length - 1];
+            string fileName;
+            int fileIndex = 0;
+
+            fileName = (Console.ReadLine());
+
+            if (array.Length == 0)
+            {
+                return array;
+            }
+
+            for (int i = 0; i < array.Length; i++)
+            {
+                if (array[i] == fileName)
+                {
+                    fileIndex = i;
+                }
+            }
+
+            if (array.Length <= fileIndex)
+            {
+                return array;
+            }
+
+            for (int i = 0; i < fileIndex; i++)
+            {
+                tempArray[i] = array[i];
+            }
+            for (int i = fileIndex + 1; i < array.Length; i++)
+            {
+                tempArray[i - 1] = array[i];
+            }
+            array = tempArray;
+
             return array;
         }
     }
