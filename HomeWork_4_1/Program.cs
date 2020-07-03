@@ -24,7 +24,7 @@ namespace HomeWork_4_1
                     case "addFile":
                         Console.Write("Введите фамилию и имя: ");
                         fullName = AddFile(fullName);
-                        Console.WriteLine("\nВведите должность: ");
+                        Console.Write("\nВведите должность: ");
                         position = AddFile(position);
                         break;
                     case "showAll":
@@ -46,8 +46,20 @@ namespace HomeWork_4_1
                         }
                         break;
                     case "deleteFile":
+                        string fileName;
+                        int fileIndex = 0;
+
                         Console.Write("Введите название файла который желаете удалить (Фамилию и имя): ");
-                        fullName = DeleteFile(fullName);
+                        fileName = Console.ReadLine();
+                        for (int i = 0; i < fullName.Length; i++)
+                        {
+                            if (fullName[i] == fileName)
+                            {
+                                fileIndex = i;
+                            }
+                        }
+                        fullName = DeleteFile(fullName, fileIndex);
+                        position = DeleteFile(position, fileIndex);
                         Console.WriteLine("файл удален.");
                         break;
                     case "exit":
@@ -73,27 +85,14 @@ namespace HomeWork_4_1
             return array;
         }
 
-        static string[] DeleteFile(string[] array)
+        static string[] DeleteFile(string[] array, int fileIndex)
         {
             string[] tempArray = new string[array.Length - 1];
-            string fileName;
-            int fileIndex = 0;
-
-            fileName = (Console.ReadLine());
 
             if (array.Length == 0)
             {
                 return array;
             }
-
-            for (int i = 0; i < array.Length; i++)
-            {
-                if (array[i] == fileName)
-                {
-                    fileIndex = i;
-                }
-            }
-
             if (array.Length <= fileIndex)
             {
                 return array;
