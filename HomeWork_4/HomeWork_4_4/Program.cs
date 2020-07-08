@@ -11,90 +11,88 @@ namespace HomeWork_4_4
             bool game = true;
             int goldNum = 0, goldCount;
             int plauerX, plauerY;
-            int DX = 0, DY = 0;
-            char[,] map = ReadMap("map1");
+            char[,] map = ReadMap("map1", out plauerX, out plauerY, out goldCount);
 
-            DrawMap(out plauerX, out plauerY, map, out goldCount);
-
+            DrawMap(map);
             Console.CursorVisible = false;
+
+            Console.SetCursorPosition(0, 17);
+            Console.Write("Собрано монет - " + goldNum);
 
             while (game)
             {
-                PlauerMove(map, ref plauerX, ref plauerY, ref DX, ref DY);
+                Move(map, ref plauerX, ref plauerY, '$');
                 if (map[plauerX, plauerY] == '%')
                 {
                     goldNum+= 1;
                     map[plauerX, plauerY] = ' ';
-                    Console.SetCursorPosition(0, 20);
+                    Console.SetCursorPosition(0, 17);
                     Console.Write("Собрано - " + goldNum);
                 }
+
+                if(goldCount == goldNum)
+                {
+                    Console.WriteLine("Вы собрали все золото!!");
+                    game = false;
+                }
             }
         }
 
-        static void PlauerMove(char[,] map, ref int plauerX, ref int plauerY, ref int DX, ref int DY)
+        static void Move(char[,] map, ref int X, ref int Y, char symbol)
         {
-            if (Console.KeyAvailable)
+            ConsoleKeyInfo key = Console.ReadKey(true);
+            Console.SetCursorPosition(Y, X);
+            Console.Write(' ');
+            switch (key.Key)
             {
-                ConsoleKeyInfo key = Console.ReadKey(true);
-
-                switch (key.Key)
-                {
-                    case ConsoleKey.UpArrow:
-                        DX = -1; DY = 0;
-                        break;
-                    case ConsoleKey.DownArrow:
-                        DX = 1; DY = 0;
-                        break;
-                    case ConsoleKey.LeftArrow:
-                        DX = 0; DY = -1;
-                        break;
-                    case ConsoleKey.RightArrow:
-                        DX = 0; DY = 1;
-                        break;
-                }
-                if (map[plauerX + DX, plauerY + DY] != '#')
-                {
-                    Console.SetCursorPosition(plauerY, plauerX);
-                    Console.Write(' ');
-
-                    plauerX += DX;
-                    plauerY += DY;
-
-                    Console.SetCursorPosition(plauerY, plauerX);
-                    Console.Write('$');
-                }
+                case ConsoleKey.UpArrow:
+                    if (map[X - 1, Y] != '#')
+                    {
+                        X--;
+                    }
+                    break;
+                case ConsoleKey.DownArrow:
+                    if (map[X + 1, Y] != '#')
+                    {
+                        X++;
+                    }
+                    break;
+                case ConsoleKey.LeftArrow:
+                    if (map[X, Y - 1] != '#')
+                    {
+                        Y--;
+                    }
+                    break;
+                case ConsoleKey.RightArrow:
+                    if (map[X, Y + 1] != '#')
+                    {
+                        Y++;
+                    }
+                    break;
             }
+
+            Console.SetCursorPosition(Y, X);
+            Console.Write(symbol);
         }
 
-        static void DrawMap(out int plauerX, out int plauerY, char[,] map, out int goldCount)
+        static void DrawMap(char[,] map)
         {
-            plauerX = 0;
-            plauerY = 0;
-            goldCount = 0;
-
             for (int i = 0; i < map.GetLength(0); i++)
             {
                 for (int j = 0; j < map.GetLength(1); j++)
                 {
                     Console.Write(map[i, j]);
-
-                    if(map[plauerX, plauerY] == '%')
-                    {
-                        goldCount++;
-                    }
-                    if(map[i, j] == '$')
-                    {
-                        plauerX = i;
-                        plauerY = j;
-                    }
                 }
                 Console.WriteLine();
             }
-            Console.WriteLine(plauerX + " - X, Y - " + plauerY);
         }
 
-        static char[,] ReadMap(string mapName)
+        static char[,] ReadMap(string mapName, out int plauerX, out int plauerY, out int goldCount)
         {
+            plauerX = 0;
+            plauerY = 0;
+            goldCount = 0;
+
             string[] newFile = File.ReadAllLines($"Maps/{mapName}.txt");
             char[,] map = new char[newFile.Length, newFile[0].Length];
 
@@ -103,6 +101,17 @@ namespace HomeWork_4_4
                 for (int j = 0; j < map.GetLength(1); j++)
                 {
                     map[i, j] = newFile[i][j];
+
+                    if (map[i, j] == '$')
+                    {
+                        plauerX = i;
+                        plauerY = j;
+                    }
+
+                    if(map[i, j] == '%')
+                    {
+                        goldCount++;
+                    }
                 }
             }
             return map;
