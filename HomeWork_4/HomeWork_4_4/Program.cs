@@ -27,7 +27,7 @@ namespace HomeWork_4_4
                     goldNum+= 1;
                     map[plauerX, plauerY] = ' ';
                     Console.SetCursorPosition(0, 17);
-                    Console.Write("Собрано - " + goldNum);
+                    Console.Write("Собрано монет - " + goldNum);
                 }
 
                 if(goldCount == goldNum)
