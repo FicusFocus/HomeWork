@@ -6,10 +6,10 @@ namespace HomeWork_4_3
     {
         static void Main(string[] args)
         {
-            GetValue();
+            ReadInt();
         }
 
-        static int GetValue()
+        static int ReadInt()
         {
             int value;
             string str;
