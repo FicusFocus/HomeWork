@@ -11,6 +11,7 @@ namespace HomeWork_4_4
             bool game = true;
             int goldNum = 0, goldCount;
             int plauerX, plauerY;
+            int directoinX = 0, directoinY = 0;
             char[,] map = ReadMap("map1", out plauerX, out plauerY, out goldCount);
 
             DrawMap(map);
@@ -21,7 +22,20 @@ namespace HomeWork_4_4
 
             while (game)
             {
-                Move(map, ref plauerX, ref plauerY, '$');
+                ConsoleKeyInfo key = Console.ReadKey(true);
+
+                ChangeDirection(ref directoinX, ref directoinY, key);
+                if(map[plauerX + directoinX, plauerY + directoinY] != '#')
+                {
+                    Console.SetCursorPosition(plauerY, plauerX);
+                    Console.Write(' ');
+
+                    Move(ref plauerX, ref plauerY, directoinX, directoinY);
+
+                    Console.SetCursorPosition(plauerY, plauerX);
+                    Console.Write('$');
+                }
+
                 if (map[plauerX, plauerY] == '%')
                 {
                     goldNum+= 1;
@@ -38,41 +52,29 @@ namespace HomeWork_4_4
             }
         }
 
-        static void Move(char[,] map, ref int X, ref int Y, char symbol)
+        static void ChangeDirection(ref int DX, ref int DY, ConsoleKeyInfo key)
         {
-            ConsoleKeyInfo key = Console.ReadKey(true);
-            Console.SetCursorPosition(Y, X);
-            Console.Write(' ');
             switch (key.Key)
             {
                 case ConsoleKey.UpArrow:
-                    if (map[X - 1, Y] != '#')
-                    {
-                        X--;
-                    }
+                    DX = -1; DY = 0;
                     break;
                 case ConsoleKey.DownArrow:
-                    if (map[X + 1, Y] != '#')
-                    {
-                        X++;
-                    }
+                    DX = 1; DY = 0;
                     break;
                 case ConsoleKey.LeftArrow:
-                    if (map[X, Y - 1] != '#')
-                    {
-                        Y--;
-                    }
+                    DX = 0; DY = -1;
                     break;
                 case ConsoleKey.RightArrow:
-                    if (map[X, Y + 1] != '#')
-                    {
-                        Y++;
-                    }
+                    DX = 0; DY = 1;
                     break;
             }
+        }
 
-            Console.SetCursorPosition(Y, X);
-            Console.Write(symbol);
+        static void Move(ref int X, ref int Y, int DX, int DY)
+        {
+            X += DX;
+            Y += DY;
         }
 
         static void DrawMap(char[,] map)
