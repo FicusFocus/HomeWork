@@ -22,11 +22,11 @@ namespace HomeWork_4_5
 
             for (int i = array.Length - 1; i >= 1; i--)
             {
-                int j = rnd.Next(i + 1);
+                int randomPosition = rnd.Next(i + 1);
 
-                int temp = array[j];
-                array[j] = array[i];
-                array[i] = temp;
+                int newPosition = array[randomPosition];
+                array[randomPosition] = array[i];
+                array[i] = newPosition;
             }
         }
     }
