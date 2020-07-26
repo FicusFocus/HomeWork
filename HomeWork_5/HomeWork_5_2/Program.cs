@@ -9,7 +9,9 @@ namespace HomeWork_5_2
         static void Main(string[] args)
         {
             int money = 0;
-            int buyAmount = 0, purchaseNumber;
+            int buyAmount = 0;
+            int purchaseNumber, purchaseAmount;
+
             Random rnd = new Random();
 
             Queue<string> buyer = new Queue<string>();
@@ -21,16 +23,28 @@ namespace HomeWork_5_2
             buyer.Enqueue("buyer №5");
             buyer.Enqueue("buyer №6");
 
-            purchaseNumber = rnd.Next(1, 6);
-
-            for (int i = 0; i < purchaseNumber; i++)
+            foreach (var nextBuyer in buyer)
             {
-                buyAmount = rnd.Next(1, 500);
-                money += buyAmount;
+                purchaseNumber = rnd.Next(1, 6);
+                purchaseAmount = 0;
 
-                Console.WriteLine(buyAmount);
-                Console.WriteLine(money);
+                for (int i = 0; i < purchaseNumber; i++)
+                {
+                    buyAmount = rnd.Next(1, 500);
+                    purchaseAmount += buyAmount;
+
+                    Console.WriteLine(buyAmount + " - сумма товара");
+                    Console.WriteLine(purchaseAmount + " - общая сумма покупки");
+                }
+
+                money += purchaseAmount;
+                Console.SetCursorPosition(0, 16);
+                Console.WriteLine(money + " - счет продавца");
+                Console.Read();
+                Console.Clear();
             }
+
+            Console.WriteLine($"В кассу поступило - {money} рублей.");
         }
     }
 }
