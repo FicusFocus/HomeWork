@@ -22,7 +22,7 @@ namespace HomeWork_5_1
 
                 if (numbering.ContainsKey(userInput))
                 {
-                Console.WriteLine(numbering[userInput]);
+                     Console.WriteLine(numbering[userInput]);
                 }
                 else
                 {
