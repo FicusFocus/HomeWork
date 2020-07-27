@@ -9,8 +9,9 @@ namespace HomeWork_5_2
         static void Main(string[] args)
         {
             int money = 0;
-            int buyAmount = 0;
-            int purchaseNumber, purchaseAmount;
+            int purchaseAmount = 0;
+            int buyAmount;
+            int purchaseNumber;
 
             Random rnd = new Random();
 
@@ -26,7 +27,6 @@ namespace HomeWork_5_2
             foreach (var nextBuyer in buyer)
             {
                 purchaseNumber = rnd.Next(1, 6);
-                purchaseAmount = 0;
 
                 for (int i = 0; i < purchaseNumber; i++)
                 {
