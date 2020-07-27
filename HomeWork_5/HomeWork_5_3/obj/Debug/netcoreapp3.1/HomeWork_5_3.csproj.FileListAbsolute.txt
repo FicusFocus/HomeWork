@@ -1,0 +1,13 @@
+D:\Програмирование\Visual_Studio_Projects\c# light\Less1\HomeWork\HomeWork_5\HomeWork_5_3\bin\Debug\netcoreapp3.1\HomeWork_5_3.exe
+D:\Програмирование\Visual_Studio_Projects\c# light\Less1\HomeWork\HomeWork_5\HomeWork_5_3\bin\Debug\netcoreapp3.1\HomeWork_5_3.deps.json
+D:\Програмирование\Visual_Studio_Projects\c# light\Less1\HomeWork\HomeWork_5\HomeWork_5_3\bin\Debug\netcoreapp3.1\HomeWork_5_3.runtimeconfig.json
+D:\Програмирование\Visual_Studio_Projects\c# light\Less1\HomeWork\HomeWork_5\HomeWork_5_3\bin\Debug\netcoreapp3.1\HomeWork_5_3.runtimeconfig.dev.json
+D:\Програмирование\Visual_Studio_Projects\c# light\Less1\HomeWork\HomeWork_5\HomeWork_5_3\bin\Debug\netcoreapp3.1\HomeWork_5_3.dll
+D:\Програмирование\Visual_Studio_Projects\c# light\Less1\HomeWork\HomeWork_5\HomeWork_5_3\bin\Debug\netcoreapp3.1\HomeWork_5_3.pdb
+D:\Програмирование\Visual_Studio_Projects\c# light\Less1\HomeWork\HomeWork_5\HomeWork_5_3\obj\Debug\netcoreapp3.1\HomeWork_5_3.csprojAssemblyReference.cache
+D:\Програмирование\Visual_Studio_Projects\c# light\Less1\HomeWork\HomeWork_5\HomeWork_5_3\obj\Debug\netcoreapp3.1\HomeWork_5_3.AssemblyInfoInputs.cache
+D:\Програмирование\Visual_Studio_Projects\c# light\Less1\HomeWork\HomeWork_5\HomeWork_5_3\obj\Debug\netcoreapp3.1\HomeWork_5_3.AssemblyInfo.cs
+D:\Програмирование\Visual_Studio_Projects\c# light\Less1\HomeWork\HomeWork_5\HomeWork_5_3\obj\Debug\netcoreapp3.1\HomeWork_5_3.csproj.CoreCompileInputs.cache
+D:\Програмирование\Visual_Studio_Projects\c# light\Less1\HomeWork\HomeWork_5\HomeWork_5_3\obj\Debug\netcoreapp3.1\HomeWork_5_3.dll
+D:\Програмирование\Visual_Studio_Projects\c# light\Less1\HomeWork\HomeWork_5\HomeWork_5_3\obj\Debug\netcoreapp3.1\HomeWork_5_3.pdb
+D:\Програмирование\Visual_Studio_Projects\c# light\Less1\HomeWork\HomeWork_5\HomeWork_5_3\obj\Debug\netcoreapp3.1\HomeWork_5_3.genruntimeconfig.cache
