@@ -20,10 +20,18 @@ namespace HomeWork_6_1
 
         public void ShowStats(string name, int helth, int armor, int damage)
         {
-            _name = name;
-            _helth = helth;
-            _armor = armor;
-            _damage = damage;
+            if (name != null)
+                _name = name;
+                else _name = "Player";
+            if (helth !< 0)
+                _helth = helth;
+                else _helth = 100;
+            if (armor !< 0)
+                _armor = armor;
+                else _armor = 10;
+            if (damage !< 0)
+                _damage = damage;
+                else _damage = 5;
 
             Console.WriteLine($"имя - {_name}.\nздоровье - {_helth}.\nброня - {_armor}.\nурон - {_damage}.");
         }
