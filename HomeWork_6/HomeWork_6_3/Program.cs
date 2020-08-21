@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 
 namespace HomeWork_6_3
 {
@@ -9,6 +8,7 @@ namespace HomeWork_6_3
         static void Main(string[] args)
         {
             bool isWork = true;
+
             List<Player> players = new List<Player>();
 
             while (isWork)
@@ -24,30 +24,71 @@ namespace HomeWork_6_3
                 {
                     case "1":
                         Console.Write("Введите имя персонажа: ");
-                        string name = Console.ReadLine();
-                        Console.Write("\nВведите уровень персонажа: ");
-                        int lvl = Convert.ToInt32(Console.ReadLine());
+                        string playerName = Console.ReadLine();
 
-                        players.Add(new Player(name, lvl));
+                        players.Add(new Player(players.Count + 1, playerName, 1));
                         break;
+
                     case "2":
-                        Console.WriteLine("Поиск по номеру - 1, поиско по имени - 2: ");
-                        switch (Console.ReadLine())
+                        Console.Write("Введите номер игрока которого желаете найти: ");
+                        int number = Convert.ToInt32(Console.ReadLine()) - 1;
+
+                        if (number > players.Count || number < 0)
                         {
-                            case "1":
-                                Console.Write("Введите порядковый номер персонажа: ");
-                                int number = Convert.ToInt32(Console.ReadLine());
-                                
-                                break;
-                             case "2":
-                                break;
+                            Console.WriteLine("Игрока с таким номером не существует.");
+                            break;
                         }
+                        players[number].ShowInfo();
                         break;
+
                     case "3":
+                        Console.WriteLine("Введите номер игрока которого желаете найти: ");
+                        number = Convert.ToInt32(Console.ReadLine()) - 1;
+                        if (number > players.Count || number < 0)
+                        {
+                            Console.WriteLine("Игрока с таким номером не существует.");
+                            break;
+                        }
+                        for (int i = 0; i < players.Count; i++)
+                            players[i].ShowInfo();
                         break;
+
                     case "4":
+                        Console.WriteLine("Введите номер игрока которого желаете забанить: ");
+                        number = Convert.ToInt32(Console.ReadLine()) - 1;
+                        if (number > players.Count || number < 0)
+                        {
+                            Console.WriteLine("Игрока с таким номером не существует.");
+                            break;
+                        }
+                        else
+                            players[number].Flag = false;
                         break;
                     case "5":
+                        Console.WriteLine("Введите номер игрока которого желаете разбанить: ");
+                        number = Convert.ToInt32(Console.ReadLine()) - 1;
+                        if (number > players.Count || number < 0)
+                        {
+                            Console.WriteLine("Игрока с таким номером не существует.");
+                            break;
+                        }
+                        else
+                            players[number].Flag = true;
+                        break;
+                    case "6":
+                        Console.WriteLine("Введите номер игрока которого желаете удалить: ");
+                        number = Convert.ToInt32(Console.ReadLine()) - 1;
+                        if (number > players.Count || number < 0)
+                        {
+                            Console.WriteLine("Игрока с таким номером не существует.");
+                            break;
+                        }
+                        else
+                            players.RemoveAt(number);
+
+                            break;
+                    case "7":
+                        isWork = false;
                         break;
                 }
 
@@ -55,42 +96,30 @@ namespace HomeWork_6_3
                 Console.Clear();
             }
         }
-
-        /////////
-        public void FindPlayer(List<Player> players, int number)
-        {
-            for (int i = 0; i < players.Count; i++)
-            {
-                if (i == number)
-                {
-
-                }
-            }
-        }
-        /////////
     }
 
     class Player
     {
-        private string _name;
-        private int _lvl;
-        private bool _flag;
-        public int Number { get; private set; }
+        public int Number;
+        public string Name;
+        public int Lvl;
+        public bool Flag;
 
-        public Player(string name, int lvl = 1, bool flag = true)
+        public Player(int number, string name, int lvl, bool flag = true)
         {
-            _name = name;
-            _lvl = lvl;
-            _flag = flag;
+            Number = number;
+            Name = name;
+            Lvl = lvl;
+            Flag = flag;
         }
 
-        public void FindPlayer(List<Player> players, int number)
+        public void ShowInfo()
         {
-            for (int i = 0; i < players.Count; i++)
-            {
-                if (i == number)
-                    Number = number;
-            }
+            string flagName;
+            if (Flag == true)
+                flagName = "свободен";
+            else flagName = "забанен";
+            Console.WriteLine($"Номер - {Number}, имя - {Name}, уровень - {Lvl}, состояние - {flagName}");
         }
     }
-}
+} 
