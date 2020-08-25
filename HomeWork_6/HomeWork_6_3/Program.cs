@@ -72,18 +72,15 @@ namespace HomeWork_6_3
         {
             bool isCorrect = true;
             number = Convert.ToInt32(Console.ReadLine());
-            if (number > players.Count || number < 0)
+            while (isCorrect)
             {
-                while (isCorrect)
+                if (number > players.Count || number < 0)
                 {
-                    if (number > players.Count || number < 0)
-                    {
-                        Console.WriteLine("Игрока с таким номером не существует. Введите номер повторно.");
-                        number = Convert.ToInt32(Console.ReadLine());
-                    }
-                    else
-                        isCorrect = false;
+                    Console.WriteLine("Игрока с таким номером не существует. Введите номер повторно.");
+                    number = Convert.ToInt32(Console.ReadLine());
                 }
+                else
+                    isCorrect = false;
             }
         }
     }
