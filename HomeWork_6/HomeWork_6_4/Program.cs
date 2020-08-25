@@ -1,6 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 
+
+//TODO: прибавка суммы товара в корзину.
+//TODO: организовать вывод корзины.
+//TODO: сделать swith списсок товаров, выбрать товар, показать корзину, купить товар.
+
 namespace HomeWork_6_4
 {
     class Program
@@ -9,9 +14,12 @@ namespace HomeWork_6_4
         {
             Seller seller = new Seller();
             Buyer buyer = new Buyer();
+            FindProduct find = new FindProduct();
             List<Product> products = new List<Product>();
+            Dictionary<string, int> shoppingСart = new Dictionary<string, int>();
 
             bool isWork = true;
+            int productNumber;
 
             products.Add(new Product(products.Count + 1, "Анальгин", 100));
             products.Add(new Product(products.Count + 1, "Димедрол", 100));
@@ -28,16 +36,17 @@ namespace HomeWork_6_4
                 Console.SetCursorPosition(25, 0);
                 Console.WriteLine("Онлайн аптека.");
                 Console.WriteLine("\n\nСписок товаров:");
+
                 for (int i = 0; i < products.Count; i++)
                     products[i].ShowInfo();
-                Console.WriteLine("Введите номер товара который желаете добавить в корзину: ");
 
+                Console.WriteLine("\nВведите номер товара который желаете добавить в корзину: ");
 
-                switch (Convert.ToInt32(Console.ReadLine()))
-                {
-                    case (1):
-                        break;
-                }
+                find.Find(products, out productNumber);
+                shoppingСart.Add(products[productNumber].Name, products[productNumber].Price);
+                
+                
+
 
 
                 Console.SetCursorPosition(0, 20);
@@ -56,6 +65,34 @@ namespace HomeWork_6_4
     class Buyer
     {
         public int PurchaseAmount { get; private set; }
+
+        public void ShoppingСart(string productName, int cost)
+        {
+
+        }
+    }
+
+    class FindProduct
+    {
+        public void Find(List<Product> products, out int number)
+        {
+            bool isCorrect = true;
+            number = Convert.ToInt32(Console.ReadLine());
+
+            if (number > products.Count || number <= 0)
+            {
+                while (isCorrect)
+                {
+                    if (number > products.Count || number < 0)
+                    {
+                        Console.WriteLine("Продукта с таким номером не существует. Введите номер повторно.");
+                        number = Convert.ToInt32(Console.ReadLine());
+                    }
+                    else
+                        isCorrect = false;
+                }
+            }
+        }
     }
 
     class Product
