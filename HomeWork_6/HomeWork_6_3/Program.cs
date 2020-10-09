@@ -11,7 +11,7 @@ namespace HomeWork_6_3
             int number;
 
             List<Player> players = new List<Player>();
-            FindPlayer find = new FindPlayer();
+            FindPlayer findPlayer = new FindPlayer();
 
             while (isWork)
             {
@@ -32,7 +32,7 @@ namespace HomeWork_6_3
                         break;
                     case "2":
                         Console.Write("Введите номер игрока которого желаете найти: ");
-                        find.Find(players, out number);
+                        findPlayer.Find(players, out number);
                         players[number - 1].ShowInfo();
                         break;
 
@@ -42,17 +42,17 @@ namespace HomeWork_6_3
                         break;
                     case "4":
                         Console.WriteLine("Введите номер игрока которого желаете забанить: ");
-                        find.Find(players, out number);
+                        findPlayer.Find(players, out number);
                         players[number - 1].СhangeFlag(false);
                         break;
                     case "5":
                         Console.WriteLine("Введите номер игрока которого желаете разбанить: ");
-                        find.Find(players, out number);
+                        findPlayer.Find(players, out number);
                         players[number - 1].СhangeFlag(true);
                         break;
                     case "6":
                         Console.WriteLine("Введите номер игрока которого желаете удалить: ");
-                        find.Find(players, out number);
+                        findPlayer.Find(players, out number);
                         players.RemoveAt(number);
                             break;
                     case "7":

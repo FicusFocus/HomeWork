@@ -24,7 +24,7 @@ namespace HomeWork_5_4
                     case "help":
                         Console.Write("showAll - показать весь список сотрудников.\n" +
                                       "addFole - добавить файл\n" +
-                                      "deleteFole - удалить файл\n" +
+                                      "deleteFile - удалить файл\n" +
                                       "exit - выход.");
                         break;
                     case "addFile":

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 //TODO: прибавка суммы товара в корзину.
 //TODO: организовать вывод корзины.
-//TODO: сделать swith списсок товаров, выбрать товар, показать корзину, купить товар.
+//TODO: сделать swith список товаров, выбрать товар, показать корзину, купить товар.
 
 namespace HomeWork_6_4
 {
@@ -16,20 +16,15 @@ namespace HomeWork_6_4
             Buyer buyer = new Buyer();
             FindProduct find = new FindProduct();
             List<Product> products = new List<Product>();
-            Dictionary<string, int> shoppingСart = new Dictionary<string, int>();
+            Dictionary<string, int> ProductsList = new Dictionary<string, int>();
 
             bool isWork = true;
             int productNumber;
 
-            products.Add(new Product(products.Count + 1, "Анальгин", 100));
             products.Add(new Product(products.Count + 1, "Димедрол", 100));
             products.Add(new Product(products.Count + 1, "Аспирин", 100));
-            products.Add(new Product(products.Count + 1, "Панкриатин", 100));
-            products.Add(new Product(products.Count + 1, "Алахол", 100));
-            products.Add(new Product(products.Count + 1, "Хлоргикседин", 100));
             products.Add(new Product(products.Count + 1, "Уголь активированный", 100));
             products.Add(new Product(products.Count + 1, "Аскорбинка", 100));
-            products.Add(new Product(products.Count + 1, "Систейн", 100));
 
             while (isWork)
             {
@@ -43,7 +38,7 @@ namespace HomeWork_6_4
                 Console.WriteLine("\nВведите номер товара который желаете добавить в корзину: ");
 
                 find.Find(products, out productNumber);
-                shoppingСart.Add(products[productNumber].Name, products[productNumber].Price);
+                ProductsList.Add(products[productNumber].Name, products[productNumber].Price);
                 
                 
 
@@ -66,7 +61,7 @@ namespace HomeWork_6_4
     {
         public int PurchaseAmount { get; private set; }
 
-        public void ShoppingСart(string productName, int cost)
+        public void ProductsList(string productName, int cost)
         {
 
         }
