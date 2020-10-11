@@ -7,113 +7,131 @@ namespace HomeWork_6_3
     {
         static void Main(string[] args)
         {
+            PlayerList playerList = new PlayerList();
             bool isWork = true;
-            int number;
-
-            List<Player> players = new List<Player>();
-            FindPlayer findPlayer = new FindPlayer();
 
             while (isWork)
             {
-                Console.WriteLine("1 - добавить игрока\n" +
-                                  "2 - поиск игрока\n" +
-                                  "3 - вывести список игроков\n" +
-                                  "4 - забанить игрока\n" +
-                                  "5 - разбанить игрока\n" +
-                                  "6 - удалить игрока\n" +
-                                  "7 - выход");
+                Console.WriteLine("Выберите команду:\n" +
+                                  "1 - добавить нового игрока\n" +
+                                  "2 - забанить игрока\n" +
+                                  "3 - разбанить игрока\n" +
+                                  "4 - найти игрока\n" + 
+                                  "5 - удалить игрока");
                 switch (Console.ReadLine())
                 {
-                    case "1":
-                        Console.Write("Введите имя персонажа: ");
-                        string playerName = Console.ReadLine();
-
-                        players.Add(new Player(players.Count + 1, playerName, 1));
+                    case"1":
+                        Console.Write("Ввыедите имя нового игрока: ");
+                        string name = Console.ReadLine();
+                        playerList.AddPlayer(name);
                         break;
-                    case "2":
-                        Console.Write("Введите номер игрока которого желаете найти: ");
-                        findPlayer.Find(players, out number);
-                        players[number - 1].ShowInfo();
+                    case"2":
+                        Console.Write("Введите номер игрока которого желаете забанить: ");
+                        int number = Convert.ToInt32(Console.ReadLine()) - 1;
+                        bool isCorrect;
+                        playerList.PlayerFinder(number, out isCorrect);
+                        if (isCorrect)
+                        {
+                            playerList.ChangeFlagFalse(number);
+                        }
                         break;
-
-                    case "3":
-                        for (int i = 0; i < players.Count; i++)
-                            players[i].ShowInfo();
+                    case"3":
+                        Console.Write("Введите номер игрока которого желаете разбанить: ");
+                        number = Convert.ToInt32(Console.ReadLine()) - 1;
+                        playerList.PlayerFinder(number, out isCorrect);
+                        if (isCorrect)
+                        {
+                            playerList.ChangeFlagTrue(number);
+                        }
                         break;
                     case "4":
-                        Console.WriteLine("Введите номер игрока которого желаете забанить: ");
-                        findPlayer.Find(players, out number);
-                        players[number - 1].СhangeFlag(false);
+                        Console.Write("Введите номер игрока которого желаете найти: ");
+                        number = Convert.ToInt32(Console.ReadLine()) - 1;
+                        playerList.PlayerFinder(number, out isCorrect);
+                        if (isCorrect)
+                        {
+                            playerList.PlayerInfo(number);
+                        }
                         break;
-                    case "5":
-                        Console.WriteLine("Введите номер игрока которого желаете разбанить: ");
-                        findPlayer.Find(players, out number);
-                        players[number - 1].СhangeFlag(true);
-                        break;
-                    case "6":
-                        Console.WriteLine("Введите номер игрока которого желаете удалить: ");
-                        findPlayer.Find(players, out number);
-                        players.RemoveAt(number);
-                            break;
-                    case "7":
-                        isWork = false;
+                    case"5":
+                        Console.Write("Введите номер игрока которого желаете удалить: ");
+                        number = Convert.ToInt32(Console.ReadLine()) - 1;
+                        playerList.Remove(number);
                         break;
                 }
-
                 Console.ReadKey();
                 Console.Clear();
             }
         }
     }
 
-    class FindPlayer
+    class PlayerList
     {
-        public void Find(List<Player> players, out int number)
+        private List<Player> _players = new List<Player>();
+
+        public void PlayerInfo(int number)
         {
-            bool isCorrect = true;
-            number = Convert.ToInt32(Console.ReadLine());
-            while (isCorrect)
+            Console.WriteLine($"{ _players[number].Name}, {_players[number].Lvl} - {_players[number].Flag}");
+        }
+        public void AddPlayer(string name, int lvl = 1, bool flag = true)
+        {
+            _players.Add(new Player(name));
+            Console.WriteLine($"Вы добавили игрока - {name}. Старотовый уровень - {1}");
+        }
+        public void Remove(int number)
+        {
+            _players.Remove(_players[number]);
+        }
+        public void PlayerFinder(int number, out bool isCorrect)
+        {
+            if (number > _players.Count)
             {
-                if (number > players.Count || number < 0)
-                {
-                    Console.WriteLine("Игрока с таким номером не существует. Введите номер повторно.");
-                    number = Convert.ToInt32(Console.ReadLine());
-                }
-                else
-                    isCorrect = false;
+                Console.WriteLine("Игрока с таким порядковым номером не существует.");
+                isCorrect = false;
             }
+            else isCorrect = true;
+
+            for (int i = 0; i < _players.Count; i++)
+            {
+                if (number == i)
+                {
+                    Console.WriteLine(_players[i].Name);
+                }
+            }
+        }
+        public void ChangeFlagTrue(int number)
+        {
+            string name;
+            int lvl;
+
+            name = _players[number].Name;
+            lvl = _players[number].Lvl;
+            _players.Remove(_players[number]);
+            _players.Add(new Player(name, lvl, true));
+        }
+        public void ChangeFlagFalse(int number)
+        {
+            string name;
+            int lvl;
+
+            name = _players[number].Name;
+            lvl = _players[number].Lvl;
+            _players.Remove(_players[number]);
+            _players.Add(new Player(name, lvl, false));
         }
     }
 
-    class Player
+    class Player : PlayerList
     {
-        public int Number { get; private set; }
         public string Name { get; private set; }
         public int Lvl { get; private set; }
         public bool Flag { get; private set; }
 
-        public Player(int number, string name, int lvl, bool flag = true)
+        public Player(string name, int lvl = 1, bool flag = true)
         {
-            Number = number;
             Name = name;
             Lvl = lvl;
             Flag = flag;
         }
-
-        public void СhangeFlag(bool flag)
-        {
-            if (flag == false)
-                Flag = false;
-            else
-                Flag = true;
-        }
-        public void ShowInfo()
-        {
-            string flagName;
-            if (Flag == true)
-                flagName = "свободен";
-            else flagName = "забанен";
-            Console.WriteLine($"Номер - {Number}, имя - {Name}, уровень - {Lvl}, состояние - {flagName}");
-        }
     }
-} 
+}

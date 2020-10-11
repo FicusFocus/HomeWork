@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\DoNotComeIn\\projects\\GitHub Repositories\\HomeWork\\HomeWork_6\\HomeWork_6_3\\HomeWork_6_3.csproj",
+      "projectUniqueName": "C:\\Users\\user\\source\\repos\\HomeWork_6_3\\HomeWork_6_3.csproj",
       "projectName": "HomeWork_6_3",
-      "projectPath": "D:\\DoNotComeIn\\projects\\GitHub Repositories\\HomeWork\\HomeWork_6\\HomeWork_6_3\\HomeWork_6_3.csproj",
+      "projectPath": "C:\\Users\\user\\source\\repos\\HomeWork_6_3\\HomeWork_6_3.csproj",
       "packagesPath": "C:\\Users\\user\\.nuget\\packages\\",
-      "outputPath": "D:\\DoNotComeIn\\projects\\GitHub Repositories\\HomeWork\\HomeWork_6\\HomeWork_6_3\\obj\\",
+      "outputPath": "C:\\Users\\user\\source\\repos\\HomeWork_6_3\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\user\\AppData\\Roaming\\NuGet\\NuGet.Config",
