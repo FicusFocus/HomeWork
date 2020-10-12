@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\DoNotComeIn\\projects\\GitHub Repositories\\HomeWork\\HomeWork_6\\HomeWork_6_3\\HomeWork_6_3.csproj": {}
+    "D:\\DoNotComeIn\\projects\\GitHub Repositories\\HomeWork\\HomeWork_6\\HomeWork_6_4(test)\\HomeWork_6_4(test).csproj": {}
   },
   "projects": {
-    "D:\\DoNotComeIn\\projects\\GitHub Repositories\\HomeWork\\HomeWork_6\\HomeWork_6_3\\HomeWork_6_3.csproj": {
+    "D:\\DoNotComeIn\\projects\\GitHub Repositories\\HomeWork\\HomeWork_6\\HomeWork_6_4(test)\\HomeWork_6_4(test).csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\DoNotComeIn\\projects\\GitHub Repositories\\HomeWork\\HomeWork_6\\HomeWork_6_3\\HomeWork_6_3.csproj",
-        "projectName": "HomeWork_6_3",
-        "projectPath": "D:\\DoNotComeIn\\projects\\GitHub Repositories\\HomeWork\\HomeWork_6\\HomeWork_6_3\\HomeWork_6_3.csproj",
+        "projectUniqueName": "D:\\DoNotComeIn\\projects\\GitHub Repositories\\HomeWork\\HomeWork_6\\HomeWork_6_4(test)\\HomeWork_6_4(test).csproj",
+        "projectName": "HomeWork_6_4(test)",
+        "projectPath": "D:\\DoNotComeIn\\projects\\GitHub Repositories\\HomeWork\\HomeWork_6\\HomeWork_6_4(test)\\HomeWork_6_4(test).csproj",
         "packagesPath": "C:\\Users\\user\\.nuget\\packages\\",
-        "outputPath": "D:\\DoNotComeIn\\projects\\GitHub Repositories\\HomeWork\\HomeWork_6\\HomeWork_6_3\\obj\\",
+        "outputPath": "D:\\DoNotComeIn\\projects\\GitHub Repositories\\HomeWork\\HomeWork_6\\HomeWork_6_4(test)\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\user\\AppData\\Roaming\\NuGet\\NuGet.Config",

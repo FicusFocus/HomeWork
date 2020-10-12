@@ -1,0 +1,26 @@
+C:\Users\user\source\repos\HomeWork_6_4(test)\bin\Debug\netcoreapp3.1\HomeWork_6_4(test).exe
+C:\Users\user\source\repos\HomeWork_6_4(test)\bin\Debug\netcoreapp3.1\HomeWork_6_4(test).deps.json
+C:\Users\user\source\repos\HomeWork_6_4(test)\bin\Debug\netcoreapp3.1\HomeWork_6_4(test).runtimeconfig.json
+C:\Users\user\source\repos\HomeWork_6_4(test)\bin\Debug\netcoreapp3.1\HomeWork_6_4(test).runtimeconfig.dev.json
+C:\Users\user\source\repos\HomeWork_6_4(test)\bin\Debug\netcoreapp3.1\HomeWork_6_4(test).dll
+C:\Users\user\source\repos\HomeWork_6_4(test)\bin\Debug\netcoreapp3.1\HomeWork_6_4(test).pdb
+C:\Users\user\source\repos\HomeWork_6_4(test)\obj\Debug\netcoreapp3.1\HomeWork_6_4(test).csprojAssemblyReference.cache
+C:\Users\user\source\repos\HomeWork_6_4(test)\obj\Debug\netcoreapp3.1\HomeWork_6_4(test).AssemblyInfoInputs.cache
+C:\Users\user\source\repos\HomeWork_6_4(test)\obj\Debug\netcoreapp3.1\HomeWork_6_4(test).AssemblyInfo.cs
+C:\Users\user\source\repos\HomeWork_6_4(test)\obj\Debug\netcoreapp3.1\HomeWork_6_4(test).csproj.CoreCompileInputs.cache
+C:\Users\user\source\repos\HomeWork_6_4(test)\obj\Debug\netcoreapp3.1\HomeWork_6_4(test).dll
+C:\Users\user\source\repos\HomeWork_6_4(test)\obj\Debug\netcoreapp3.1\HomeWork_6_4(test).pdb
+C:\Users\user\source\repos\HomeWork_6_4(test)\obj\Debug\netcoreapp3.1\HomeWork_6_4(test).genruntimeconfig.cache
+D:\DoNotComeIn\projects\GitHub Repositories\HomeWork\HomeWork_6\HomeWork_6_4(test)\bin\Debug\netcoreapp3.1\HomeWork_6_4(test).exe
+D:\DoNotComeIn\projects\GitHub Repositories\HomeWork\HomeWork_6\HomeWork_6_4(test)\bin\Debug\netcoreapp3.1\HomeWork_6_4(test).deps.json
+D:\DoNotComeIn\projects\GitHub Repositories\HomeWork\HomeWork_6\HomeWork_6_4(test)\bin\Debug\netcoreapp3.1\HomeWork_6_4(test).runtimeconfig.json
+D:\DoNotComeIn\projects\GitHub Repositories\HomeWork\HomeWork_6\HomeWork_6_4(test)\bin\Debug\netcoreapp3.1\HomeWork_6_4(test).runtimeconfig.dev.json
+D:\DoNotComeIn\projects\GitHub Repositories\HomeWork\HomeWork_6\HomeWork_6_4(test)\bin\Debug\netcoreapp3.1\HomeWork_6_4(test).dll
+D:\DoNotComeIn\projects\GitHub Repositories\HomeWork\HomeWork_6\HomeWork_6_4(test)\bin\Debug\netcoreapp3.1\HomeWork_6_4(test).pdb
+D:\DoNotComeIn\projects\GitHub Repositories\HomeWork\HomeWork_6\HomeWork_6_4(test)\obj\Debug\netcoreapp3.1\HomeWork_6_4(test).csprojAssemblyReference.cache
+D:\DoNotComeIn\projects\GitHub Repositories\HomeWork\HomeWork_6\HomeWork_6_4(test)\obj\Debug\netcoreapp3.1\HomeWork_6_4(test).AssemblyInfoInputs.cache
+D:\DoNotComeIn\projects\GitHub Repositories\HomeWork\HomeWork_6\HomeWork_6_4(test)\obj\Debug\netcoreapp3.1\HomeWork_6_4(test).AssemblyInfo.cs
+D:\DoNotComeIn\projects\GitHub Repositories\HomeWork\HomeWork_6\HomeWork_6_4(test)\obj\Debug\netcoreapp3.1\HomeWork_6_4(test).csproj.CoreCompileInputs.cache
+D:\DoNotComeIn\projects\GitHub Repositories\HomeWork\HomeWork_6\HomeWork_6_4(test)\obj\Debug\netcoreapp3.1\HomeWork_6_4(test).dll
+D:\DoNotComeIn\projects\GitHub Repositories\HomeWork\HomeWork_6\HomeWork_6_4(test)\obj\Debug\netcoreapp3.1\HomeWork_6_4(test).pdb
+D:\DoNotComeIn\projects\GitHub Repositories\HomeWork\HomeWork_6\HomeWork_6_4(test)\obj\Debug\netcoreapp3.1\HomeWork_6_4(test).genruntimeconfig.cache

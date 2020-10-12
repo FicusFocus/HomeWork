@@ -101,13 +101,7 @@ namespace HomeWork_6_3
         }
         public void ChangeFlagTrue(int number)
         {
-            string name;
-            int lvl;
 
-            name = _players[number].Name;
-            lvl = _players[number].Lvl;
-            _players.Remove(_players[number]);
-            _players.Add(new Player(name, lvl, true));
         }
         public void ChangeFlagFalse(int number)
         {
@@ -121,7 +115,7 @@ namespace HomeWork_6_3
         }
     }
 
-    class Player : PlayerList
+    class Player
     {
         public string Name { get; private set; }
         public int Lvl { get; private set; }
@@ -132,6 +126,14 @@ namespace HomeWork_6_3
             Name = name;
             Lvl = lvl;
             Flag = flag;
+        }
+
+        public void ChangeFlag(PlayerList playerList)
+        {
+            if (true)
+            {
+
+            }
         }
     }
 }
