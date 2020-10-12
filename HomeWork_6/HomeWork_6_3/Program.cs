@@ -21,38 +21,29 @@ namespace HomeWork_6_3
                 switch (Console.ReadLine())
                 {
                     case"1":
-                        Console.Write("Ввыедите имя нового игрока: ");
+                        Console.Write("Введите имя нового игрока: ");
                         string name = Console.ReadLine();
                         playerList.AddPlayer(name);
                         break;
+
                     case"2":
                         Console.Write("Введите номер игрока которого желаете забанить: ");
                         int number = Convert.ToInt32(Console.ReadLine()) - 1;
-                        bool isCorrect;
-                        isCorrect = playerList.PlayerFinder(number);
-                        if (isCorrect)
-                        {
-                            playerList.ChangeFlagFalse(number);
-                        }
+                        playerList.ChangeFlagFalse(number);
                         break;
+
                     case"3":
                         Console.Write("Введите номер игрока которого желаете разбанить: ");
                         number = Convert.ToInt32(Console.ReadLine()) - 1;
-                        isCorrect = playerList.PlayerFinder(number);
-                        if (isCorrect)
-                        {
-                            playerList.ChangeFlagTrue(number);
-                        }
+                        playerList.ChangeFlagTrue(number);
                         break;
+
                     case "4":
                         Console.Write("Введите номер игрока которого желаете найти: ");
                         number = Convert.ToInt32(Console.ReadLine()) - 1;
-                        isCorrect = playerList.PlayerFinder(number);
-                        if (isCorrect)
-                        {
-                            playerList.PlayerInfo(number);
-                        }
+                        playerList.PlayerInfo(number);
                         break;
+
                     case"5":
                         Console.Write("Введите номер игрока которого желаете удалить: ");
                         number = Convert.ToInt32(Console.ReadLine()) - 1;
@@ -71,12 +62,19 @@ namespace HomeWork_6_3
 
         public void PlayerInfo(int number)
         {
-            string flag;
-            if (_players[number].Flag == true)
-                flag = "свободен";
+            if (number > _players.Count || number < 0)
+            {
+                Console.WriteLine("Игрока с таким порядковым номером не существует.");
+            }
             else
-                flag = "забанен";
-            Console.WriteLine($"{ _players[number].Name}, {_players[number].Lvl} - {flag}");
+            {
+                string flag;
+                if (_players[number].Ban == true)
+                    flag = "свободен";
+                else
+                    flag = "забанен";
+                Console.WriteLine($"{ _players[number].Name}, {_players[number].Lvl} - {flag}");
+            }
         }
         public void AddPlayer(string name, int lvl = 1, bool flag = true)
         {
@@ -85,32 +83,37 @@ namespace HomeWork_6_3
         }
         public void Remove(int number)
         {
-            _players.Remove(_players[number]);
+            if (number > _players.Count || number < 0)
+                Console.WriteLine("Игрока с таким порядковым номером не существует.");
+            else
+                _players.Remove(_players[number]);
         }
-        public bool PlayerFinder(int number)
+        public bool FindPlayer(int number)
         {
-            if (number > _players.Count)
+            if (number > _players.Count || number < 0)
             {
                 Console.WriteLine("Игрока с таким порядковым номером не существует.");
                 return false;
             }
-            else 
-            for (int i = 0; i < _players.Count; i++)
+            else
             {
-                if (number == i)
-                {
-                    Console.WriteLine(_players[i].Name);
-                }
+                Console.WriteLine(_players[number].Name);
+                return true;
             }
-            return true;
         }
         public void ChangeFlagTrue(int number)
         {
-            _players[number].ChangeFlagTrue(_players, number);
+            if (number > _players.Count || number < 0)
+                Console.WriteLine("Игрока с таким порядковым номером не существует.");
+            else
+                _players[number].ChangeFlagTrue();
         }
         public void ChangeFlagFalse(int number)
         {
-            _players[number].ChangeFlagFalse(_players, number);
+            if (number > _players.Count || number < 0)
+                Console.WriteLine("Игрока с таким порядковым номером не существует.");
+            else
+                _players[number].ChangeFlagFalse();
         }
     }
 
@@ -118,22 +121,22 @@ namespace HomeWork_6_3
     {
         public string Name { get; private set; }
         public int Lvl { get; private set; }
-        public bool Flag { get; private set; }
+        public bool Ban { get; private set; }
 
         public Player(string name, int lvl = 1, bool flag = true)
         {
             Name = name;
             Lvl = lvl;
-            Flag = flag;
+            Ban = flag;
         }
 
-        public void ChangeFlagTrue(List<Player> players, int number)
+        public bool ChangeFlagTrue()
         {
-            players[number].Flag = true;
+            return Ban = true;
         }
-        public void ChangeFlagFalse(List<Player> players, int number)
+        public bool ChangeFlagFalse()
         {
-            players[number].Flag = false;
+            return Ban = false;
         }
     }
 }
