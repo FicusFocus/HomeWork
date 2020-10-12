@@ -29,13 +29,13 @@ namespace HomeWork_6_3
                     case"2":
                         Console.Write("Введите номер игрока которого желаете забанить: ");
                         int number = Convert.ToInt32(Console.ReadLine()) - 1;
-                        playerList.ChangeFlagFalse(number);
+                        playerList.ChangeBanFalse(number);
                         break;
 
                     case"3":
                         Console.Write("Введите номер игрока которого желаете разбанить: ");
                         number = Convert.ToInt32(Console.ReadLine()) - 1;
-                        playerList.ChangeFlagTrue(number);
+                        playerList.ChangeBanTrue(number);
                         break;
 
                     case "4":
@@ -101,19 +101,19 @@ namespace HomeWork_6_3
                 return true;
             }
         }
-        public void ChangeFlagTrue(int number)
+        public void ChangeBanTrue(int number)
         {
             if (number > _players.Count || number < 0)
                 Console.WriteLine("Игрока с таким порядковым номером не существует.");
             else
-                _players[number].ChangeFlagTrue();
+                _players[number].ChangeBanTrue();
         }
-        public void ChangeFlagFalse(int number)
+        public void ChangeBanFalse(int number)
         {
             if (number > _players.Count || number < 0)
                 Console.WriteLine("Игрока с таким порядковым номером не существует.");
             else
-                _players[number].ChangeFlagFalse();
+                _players[number].ChangeBanFalse();
         }
     }
 
@@ -130,11 +130,11 @@ namespace HomeWork_6_3
             Ban = flag;
         }
 
-        public bool ChangeFlagTrue()
+        public bool ChangeBanTrue()
         {
             return Ban = true;
         }
-        public bool ChangeFlagFalse()
+        public bool ChangeBanFalse()
         {
             return Ban = false;
         }
