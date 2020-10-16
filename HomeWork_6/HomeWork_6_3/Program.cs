@@ -29,19 +29,19 @@ namespace HomeWork_6_3
                     case"2":
                         Console.Write("Введите номер игрока которого желаете забанить: ");
                         int number = Convert.ToInt32(Console.ReadLine()) - 1;
-                        playerList.ChangeBanFalse(number);
+                        playerList.Baned(number);
                         break;
 
                     case"3":
                         Console.Write("Введите номер игрока которого желаете разбанить: ");
                         number = Convert.ToInt32(Console.ReadLine()) - 1;
-                        playerList.ChangeBanTrue(number);
+                        playerList.Unban(number);
                         break;
 
                     case "4":
                         Console.Write("Введите номер игрока которого желаете найти: ");
                         number = Convert.ToInt32(Console.ReadLine()) - 1;
-                        playerList.PlayerInfo(number);
+                        playerList.ShowInfo(number);
                         break;
 
                     case"5":
@@ -60,7 +60,7 @@ namespace HomeWork_6_3
     {
         private List<Player> _players = new List<Player>();
 
-        public void PlayerInfo(int number)
+        public void ShowInfo(int number)
         {
             if (number > _players.Count || number < 0)
             {
@@ -101,19 +101,19 @@ namespace HomeWork_6_3
                 return true;
             }
         }
-        public void ChangeBanTrue(int number)
+        public void Unban(int number)
         {
             if (number > _players.Count || number < 0)
                 Console.WriteLine("Игрока с таким порядковым номером не существует.");
             else
-                _players[number].ChangeBanTrue();
+                _players[number].Unban();
         }
-        public void ChangeBanFalse(int number)
+        public void Baned(int number)
         {
             if (number > _players.Count || number < 0)
                 Console.WriteLine("Игрока с таким порядковым номером не существует.");
             else
-                _players[number].ChangeBanFalse();
+                _players[number].Baned();
         }
     }
 
@@ -123,20 +123,20 @@ namespace HomeWork_6_3
         public int Lvl { get; private set; }
         public bool Ban { get; private set; }
 
-        public Player(string name, int lvl = 1, bool flag = true)
+        public Player(string name, int lvl = 1, bool ban = true)
         {
             Name = name;
             Lvl = lvl;
-            Ban = flag;
+            Ban = ban;
         }
 
-        public bool ChangeBanTrue()
+        public void Unban()
         {
-            return Ban = true;
+            Ban = true;
         }
-        public bool ChangeBanFalse()
+        public void Baned()
         {
-            return Ban = false;
+            Ban = false;
         }
     }
 }
