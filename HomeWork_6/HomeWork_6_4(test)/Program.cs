@@ -14,7 +14,7 @@ namespace HomeWork_6_4_test_
     {
         private List<Product> _productsList = new List<Product>();
         private List<Product> _basket = new List<Product>();
-        private List<Product> _BuyerProducts = new List<Product>();
+        private List<Product> _buyerProducts = new List<Product>();
 
         public Shop()
         {
@@ -34,9 +34,28 @@ namespace HomeWork_6_4_test_
                 }
         }
 
-        public void AddToBasket()
+        public void AddToBasket( int productNumber)
         {
-
+            if (productNumber < 0 || productNumber > _productsList.Count)
+            {
+                Console.WriteLine("Такого товара не существует.");
+            }
+            else
+            {
+                bool AlreadyInBasket;
+                for (int i = 0; i < _basket.Count; i++)
+                {
+                    if(_basket[i].Name == _productsList[productNumber].Name)
+                    {
+                        AlreadyInBasket = true;
+                    }
+                    else
+                    {
+                        AlreadyInBasket = false;
+                    }
+                }
+                        _basket.Add(new Product(_productsList[productNumber].Name, _productsList[productNumber].Price, 1));
+            }
         }
 
         public void BuyAProduct()
@@ -60,6 +79,11 @@ namespace HomeWork_6_4_test_
             Name = name;
             Price = Price;
             Amount = amount;
+        }
+
+        public int AddAmount(int amount)
+        {
+            return Amount++;
         }
     }
     class Buyer

@@ -23,7 +23,7 @@ namespace HomeWork_6_3
                     case"1":
                         Console.Write("Введите имя нового игрока: ");
                         string name = Console.ReadLine();
-                        playerList.AddPlayer(name);
+                        playerList.Add(name);
                         break;
 
                     case"2":
@@ -68,15 +68,10 @@ namespace HomeWork_6_3
             }
             else
             {
-                string flag;
-                if (_players[number].Ban == true)
-                    flag = "свободен";
-                else
-                    flag = "забанен";
-                Console.WriteLine($"{ _players[number].Name}, {_players[number].Lvl} - {flag}");
+                _players[number].ShowInfo();
             }
         }
-        public void AddPlayer(string name, int lvl = 1, bool flag = true)
+        public void Add(string name, int lvl = 1, bool flag = true)
         {
             _players.Add(new Player(name));
             Console.WriteLine($"Вы добавили игрока - {name}. Старотовый уровень - {1}");
@@ -88,7 +83,7 @@ namespace HomeWork_6_3
             else
                 _players.Remove(_players[number]);
         }
-        public bool FindPlayer(int number)
+        public bool Find(int number)
         {
             if (number > _players.Count || number < 0)
             {
@@ -113,7 +108,7 @@ namespace HomeWork_6_3
             if (number > _players.Count || number < 0)
                 Console.WriteLine("Игрока с таким порядковым номером не существует.");
             else
-                _players[number].Baned();
+                _players[number].Ban();
         }
     }
 
@@ -121,22 +116,28 @@ namespace HomeWork_6_3
     {
         public string Name { get; private set; }
         public int Lvl { get; private set; }
-        public bool Ban { get; private set; }
+        public bool Baned { get; private set; }
 
         public Player(string name, int lvl = 1, bool ban = true)
         {
             Name = name;
             Lvl = lvl;
-            Ban = ban;
+            Baned = ban;
         }
-
+        public void ShowInfo()
+        {
+            if(Baned == false)
+                Console.WriteLine($"{Name}, {Lvl} уровень - забанен");
+            else
+                Console.WriteLine($"{Name}, {Lvl} уровень - свободен");
+        }
         public void Unban()
         {
-            Ban = true;
+            Baned = true;
         }
-        public void Baned()
+        public void Ban()
         {
-            Ban = false;
+            Baned = false;
         }
     }
 }
