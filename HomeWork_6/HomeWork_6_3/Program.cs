@@ -63,13 +63,9 @@ namespace HomeWork_6_3
         public void ShowInfo(int number)
         {
             if (number > _players.Count || number < 0)
-            {
                 Console.WriteLine("Игрока с таким порядковым номером не существует.");
-            }
             else
-            {
                 _players[number].ShowInfo();
-            }
         }
         public void Add(string name, int lvl = 1, bool flag = true)
         {
@@ -83,18 +79,12 @@ namespace HomeWork_6_3
             else
                 _players.Remove(_players[number]);
         }
-        public bool Find(int number)
+        public void Find(int number)
         {
             if (number > _players.Count || number < 0)
-            {
                 Console.WriteLine("Игрока с таким порядковым номером не существует.");
-                return false;
-            }
             else
-            {
                 Console.WriteLine(_players[number].Name);
-                return true;
-            }
         }
         public void Unban(int number)
         {
