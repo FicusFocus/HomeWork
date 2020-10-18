@@ -29,7 +29,7 @@ namespace HomeWork_6_3
                     case"2":
                         Console.Write("Введите номер игрока которого желаете забанить: ");
                         int number = Convert.ToInt32(Console.ReadLine()) - 1;
-                        playerList.Baned(number);
+                        playerList.Ban(number);
                         break;
 
                     case"3":
@@ -93,7 +93,7 @@ namespace HomeWork_6_3
             else
                 _players[number].Unban();
         }
-        public void Baned(int number)
+        public void Ban(int number)
         {
             if (number > _players.Count || number < 0)
                 Console.WriteLine("Игрока с таким порядковым номером не существует.");
