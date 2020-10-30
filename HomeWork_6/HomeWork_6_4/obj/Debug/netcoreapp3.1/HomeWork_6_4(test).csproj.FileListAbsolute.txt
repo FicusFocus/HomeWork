@@ -24,3 +24,16 @@ D:\DoNotComeIn\projects\GitHub Repositories\HomeWork\HomeWork_6\HomeWork_6_4(tes
 D:\DoNotComeIn\projects\GitHub Repositories\HomeWork\HomeWork_6\HomeWork_6_4(test)\obj\Debug\netcoreapp3.1\HomeWork_6_4(test).dll
 D:\DoNotComeIn\projects\GitHub Repositories\HomeWork\HomeWork_6\HomeWork_6_4(test)\obj\Debug\netcoreapp3.1\HomeWork_6_4(test).pdb
 D:\DoNotComeIn\projects\GitHub Repositories\HomeWork\HomeWork_6\HomeWork_6_4(test)\obj\Debug\netcoreapp3.1\HomeWork_6_4(test).genruntimeconfig.cache
+D:\Програмирование\Visual_Studio_Projects\c# light\Less1\HomeWork\HomeWork_6\HomeWork_6_4\bin\Debug\netcoreapp3.1\HomeWork_6_4(test).exe
+D:\Програмирование\Visual_Studio_Projects\c# light\Less1\HomeWork\HomeWork_6\HomeWork_6_4\bin\Debug\netcoreapp3.1\HomeWork_6_4(test).deps.json
+D:\Програмирование\Visual_Studio_Projects\c# light\Less1\HomeWork\HomeWork_6\HomeWork_6_4\bin\Debug\netcoreapp3.1\HomeWork_6_4(test).runtimeconfig.json
+D:\Програмирование\Visual_Studio_Projects\c# light\Less1\HomeWork\HomeWork_6\HomeWork_6_4\bin\Debug\netcoreapp3.1\HomeWork_6_4(test).runtimeconfig.dev.json
+D:\Програмирование\Visual_Studio_Projects\c# light\Less1\HomeWork\HomeWork_6\HomeWork_6_4\bin\Debug\netcoreapp3.1\HomeWork_6_4(test).dll
+D:\Програмирование\Visual_Studio_Projects\c# light\Less1\HomeWork\HomeWork_6\HomeWork_6_4\bin\Debug\netcoreapp3.1\HomeWork_6_4(test).pdb
+D:\Програмирование\Visual_Studio_Projects\c# light\Less1\HomeWork\HomeWork_6\HomeWork_6_4\obj\Debug\netcoreapp3.1\HomeWork_6_4(test).csprojAssemblyReference.cache
+D:\Програмирование\Visual_Studio_Projects\c# light\Less1\HomeWork\HomeWork_6\HomeWork_6_4\obj\Debug\netcoreapp3.1\HomeWork_6_4(test).AssemblyInfoInputs.cache
+D:\Програмирование\Visual_Studio_Projects\c# light\Less1\HomeWork\HomeWork_6\HomeWork_6_4\obj\Debug\netcoreapp3.1\HomeWork_6_4(test).AssemblyInfo.cs
+D:\Програмирование\Visual_Studio_Projects\c# light\Less1\HomeWork\HomeWork_6\HomeWork_6_4\obj\Debug\netcoreapp3.1\HomeWork_6_4(test).csproj.CoreCompileInputs.cache
+D:\Програмирование\Visual_Studio_Projects\c# light\Less1\HomeWork\HomeWork_6\HomeWork_6_4\obj\Debug\netcoreapp3.1\HomeWork_6_4(test).dll
+D:\Програмирование\Visual_Studio_Projects\c# light\Less1\HomeWork\HomeWork_6\HomeWork_6_4\obj\Debug\netcoreapp3.1\HomeWork_6_4(test).pdb
+D:\Програмирование\Visual_Studio_Projects\c# light\Less1\HomeWork\HomeWork_6\HomeWork_6_4\obj\Debug\netcoreapp3.1\HomeWork_6_4(test).genruntimeconfig.cache

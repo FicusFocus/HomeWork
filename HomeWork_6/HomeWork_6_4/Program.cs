@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-//TODO: передаю список продуктов в покупателя. Придумать как исправить.
-//TODO: Добавить класс продовца.
+//TODO: AddSales не работает, удаление из корзины удалает все товары данного типа (переделать чтоб уменьшало количество).
 
 namespace HomeWork_6_4_test_
 {
@@ -18,19 +17,19 @@ namespace HomeWork_6_4_test_
     }
     class Shop
     {
-        private int _moneyToPay = 0;
-
-        public List<Product> Products { get; private set; } = new List<Product>();
+        private List<Product> _products = new List<Product>();
         
         public Shop()
         {
-            Products.Add(new Product("Аспирин", 30, 100));
-            Products.Add(new Product("Аскорбинка", 5, 100));
-            Products.Add(new Product("Уголь активированный", 10, 100));
-            Products.Add(new Product("Гематогенка", 20, 0));
+            _products.Add(new Product("Аспирин", 30, 100));
+            _products.Add(new Product("Аскорбинка", 5, 100));
+            _products.Add(new Product("Уголь активированный", 10, 100));
+            _products.Add(new Product("Гематогенка", 20, 0));
         }
         public void Work(Buyer buyer)
         {
+            Seller seller = new Seller();
+
             bool isWork = true;
             while (isWork)
             {
@@ -41,48 +40,54 @@ namespace HomeWork_6_4_test_
                                   "4) приобрести товары в корзине\n" +
                                   "5) показать список приобретенных товаров\n" +
                                   "6) убрать товар из корзины\n" +
-                                  "7) выйти\n" +
+                                  "7) Показать список проданных товаров\n" + 
+                                  "8) выйти\n" +
                                   "Выбирете действие: ");
                 switch (Console.ReadLine())
                 {
                     case "1":
-                        ShowProducts();
+                        _showProducts();
                         break;
                     case "2":
-                        Console.Write("Введите номер продукта который желаете добавить в корзину.");
-                        int productNumber = Convert.ToInt32(Console.ReadLine());
-                        if (productNumber < 0 || productNumber > Products.Count)
+                        Console.Write("Введите номер продукта который желаете добавить в корзину:");
+                        int productNumber = Convert.ToInt32(Console.ReadLine()) - 1;
+                        if (productNumber < 0 || productNumber > _products.Count)
                         {
                             Console.WriteLine("Такого товара не существует.");
                         }
                         else
                         {
-                            if (Products[productNumber].Amount == 0)
+                            if (_products[productNumber].Amount == 0)
                             {
                                 Console.WriteLine("Данного товара нет в наличии");
                             }
                             else
                             {
-                                buyer.AddToBasket(Products[productNumber].Name, Products[productNumber].Price);
+                                buyer.AddToBasket(_products[productNumber].Name, _products[productNumber].Price);
                             }
                         }
                         break;
                     case "3":
-                        buyer.ShowBasket(ref _moneyToPay);
+                        buyer.ShowBasket();
                         break;
                     case "4":
                         buyer.ShowBalance();
-                        buyer.BuyAProduct(buyer, _moneyToPay);
+
+                        if(buyer.CheckSolvency())
+                            _sellProduct(buyer.Basket);
                         break;
                     case "5":
                         buyer.ShowPurchasedItems();
                         break;
                     case "6":
-                        Console.Write("Введите номер продукта который желаете исключить из корзины.");
+                        Console.Write("Введите номер продукта который желаете исключить из корзины:");
                         productNumber = Convert.ToInt32(Console.ReadLine());
                         buyer.RemoveFormBasket(productNumber - 1);
                         break;
                     case "7":
+                        seller.ShowSales();
+                        break;
+                    case "8":
                         isWork = false;
                         Console.WriteLine("Спасибо за покупки!");
                         break;
@@ -92,18 +97,34 @@ namespace HomeWork_6_4_test_
                 Console.Clear();
             }
         }
-        private void ShowProducts()
+        private void _showProducts()
         {
-                for (int i = 0; i < Products.Count; i++)
+                for (int i = 0; i < _products.Count; i++)
                 {
-                    if (Products[i].Amount <= 0)
-                        Console.WriteLine($"{i + 1}) {Products[i].Name} - нет в наличии");
+                    if (_products[i].Amount <= 0)
+                        Console.WriteLine($"{i + 1}) {_products[i].Name} - нет в наличии");
                     else
-                        Console.WriteLine($"{i + 1}) {Products[i].Name} - {Products[i].Price} руб.");
+                        Console.WriteLine($"{i + 1}) {_products[i].Name} - {_products[i].Price} руб.");
                 }
         }
-        
+        private void _sellProduct(List<Product> basket)
+        {
+            Seller seller = new Seller();
+
+            for (int i = 0; i < basket.Count; i++)
+            {
+                for (int j = 0; j < _products.Count; j++)
+                {
+                    if (basket[i].Name == _products[j].Name)
+                    {
+                        _products[j].SubtractAmount(basket[i].Amount);
+                    }
+                }
+                    seller.AddSales(basket[i].Name, basket[i].Price, basket[i].Amount);
+            }
+        }
     }
+
     class Product
     {
         public int Amount { get; private set; }
@@ -117,45 +138,84 @@ namespace HomeWork_6_4_test_
             Amount = amount;
         }
 
-        public void AddAmount()
+        public void SubtractAmount(int amount = 1)
         {
-            Amount++;
+            Amount -= amount;
+        }
+
+        public void AddAmount(int amount = 1)
+        {
+            Amount += amount;
+        }
+    }
+    class Seller
+    {
+        private int _money;
+        private List<Product> _sales = new List<Product>();
+
+        public void AddMoney(int moneyToPay)
+        {
+            _money += moneyToPay;
+        }
+
+        public void ShowSales()
+        {
+            for (int i = 0; i < _sales.Count; i++)
+            {
+                Console.WriteLine($"{i + 1}) {_sales[i].Name}. Продано {_sales[i].Amount} на сумму {_sales[i].Amount * _sales[i].Price}");
+            }
+        }
+
+        public void AddSales(string productName, int productPrice, int productAmount = 1)
+        {
+            bool alreadyInBasket = false;
+            int numberInBasket = 0;
+            for (int i = 0; i < _sales.Count; i++)
+            {
+                if (_sales[i].Name == productName)
+                {
+                    numberInBasket = i;
+                    alreadyInBasket = true;
+                }
+                else
+                {
+                    alreadyInBasket = false;
+                }
+            }
+            if (alreadyInBasket)
+                _sales[numberInBasket].AddAmount(productAmount);
+            else
+                _sales.Add(new Product(productName, productPrice, productAmount));
         }
     }
     class Buyer
     {
         private int _money;
+        private List<Product> _buyerProducts = new List<Product>();
 
         public List<Product> Basket { get; private set; } = new List<Product>();
-        public  List<Product> BuyerProducts { get; private set; } = new List<Product>();
 
+        private void Pay(int moneyToPay)
+        {
+            _money -= moneyToPay;
+            Console.WriteLine("Покупка прошла успешно.");
+            _buyerProducts = Basket;
+        }
         public Buyer(int money)
         {
             _money = money;
-        }
-        public void Pay(int moneyToPay)
-        {
-            if (moneyToPay > _money) 
-            {
-                Console.WriteLine($"Стимсоть всех товаров в корзине составляет - {moneyToPay} руб.");
-                Console.WriteLine("К сожалению у Вас недостаточно денег для совершения покупки");
-            }
-            else
-            {
-                _money -= moneyToPay;
-                Console.WriteLine("Покупка прошла успешно.");
-            }
         }
         public void ShowBalance()
         {
             Console.WriteLine($"У Вас на баласне - {_money} руб.");
         }
-        public void ShowBasket(ref int moneyToPay)
+        public void ShowBasket()
         {
+            int moneyToPay = 0;
             for (int i = 0; i < Basket.Count; i++)
             {
                 Console.WriteLine($"{i + 1}) {Basket[i].Name},{Basket[i].Amount} штук. Стоимость - {Basket[i].Amount * Basket[i].Price}");
-                moneyToPay = Basket[i].Amount * Basket[i].Price;
+                moneyToPay += Basket[i].Amount * Basket[i].Price;
             }
             Console.WriteLine($"общая стоимость покупок - {moneyToPay} руб.");
             moneyToPay = 0;
@@ -188,17 +248,28 @@ namespace HomeWork_6_4_test_
             else
                 Basket.Remove(Basket[productNumber]);
         }
-        public void BuyAProduct(Buyer buyer, int moneyToPay)
+        public bool CheckSolvency()
         {
+            int moneyToPay = 0;
+
             for (int i = 0; i < Basket.Count; i++)
                 moneyToPay += Basket[i].Price * Basket[i].Amount;
-
-            buyer.Pay(moneyToPay);
+            if (moneyToPay > _money)
+            {
+                Console.WriteLine($"Стимсоть всех товаров в корзине составляет - {moneyToPay} руб.");
+                Console.WriteLine("К сожалению у Вас недостаточно денег для совершения покупки");
+                return false;
+            }
+            else
+            {
+                Pay(moneyToPay);
+                return true;
+            }
         }
         public void ShowPurchasedItems()
         {
-            for (int i = 0; i < BuyerProducts.Count; i++)
-                Console.WriteLine($"{i + 1}) {BuyerProducts[i].Name},{BuyerProducts[i].Amount} штук.");
+            for (int i = 0; i < _buyerProducts.Count; i++)
+                Console.WriteLine($"{i + 1}) {_buyerProducts[i].Name},{_buyerProducts[i].Amount} штук.");
         }
     }
 }
