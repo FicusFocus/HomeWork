@@ -37,3 +37,16 @@ D:\Програмирование\Visual_Studio_Projects\c# light\Less1\HomeWork
 D:\Програмирование\Visual_Studio_Projects\c# light\Less1\HomeWork\HomeWork_6\HomeWork_6_4\obj\Debug\netcoreapp3.1\HomeWork_6_4(test).dll
 D:\Програмирование\Visual_Studio_Projects\c# light\Less1\HomeWork\HomeWork_6\HomeWork_6_4\obj\Debug\netcoreapp3.1\HomeWork_6_4(test).pdb
 D:\Програмирование\Visual_Studio_Projects\c# light\Less1\HomeWork\HomeWork_6\HomeWork_6_4\obj\Debug\netcoreapp3.1\HomeWork_6_4(test).genruntimeconfig.cache
+D:\DoNotComeIn\projects\GitHub Repositories\HomeWork\HomeWork_6\HomeWork_6_4\bin\Debug\netcoreapp3.1\HomeWork_6_4(test).exe
+D:\DoNotComeIn\projects\GitHub Repositories\HomeWork\HomeWork_6\HomeWork_6_4\bin\Debug\netcoreapp3.1\HomeWork_6_4(test).deps.json
+D:\DoNotComeIn\projects\GitHub Repositories\HomeWork\HomeWork_6\HomeWork_6_4\bin\Debug\netcoreapp3.1\HomeWork_6_4(test).runtimeconfig.json
+D:\DoNotComeIn\projects\GitHub Repositories\HomeWork\HomeWork_6\HomeWork_6_4\bin\Debug\netcoreapp3.1\HomeWork_6_4(test).runtimeconfig.dev.json
+D:\DoNotComeIn\projects\GitHub Repositories\HomeWork\HomeWork_6\HomeWork_6_4\bin\Debug\netcoreapp3.1\HomeWork_6_4(test).dll
+D:\DoNotComeIn\projects\GitHub Repositories\HomeWork\HomeWork_6\HomeWork_6_4\bin\Debug\netcoreapp3.1\HomeWork_6_4(test).pdb
+D:\DoNotComeIn\projects\GitHub Repositories\HomeWork\HomeWork_6\HomeWork_6_4\obj\Debug\netcoreapp3.1\HomeWork_6_4(test).csprojAssemblyReference.cache
+D:\DoNotComeIn\projects\GitHub Repositories\HomeWork\HomeWork_6\HomeWork_6_4\obj\Debug\netcoreapp3.1\HomeWork_6_4(test).AssemblyInfoInputs.cache
+D:\DoNotComeIn\projects\GitHub Repositories\HomeWork\HomeWork_6\HomeWork_6_4\obj\Debug\netcoreapp3.1\HomeWork_6_4(test).AssemblyInfo.cs
+D:\DoNotComeIn\projects\GitHub Repositories\HomeWork\HomeWork_6\HomeWork_6_4\obj\Debug\netcoreapp3.1\HomeWork_6_4(test).csproj.CoreCompileInputs.cache
+D:\DoNotComeIn\projects\GitHub Repositories\HomeWork\HomeWork_6\HomeWork_6_4\obj\Debug\netcoreapp3.1\HomeWork_6_4(test).dll
+D:\DoNotComeIn\projects\GitHub Repositories\HomeWork\HomeWork_6\HomeWork_6_4\obj\Debug\netcoreapp3.1\HomeWork_6_4(test).pdb
+D:\DoNotComeIn\projects\GitHub Repositories\HomeWork\HomeWork_6\HomeWork_6_4\obj\Debug\netcoreapp3.1\HomeWork_6_4(test).genruntimeconfig.cache
