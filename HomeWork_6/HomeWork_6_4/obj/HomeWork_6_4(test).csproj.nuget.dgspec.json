@@ -1,21 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "D:\\DoNotComeIn\\projects\\GitHub Repositories\\HomeWork\\HomeWork_6\\HomeWork_6_4\\HomeWork_6_4(test).csproj": {}
+    "D:\\Програмирование\\Visual_Studio_Projects\\c# light\\Less1\\HomeWork\\HomeWork_6\\HomeWork_6_4\\HomeWork_6_4(test).csproj": {}
   },
   "projects": {
-    "D:\\DoNotComeIn\\projects\\GitHub Repositories\\HomeWork\\HomeWork_6\\HomeWork_6_4\\HomeWork_6_4(test).csproj": {
+    "D:\\Програмирование\\Visual_Studio_Projects\\c# light\\Less1\\HomeWork\\HomeWork_6\\HomeWork_6_4\\HomeWork_6_4(test).csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\DoNotComeIn\\projects\\GitHub Repositories\\HomeWork\\HomeWork_6\\HomeWork_6_4\\HomeWork_6_4(test).csproj",
+        "projectUniqueName": "D:\\Програмирование\\Visual_Studio_Projects\\c# light\\Less1\\HomeWork\\HomeWork_6\\HomeWork_6_4\\HomeWork_6_4(test).csproj",
         "projectName": "HomeWork_6_4(test)",
-        "projectPath": "D:\\DoNotComeIn\\projects\\GitHub Repositories\\HomeWork\\HomeWork_6\\HomeWork_6_4\\HomeWork_6_4(test).csproj",
-        "packagesPath": "C:\\Users\\user\\.nuget\\packages\\",
-        "outputPath": "D:\\DoNotComeIn\\projects\\GitHub Repositories\\HomeWork\\HomeWork_6\\HomeWork_6_4\\obj\\",
+        "projectPath": "D:\\Програмирование\\Visual_Studio_Projects\\c# light\\Less1\\HomeWork\\HomeWork_6\\HomeWork_6_4\\HomeWork_6_4(test).csproj",
+        "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
+        "outputPath": "D:\\Програмирование\\Visual_Studio_Projects\\c# light\\Less1\\HomeWork\\HomeWork_6\\HomeWork_6_4\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Microsoft\\Xamarin\\NuGet\\"
+        ],
         "configFilePaths": [
-          "C:\\Users\\user\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"

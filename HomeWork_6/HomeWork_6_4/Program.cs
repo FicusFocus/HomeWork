@@ -24,7 +24,7 @@ namespace HomeWork_6_4_test_
             _products.Add(new Product("Уголь активированный", 10, 100));
             _products.Add(new Product("Гематогенка", 20, 0));
         }
-        private void _showProducts()
+        private void ShowProducts()
         {
                 for (int i = 0; i < _products.Count; i++)
                 {
@@ -54,7 +54,7 @@ namespace HomeWork_6_4_test_
                 switch (Console.ReadLine())
                 {
                     case "1":
-                        _showProducts();
+                        ShowProducts();
                         break;
                     case "2":
                         Console.Write("Введите номер продукта который желаете добавить в корзину:");
@@ -287,12 +287,10 @@ namespace HomeWork_6_4_test_
             Price = price;
             Amount = amount;
         }
-
         public void SubtractAmount(int amount = 1)
         {
             Amount -= amount;
         }
-
         public void AddAmount(int amount = 1)
         {
             Amount += amount;
