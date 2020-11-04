@@ -8,7 +8,7 @@ namespace HomeWork_6_4_test_
         static void Main(string[] args)
         {
             Random rand = new Random();
-            Buyer buyer = new Buyer(rand.Next(30, 100));
+            Buyer buyer = new Buyer(rand.Next(50, 100));
             Shop shop = new Shop();
             shop.Work(buyer);
         }
