@@ -17,7 +17,7 @@ namespace HomeWork_6_5_test_
         static void Main(string[] args)
         {
             RailwayStation railway = new RailwayStation();
-            railway.Work();      
+            railway.Work();
         }
     }
 
@@ -27,7 +27,6 @@ namespace HomeWork_6_5_test_
         private List<Passenger> _passengers = new List<Passenger>();
         private List<Route> _routes = new List<Route>();
         private List<Train> _trains = new List<Train>();
-        private Dictionary<string, int> _soldTickets = new Dictionary<string, int>();
 
         public RailwayStation()
         {
@@ -38,26 +37,22 @@ namespace HomeWork_6_5_test_
             _routes.Add(new Route("Москва - Краснодар", 300, 4.5f));
             _routes.Add(new Route("Москва - Калининград", 200, 2.2f));
 
-            CreateTrain(rand);
+            
             AddPassenger(rand.Next(15, 21), rand);
         }
 
         public void Work()
         {
-            Console.WriteLine(_money);
+            Console.WriteLine("money - " + _money);
             SellTicket();
-            Console.WriteLine(_money);
-        }
-        private void CreateTrain(Random rand)
-        {
-            for (int i = 0; i < _soldTickets.Count; i++)
-            {
-                
-            }
+            Console.WriteLine("money - " + _money);
+            ShowTrains();
         }
 
         private void SellTicket()
         {
+            Random rand = new Random();
+
             int soldTickets = 0;
 
             for (int i = 0; i < _routes.Count; i++)
@@ -70,7 +65,18 @@ namespace HomeWork_6_5_test_
                         _money += _routes[i].Price;
                     }
                 }
-                _soldTickets.Add(_routes[i].Name, soldTickets);
+                int plaseInWagons = rand.Next(5, 10);
+                if (soldTickets > plaseInWagons)
+                {
+                    if(soldTickets % plaseInWagons == 0)
+                        _trains.Add(new Train(_routes[i].Name, plaseInWagons, soldTickets / plaseInWagons));
+                    else
+                        _trains.Add(new Train(_routes[i].Name, plaseInWagons, soldTickets / plaseInWagons + 1));
+                }
+                else
+                {
+                    _trains.Add(new Train(_routes[i].Name, plaseInWagons));
+                }
                 soldTickets = 0;
             }
         }
@@ -79,7 +85,7 @@ namespace HomeWork_6_5_test_
         {
             for (int i = 0; i < _trains.Count; i++)
             {
-                Console.WriteLine($"поезд {i + 1}) {_trains[i].RouteName}, свободных мест {_trains[i].FreePlace}/{_trains[i].PlaceInWagon} ");
+                Console.WriteLine($"поезд {i + 1}) {_trains[i].RouteName}, свободных мест {_trains[i].FreePlace}/{_trains[i].PlaceInWagon}, количество вагонов - {_trains[i].PlaceInWagon}.");
             }
         }
 
@@ -126,12 +132,12 @@ namespace HomeWork_6_5_test_
         public int PlaceInWagon { get; private set; }
         public int FreePlace { get; private set; }
 
-        public Train(string routeName, int placeInWagon, int wagonsAmpunt = 1)
+        public Train(string routeName, int placeInWagon, int wagonsAmount = 1)
         {
             RouteName = routeName;
-            WagonsAmount = wagonsAmpunt;
+            WagonsAmount = wagonsAmount;
             PlaceInWagon = placeInWagon;
-            FreePlace = placeInWagon;
+            FreePlace = placeInWagon * wagonsAmount;
         }
 
         public void CreateNewWagon()
