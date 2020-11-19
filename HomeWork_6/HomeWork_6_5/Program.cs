@@ -11,6 +11,12 @@ using System.Collections.Generic;
 //В верхней части программы должна выводиться полная информация о текущем рейсе или его отсутствии. 
 
 
+
+//у пасажира есть предпочитаемый маршрут и есть деньги, ты выбираешь какой ему дать маршрут.
+//Если желаемый маршрут и тот который был присвоен не совпадают пасажир уходит. Если нехватает денег то пасажир уходит
+//Как только все пассажиры были раскиданы отправляется первый поезд. 
+//
+
 namespace HomeWork_6_5
 {
     class Program
@@ -24,55 +30,39 @@ namespace HomeWork_6_5
 
     class Subway
     {
-        private List<Route> _routes = new List<Route>();
-        private List<Passenger> _passengers = new List<Passenger>();
-        private Queue<Train> _trains = new Queue<Train>();
+
+        private Queue<Passenger> _passengers = new Queue<Passenger>();
+        private List<Train> _trains = new List<Train>();
 
         public Subway(int passengersCount)
         {
             Random rand = new Random();
 
-            _routes.Add(new Route("Москва - Питер", 12000));
-            _routes.Add(new Route("Москва - Краснодар", 10000));
-            _routes.Add(new Route("Москва - Калининград", 9000));
-            _routes.Add(new Route("Москва - Барнаул", 15000));
+            _trains.Add(new Train("Москва - Питер", 12000, 5, rand.Next(1, 3), rand.Next(2, 6)));
+            _trains.Add(new Train("Москва - Краснодар", 10000, 8, rand.Next(1, 3), rand.Next(2, 6)));
+            _trains.Add(new Train("Москва - Калининград", 9000, 8, rand.Next(1, 3), rand.Next(2, 6)));
+            _trains.Add(new Train("Москва - Барнаул", 15000, 12, rand.Next(1, 3), rand.Next(2, 6)));
 
             for (int i = 0; i < passengersCount; i++)
             {
-                _passengers.Add(new Passenger(_routes[rand.Next(0, _routes.Count)].Name));
+                _passengers.Enqueue(new Passenger(_trains[rand.Next(0, _trains.Count)].Name, rand.Next(8900, 17001)));
             }
         }
-
-        public void ShowRoutes()
-        {
-            for (int i = 0; i < _routes.Count; i++)
-            {
-                Console.WriteLine($"Стоимость билетов {_routes[i].Name} составляет - {_routes[i].Price}руб.");
-            }
-        }
-
         public void Work()
         {
-            for (int i = 0; i < _passengers.Count; i++)
+
+            while (true)
             {
-                Console.WriteLine($"пассажир №{i + 1}. Желаемый рейс {_passengers[i].DesiredRoute}, денег - {_passengers[i]._money}");
-            }        
+                for (int i = 0; i < _trains.Count; i++)
+                {
+                    Console.WriteLine($"Поезд {_trains[i].Name}. Свободно мест - {_trains[i].FreePlace}/{_trains[i].AllPleaces}");
+                }
+            }
         }
-        public void ShowCurrentVoyage()
+
+        public void ShowCurrentCruise()
         {
 
-        }
-    }
-
-    class Route
-    {
-        public string Name { get; private set; }
-        public int Price { get; private set; }
-
-        public Route(string name,int price)
-        {
-            Name = name;
-            Price = price;
         }
     }
 
@@ -80,24 +70,55 @@ namespace HomeWork_6_5
     {
         public int Wagons { get; private set; }
         public int PleaceInWagon { get; private set; }
+        public int AllPleaces { get; private set; }
+        public int Price { get; private set; }
+        public int TravelTime { get; private set; }
+        public int FreePlace { get; private set; }
+        public string Name { get; private set; }
 
-        public Train(int wagons, int pleaseInWagons)
+        public Train(string name, int price, int travelTime, int wagons, int pleaseInWagon)
         {
+            Name = name;
+            Price = price;
+            TravelTime = travelTime;
             Wagons = wagons;
-            PleaceInWagon = pleaseInWagons;
+            PleaceInWagon = pleaseInWagon;
+            AllPleaces = pleaseInWagon * wagons;
+            FreePlace = AllPleaces;
+
+        }
+
+        public void ChangePleace()
+        {
+
         }
     }
     
     class Passenger
     {
-        public int _money { get; private set; }
-
+        private int _money;
+        
         public string DesiredRoute { get; private set; }
 
         public Passenger(string desiredRoute, int money = 20000)
         {
             _money = money;
             DesiredRoute = desiredRoute;
+        }
+
+        private bool CheckSolvency(int moneyToPay)
+        {
+            if (moneyToPay > _money || moneyToPay < 0)
+                return false;
+            else
+                return true;
+        }
+        public void Pay(int moneyToPay)
+        {
+            if (CheckSolvency(moneyToPay))
+                _money -= moneyToPay;
+            else
+                Console.WriteLine("У пассажира недостаточно денег");
         }
     }
 }

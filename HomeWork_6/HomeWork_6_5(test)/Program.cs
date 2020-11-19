@@ -17,9 +17,8 @@ namespace HomeWork_6_5_test_
         static void Main(string[] args)
         {
             RailwayStation railway = new RailwayStation();
-            //railway.Work();
+            railway.Work();
 
-            Console.WriteLine(13 / 5);
         }
     }
 
@@ -28,8 +27,8 @@ namespace HomeWork_6_5_test_
         private int _money = 0;
         private List<Passenger> _passengers = new List<Passenger>();
         private List<Route> _routes = new List<Route>();
-        private List<Train> _trains = new List<Train>();
-        private Dictionary<string, int> _soldTickets;
+        private Queue<Train> _trains = new Queue<Train>();
+        Dictionary<string, int> _soldTickets = new Dictionary<string, int>();
 
         public RailwayStation()
         {
@@ -49,6 +48,7 @@ namespace HomeWork_6_5_test_
             Console.WriteLine("money - " + _money);
             SellTicket();
             Console.WriteLine("money - " + _money);
+            AddTrains();
             ShowTrains();
         }
 
@@ -62,12 +62,11 @@ namespace HomeWork_6_5_test_
                 {
                     if (_routes[i].Name == _passengers[j].DesiredRoute)
                     {
-                        soldTickets++;
+                        soldTickets += 1;
                         _money += _routes[i].Price;
                     }
                 }
                 _soldTickets.Add(_routes[i].Name, soldTickets);
-                soldTickets = 0;
             }
         }
 
@@ -82,25 +81,28 @@ namespace HomeWork_6_5_test_
                 {
                     if(soldTicket.Value % placeInWagon != 0)
                     {
-                        _trains.Add(new Train(soldTicket.Key, placeInWagon, soldTicket.Value / placeInWagon + 1));
+                        _trains.Enqueue(new Train(soldTicket.Key, placeInWagon, soldTicket.Value / placeInWagon + 1));
                     }
                     else
                     {
-                        _trains.Add(new Train(soldTicket.Key, placeInWagon, soldTicket.Value / placeInWagon));
+                        _trains.Enqueue(new Train(soldTicket.Key, placeInWagon, soldTicket.Value / placeInWagon));
                     }
                 }
                 else
                 {
-                    _trains.Add(new Train(soldTicket.Key, placeInWagon));
+                    _trains.Enqueue(new Train(soldTicket.Key, placeInWagon));
                 }
             }
         }
 
         private void ShowTrains()
         {
-            for (int i = 0; i < _trains.Count; i++)
+            int i = 1;
+            foreach (var train in _trains)
             {
-                Console.WriteLine($"поезд {i + 1}) {_trains[i].RouteName}, свободных мест {_trains[i].FreePlace - _trains[i].PlaceInWagon}/{_trains[i].PlaceInWagon}, количество вагонов - {_trains[i].PlaceInWagon}.");
+                Console.WriteLine($"поезд {i}) {train.RouteName}, свободных мест " +
+                                  $"{train.FreePlace - train.PlaceInWagon}/{train.PlaceInWagon}, количество вагонов - {train.PlaceInWagon}.");
+                i++;
             }
         }
 
