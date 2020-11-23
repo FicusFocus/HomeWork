@@ -53,10 +53,23 @@ namespace HomeWork_6_5
 
             while (true)
             {
+                Console.WriteLine($"В пути рейс - {}");
+
                 for (int i = 0; i < _trains.Count; i++)
                 {
                     Console.WriteLine($"Поезд {_trains[i].Name}. Свободно мест - {_trains[i].FreePlace}/{_trains[i].AllPleaces}");
                 }
+
+                Console.WriteLine("\n\nНажмите любую клавишу для того чтоб продолжить.");
+                Console.ReadLine();
+            }
+        }
+
+        public void InRoute()
+        {
+            for (int i = 0; i < _trains.Count; i++)
+            {
+                
             }
         }
 
@@ -106,19 +119,20 @@ namespace HomeWork_6_5
             DesiredRoute = desiredRoute;
         }
 
-        private bool CheckSolvency(int moneyToPay)
-        {
-            if (moneyToPay > _money || moneyToPay < 0)
-                return false;
-            else
-                return true;
-        }
         public void Pay(int moneyToPay)
         {
             if (CheckSolvency(moneyToPay))
                 _money -= moneyToPay;
             else
                 Console.WriteLine("У пассажира недостаточно денег");
+        }
+
+        private bool CheckSolvency(int moneyToPay)
+        {
+            if (moneyToPay > _money || moneyToPay < 0)
+                return false;
+            else
+                return true;
         }
     }
 }

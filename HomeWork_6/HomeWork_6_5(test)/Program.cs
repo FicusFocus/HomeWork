@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 
+//ВСЕ ГОВНО ДАВАЙ ПОНОВОЙ!!!!!!!!!!!!!!!!!!!!!
+
 //У вас есть программа, которая помогает пользователю составить план поезда.
 //Есть 4 основных шага в создании плана:
 //-Создать направление - создает направление для поезда(к примеру Бийск - Барнаул)
@@ -18,7 +20,7 @@ namespace HomeWork_6_5_test_
         {
             RailwayStation railway = new RailwayStation();
             railway.Work();
-
+            //Console.WriteLine(10/ 8);
         }
     }
 
@@ -50,6 +52,11 @@ namespace HomeWork_6_5_test_
             Console.WriteLine("money - " + _money);
             AddTrains();
             ShowTrains();
+
+            while (true)
+            {
+                Console.WriteLine($"На текущий момент в пути находится поезд - ");
+            }
         }
 
         private void SellTicket()
@@ -79,30 +86,24 @@ namespace HomeWork_6_5_test_
 
                 if(soldTicket.Value > placeInWagon)
                 {
-                    if(soldTicket.Value % placeInWagon != 0)
-                    {
-                        _trains.Enqueue(new Train(soldTicket.Key, placeInWagon, soldTicket.Value / placeInWagon + 1));
-                    }
-                    else
-                    {
-                        _trains.Enqueue(new Train(soldTicket.Key, placeInWagon, soldTicket.Value / placeInWagon));
-                    }
+                    _trains.Enqueue(new Train(soldTicket.Key, placeInWagon, (soldTicket.Value / placeInWagon) + 1, soldTicket.Value));
                 }
                 else
                 {
-                    _trains.Enqueue(new Train(soldTicket.Key, placeInWagon));
+                    _trains.Enqueue(new Train(soldTicket.Key, placeInWagon, 1, soldTicket.Value));
                 }
             }
         }
 
         private void ShowTrains()
         {
-            int i = 1;
+            int trainNumber = 1;
             foreach (var train in _trains)
             {
-                Console.WriteLine($"поезд {i}) {train.RouteName}, свободных мест " +
-                                  $"{train.FreePlace - train.PlaceInWagon}/{train.PlaceInWagon}, количество вагонов - {train.PlaceInWagon}.");
-                i++;
+                Console.WriteLine($"поезд {trainNumber}) {train.RouteName}, свободных мест " +
+                                  $"{train.FreePlace}/{train.AllPlaces}, количество вагонов - {train.WagonsAmount}, " +
+                                  $"мест в вагоне - {train.PlaceInWagon}.");
+                trainNumber++;
             }
         }
 
@@ -146,21 +147,24 @@ namespace HomeWork_6_5_test_
         public string RouteName { get; private set; }
         public int WagonsAmount { get; private set; }
         public int PlaceInWagon { get; private set; }
+        public int AllPlaces { get; private set; }
+        public int BusyPlaces { get; private set; }
         public int FreePlace { get; private set; }
 
-        public Train(string routeName, int placeInWagon, int wagonsAmount = 1)
+        public Train(string routeName, int placeInWagon, int wagonsAmount = 1, int busyPlaces = 0)
         {
             RouteName = routeName;
             WagonsAmount = wagonsAmount;
             PlaceInWagon = placeInWagon;
-            FreePlace = placeInWagon * wagonsAmount;
+            AllPlaces = wagonsAmount * placeInWagon;
+            FreePlace = AllPlaces - busyPlaces;
         }
 
-        public void CreateNewWagon()
+        public void FreeThePlace()
         {
-            WagonsAmount += 1;
+            FreePlace += 1;
         }
-        public void TakePlace()
+        public void TakeThePlace()
         {
             FreePlace -= 1;
         }
