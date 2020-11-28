@@ -114,9 +114,7 @@ namespace HomeWork_6_4_test_
         public void ShowSales()
         {
             for (int i = 0; i < _sales.Count; i++)
-            {
                 Console.WriteLine($"{i + 1}) {_sales[i].Name}. Продано {_sales[i].Amount} на сумму {_sales[i].Amount * _sales[i].Price}");
-            }
         }
         public void AddSales(List<Product> basket)
         {
@@ -126,7 +124,7 @@ namespace HomeWork_6_4_test_
             }
             else
             {
-                bool NotInSales = false;
+                bool alreanyInSales = false;
 
                 for (int i = 0; i < _sales.Count; i++)
                 {
@@ -135,9 +133,9 @@ namespace HomeWork_6_4_test_
                         if (basket[j].Name == _sales[i].Name)
                         {
                             _sales[i].AddAmount(basket[j].Amount);
-                            NotInSales = false;
+                            alreanyInSales = false;
                         }
-                        if (NotInSales)
+                        if (alreanyInSales)
                         {
                             _sales.Add(new Product(basket[j].Name, basket[j].Price, basket[j].Amount));
                         }
@@ -165,7 +163,7 @@ namespace HomeWork_6_4_test_
             }
             else
             {
-                bool NotInSales = false;
+                bool alreanyInSales = false;
 
                 for (int i = 0; i < _buyerProducts.Count; i++)
                 {
@@ -174,9 +172,9 @@ namespace HomeWork_6_4_test_
                         if (Basket[j].Name == _buyerProducts[i].Name)
                         {
                             _buyerProducts[i].AddAmount(Basket[j].Amount);
-                            NotInSales = false;
+                            alreanyInSales = false;
                         }
-                        if (NotInSales)
+                        if (alreanyInSales)
                         {
                             _buyerProducts.Add(new Product(Basket[j].Name, Basket[j].Price, Basket[j].Amount));
                         }
@@ -257,6 +255,7 @@ namespace HomeWork_6_4_test_
 
             for (int i = 0; i < Basket.Count; i++)
                 moneyToPay += Basket[i].Price * Basket[i].Amount;
+
             if (moneyToPay > _money)
             {
                 Console.WriteLine($"Стимсоть всех товаров в корзине составляет - {moneyToPay} руб.");
