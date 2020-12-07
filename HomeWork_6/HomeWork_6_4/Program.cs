@@ -67,9 +67,14 @@ namespace HomeWork_6_4
                         else
                         {
                             if (_products[productNumber].Amount == 0)
+                            {
                                 Console.WriteLine("Данного товара нет в наличии");
+                            }
                             else
+                            {
                                 buyer.AddToBasket(_products[productNumber].Name, _products[productNumber].Price);
+                                seller.AddToSales(_products[productNumber].Name, _products[productNumber].Price);
+                            }
                         }
                         break;
 
@@ -144,20 +149,20 @@ namespace HomeWork_6_4
         }
         public void RemoveFormSales(int productNumber)
         {
-            bool alreadyInBasket = false;
+            bool alreadyInSales = false;
             for (int i = 0; i < _sales.Count; i++)
             {
                 if (_sales[i].Name == _sales[productNumber].Name)
                 {
-                    alreadyInBasket = true;
+                    alreadyInSales = true;
                     i = _sales.Count;
                 }
                 else
                 {
-                    alreadyInBasket = false;
+                    alreadyInSales = false;
                 }
             }
-            if (alreadyInBasket)
+            if (alreadyInSales)
                 _sales[productNumber].SubtractAmount();
             else
                 _sales.Remove(_sales[productNumber]);
