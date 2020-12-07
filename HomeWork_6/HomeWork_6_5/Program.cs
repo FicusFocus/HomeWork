@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 
-
-
 namespace HomeWork6_5
 {
     class Program
@@ -13,10 +11,9 @@ namespace HomeWork6_5
             subway.Work();
         }
     }
-
     class Subway
     {
-        private List<Passenger> _passangers = new List<Passenger>();
+        private int _soldTeickets;
         private Route _route;
         private Train _train;
 
@@ -24,26 +21,30 @@ namespace HomeWork6_5
         {
             Random rand = new Random();
             bool inRoute = false;
-
-
             while (true)
             {
-                if(inRoute)
-                    Console.WriteLine($"В пути поезд - {_train.RouteName}. Прибудет к месту назначения через {_route.TimeInRoute} часов\n\n\n");
+                if (inRoute)
+                {
+                    Console.Write($"В пути поезд - ");
+                    _train.ShowInfo();
+                    Console.WriteLine($"Прибудет к месту назначения через {_route.TimeInRoute} часов\n\n");
+                }
                 else
-                    Console.WriteLine("Поездов в пути нет.\n\n\n");
+                {
+                    Console.WriteLine("Поездов в пути нет.\n\n");
+                }
 
                 if (_route == null)
                 {
                     Console.WriteLine("Для продолжения необходимо создать новый путь.");
                     CreateRoute();
-                    SellTickets(rand.Next(50, 100));
+                    _soldTeickets = rand.Next(50, 100);
                     CreateTrain();
                     inRoute = true;
                 }
                 else
                 {
-                    if(_route.TimeInRoute > 0)
+                    if (_route.TimeInRoute > 0)
                     {
                         _route.SkipHour();
                     }
@@ -60,18 +61,12 @@ namespace HomeWork6_5
                 Console.ReadLine();
                 Console.Clear();
             }
-        }
 
+
+        }
         private void CreateTrain()
         {
-            Random rand = new Random();
-            int placeInWagon = rand.Next(10, 15);
-
-            _train = new Train(_route.Name, placeInWagon, _passangers.Count / placeInWagon + 1, _passangers.Count);
-
-            Console.WriteLine($"\n{_train.RouteName}, {_train.PlaceInWagon} - мест в вагоне" +
-                              $"\n{_train.ReservedPlace} - занято мест, {_train.FreePlace} - свободно мест." +
-                              $"\n{_train.AllPlace} - всего мест. {_train.WagonsAmount} - количество вагонов.");
+            _train = new Train(_route.Name, _soldTeickets);
         }
         private void CreateRoute()
         {
@@ -84,25 +79,7 @@ namespace HomeWork6_5
 
             _route = new Route(routeName, price, timeInRoute);
         }
-        private void SellTickets(int passengersAmount)
-        {
-            for (int i = 0; i < passengersAmount; i++)
-            {
-                _passangers.Add(new Passenger(_route.Name));
-            }
-        }
     }
-
-    class Passenger
-    {
-        public string DesiredRoute { get; private set; }
-
-        public Passenger(string desiredRoute)
-        {
-            DesiredRoute = desiredRoute;
-        }
-    }
-
     class Route
     {
         public string Name { get; private set; }
@@ -121,24 +98,51 @@ namespace HomeWork6_5
             TimeInRoute--;
         }
     }
+    class Wagon
+    {
+        public int PlaceAmount { get; private set; }
 
+        public Wagon(int placeAmount)
+        {
+            PlaceAmount = placeAmount;
+        }
+    }
     class Train
     {
         public int WagonsAmount { get; private set; }
-        public int PlaceInWagon { get; private set; }
+        public string RouteName { get; private set; }
         public int AllPlace { get; private set; }
         public int ReservedPlace { get; private set; }
-        public int FreePlace { get; private set; }
-        public string RouteName { get; private set; }
 
-        public Train(string routeName, int placeInWagon, int wagonsAmount, int reservedPlace)
+        private List<Wagon> _wagons = new List<Wagon>();
+
+        public Train(string routeName, int reservedPlace)
         {
             RouteName = routeName;
-            PlaceInWagon = placeInWagon;
-            WagonsAmount = wagonsAmount;
-            AllPlace = placeInWagon * wagonsAmount;
             ReservedPlace = reservedPlace;
-            FreePlace = AllPlace - reservedPlace;
+            CreateWagon(ReservedPlace);
+        }
+
+        private void CreateWagon(int reservedPlace)
+        {
+            Random rand = new Random();
+            AllPlace = 0;
+
+            while (AllPlace < reservedPlace)
+            {
+                int placeinWagon = rand.Next(10, 16);
+                _wagons.Add(new Wagon(placeinWagon));
+                AllPlace += placeinWagon;
+            }
+        }
+
+        public void ShowInfo()
+        {
+            Console.WriteLine($"поезд - {RouteName}, занято мест - {ReservedPlace}/{AllPlace}, количество вагонов - {_wagons.Count}.");
+            for (int i = 0; i < _wagons.Count; i++)
+            {
+                Console.WriteLine($"вагон {i + 1}) мест - {_wagons[i].PlaceAmount}.");
+            }
         }
     }
 }
