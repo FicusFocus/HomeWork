@@ -9,16 +9,17 @@ namespace HomeWork_6_4
         {
             Random rand = new Random();
             Buyer buyer = new Buyer(rand.Next(50, 100));
-            Shop shop = new Shop();
-            shop.Work(buyer);
+            Seller seller = new Seller();
+            seller.Work(buyer);
         }
     }
 
-    class Shop
+    class Seller
     {
+        private int _money;
         private List<Product> _products = new List<Product>();
         
-        public Shop()
+        public Seller()
         {
             _products.Add(new Product("Аспирин", 30, 100));
             _products.Add(new Product("Аскорбинка", 5, 100));
@@ -39,9 +40,8 @@ namespace HomeWork_6_4
 
         public void Work(Buyer buyer)
         {
-            Seller seller = new Seller();
-
             bool isWork = true;
+
             while (isWork)
             {
                 Console.WriteLine("Добро пожаловать в онлайн аптеку!\n\n");
@@ -50,7 +50,6 @@ namespace HomeWork_6_4
                                   "3) показать корзину покупок\n" +
                                   "4) приобрести товары в корзине\n" +
                                   "5) убрать товар из корзины\n" +
-                                  "6) Показать список проданных товаров\n" + 
                                   "7) выйти\n" +
                                   "Выбирете действие: ");
                 switch (Console.ReadLine())
@@ -75,7 +74,7 @@ namespace HomeWork_6_4
                             else
                             {
                                 buyer.AddToBasket(_products[productNumber].Name, _products[productNumber].Price);
-                                seller.AddSoldItem(_products[productNumber].Name, _products[productNumber].Price);
+                                _products[productNumber].SubtractAmount();
                             }
                         }
                         break;
@@ -86,93 +85,34 @@ namespace HomeWork_6_4
 
                     case "4":
                         buyer.ShowBalance();
+                        int moneyToPay = 0;
 
-                        if(buyer.Pay())
-                            seller.AddMoney();
+                        if (buyer.Pay(ref moneyToPay))
+                            _money += moneyToPay;
                         break;
 
                     case "5":
                         Console.Write("Введите номер продукта который желаете исключить из корзины:");
                         productNumber = Convert.ToInt32(Console.ReadLine());
-                        if (buyer.RemoveFormBasket(productNumber - 1))
-                            seller.RemoveFormSoldItem(productNumber - 1);
+                        string productName;
+                        buyer.RemoveFormBasket(productNumber - 1, out productName);
+                        for (int i = 0; i < _products.Count; i++)
+                        {
+                            if (_products[i].Name == productName)
+                            {
+                                _products[i].AddAmount();
+                                continue;
+                            }
+                        }
                         break;
 
                     case "6":
-                        seller.ShowSales();
-                        break;
-
-                    case "7":
                         isWork = false;
                         Console.WriteLine("Спасибо за покупки!");
                         break;
                 }
                 Console.ReadKey();
                 Console.Clear();
-            }
-        }
-    }
-
-    class Seller
-    {
-        private int _money;
-        private List<Product> _soldItem = new List<Product>();
-
-        public void ShowSales()
-        {
-            for (int i = 0; i < _soldItem.Count; i++)
-                Console.WriteLine($"{i + 1}) {_soldItem[i].Name}. Продано {_soldItem[i].Amount} на сумму {_soldItem[i].Amount * _soldItem[i].Price}");
-        }
-
-        public void AddSoldItem(string productName, int productPrice)
-        {
-            bool alreadyInSales = false;
-            int numberInSales = 0;
-            for (int i = 0; i < _soldItem.Count; i++)
-            {
-                if (_soldItem[i].Name == productName)
-                {
-                    numberInSales = i;
-                    i = _soldItem.Count;
-                    alreadyInSales = true;
-                }
-                else
-                {
-                    alreadyInSales = false;
-                }
-            }
-            if (alreadyInSales)
-                _soldItem[numberInSales].AddAmount();
-            else
-                _soldItem.Add(new Product(productName, productPrice, 1));
-        }
-
-        public void RemoveFormSoldItem(int productNumber)
-        {
-            bool alreadyInSales = false;
-            for (int i = 0; i < _soldItem.Count; i++)
-            {
-                if (_soldItem[i].Name == _soldItem[productNumber].Name)
-                {
-                    alreadyInSales = true;
-                    i = _soldItem.Count;
-                }
-                else
-                {
-                    alreadyInSales = false;
-                }
-            }
-            if (alreadyInSales)
-                _soldItem[productNumber].SubtractAmount();
-            else
-                _soldItem.Remove(_soldItem[productNumber]);
-        }
-
-        public void AddMoney()
-        {
-            for (int i = 0; i < _soldItem.Count; i++)
-            {
-                _money += _soldItem[i].Price;
             }
         }
     }
@@ -187,10 +127,8 @@ namespace HomeWork_6_4
             _money = money;
         }
 
-        public bool Pay()
+        public bool Pay(ref int moneyToPay)
         {
-            int moneyToPay = 0;
-
             if (CheckSolvency(ref moneyToPay))
             {
                 _money -= moneyToPay;
@@ -258,32 +196,21 @@ namespace HomeWork_6_4
                 _basket.Add(new Product(productName, productPrice, 1));
         }
 
-        public bool RemoveFormBasket(int productNumber)
+        public bool RemoveFormBasket(int productNumber, out string productName)
         {
             if (productNumber < 0 || productNumber > _basket.Count)
             {
                 Console.WriteLine("Данного продукта в корзине не нет.");
+                productName = null;
                 return false;
             }
             else
             {
-                bool alreadyInBasket = false;
-                for (int i = 0; i < _basket.Count; i++)
-                {
-                    if (_basket[i].Name == _basket[productNumber].Name)
-                    {
-                        alreadyInBasket = true;
-                        i = _basket.Count;
-                    }
-                    else
-                    {
-                        alreadyInBasket = false;
-                    }
-                }
-                if (alreadyInBasket)
+                if (_basket[productNumber].Amount > 1)
                     _basket[productNumber].SubtractAmount();
                 else
                     _basket.Remove(_basket[productNumber]);
+                productName = _basket[productNumber].Name;
                 return true;
             }
         }
