@@ -13,6 +13,7 @@ namespace HomeWork_6_4
             shop.Work(buyer);
         }
     }
+
     class Shop
     {
         private List<Product> _products = new List<Product>();
@@ -24,6 +25,7 @@ namespace HomeWork_6_4
             _products.Add(new Product("Уголь активированный", 10, 100));
             _products.Add(new Product("Гематогенка", 20, 0));
         }
+
         private void ShowProducts()
         {
             for (int i = 0; i < _products.Count; i++)
@@ -34,22 +36,22 @@ namespace HomeWork_6_4
                     Console.WriteLine($"{i + 1}) {_products[i].Name} - {_products[i].Price} руб.");
             }
         }
+
         public void Work(Buyer buyer)
         {
             Seller seller = new Seller();
 
             bool isWork = true;
-            while (true)
+            while (isWork)
             {
                 Console.WriteLine("Добро пожаловать в онлайн аптеку!\n\n");
                 Console.WriteLine("1) просмотр списка лекарств\n" +
                                   "2) добавить товар в корзину (по номеру)\n" +
                                   "3) показать корзину покупок\n" +
                                   "4) приобрести товары в корзине\n" +
-                                  "5) показать список приобретенных товаров\n" +
-                                  "6) убрать товар из корзины\n" +
-                                  "7) Показать список проданных товаров\n" + 
-                                  "8) выйти\n" +
+                                  "5) убрать товар из корзины\n" +
+                                  "6) Показать список проданных товаров\n" + 
+                                  "7) выйти\n" +
                                   "Выбирете действие: ");
                 switch (Console.ReadLine())
                 {
@@ -73,7 +75,7 @@ namespace HomeWork_6_4
                             else
                             {
                                 buyer.AddToBasket(_products[productNumber].Name, _products[productNumber].Price);
-                                seller.AddToSales(_products[productNumber].Name, _products[productNumber].Price);
+                                seller.AddSoldItem(_products[productNumber].Name, _products[productNumber].Price);
                             }
                         }
                         break;
@@ -90,21 +92,17 @@ namespace HomeWork_6_4
                         break;
 
                     case "5":
-                        buyer.ShowPurchasedItems();
-                        break;
-
-                    case "6":
                         Console.Write("Введите номер продукта который желаете исключить из корзины:");
                         productNumber = Convert.ToInt32(Console.ReadLine());
                         if (buyer.RemoveFormBasket(productNumber - 1))
-                            seller.RemoveFormSales(productNumber - 1);
+                            seller.RemoveFormSoldItem(productNumber - 1);
                         break;
 
-                    case "7":
+                    case "6":
                         seller.ShowSales();
                         break;
 
-                    case "8":
+                    case "7":
                         isWork = false;
                         Console.WriteLine("Спасибо за покупки!");
                         break;
@@ -118,23 +116,24 @@ namespace HomeWork_6_4
     class Seller
     {
         private int _money;
-        private List<Product> _sales = new List<Product>();
+        private List<Product> _soldItem = new List<Product>();
 
         public void ShowSales()
         {
-            for (int i = 0; i < _sales.Count; i++)
-                Console.WriteLine($"{i + 1}) {_sales[i].Name}. Продано {_sales[i].Amount} на сумму {_sales[i].Amount * _sales[i].Price}");
+            for (int i = 0; i < _soldItem.Count; i++)
+                Console.WriteLine($"{i + 1}) {_soldItem[i].Name}. Продано {_soldItem[i].Amount} на сумму {_soldItem[i].Amount * _soldItem[i].Price}");
         }
-        public void AddToSales(string productName, int productPrice)
+
+        public void AddSoldItem(string productName, int productPrice)
         {
             bool alreadyInSales = false;
             int numberInSales = 0;
-            for (int i = 0; i < _sales.Count; i++)
+            for (int i = 0; i < _soldItem.Count; i++)
             {
-                if (_sales[i].Name == productName)
+                if (_soldItem[i].Name == productName)
                 {
                     numberInSales = i;
-                    i = _sales.Count;
+                    i = _soldItem.Count;
                     alreadyInSales = true;
                 }
                 else
@@ -143,19 +142,20 @@ namespace HomeWork_6_4
                 }
             }
             if (alreadyInSales)
-                _sales[numberInSales].AddAmount();
+                _soldItem[numberInSales].AddAmount();
             else
-                _sales.Add(new Product(productName, productPrice, 1));
+                _soldItem.Add(new Product(productName, productPrice, 1));
         }
-        public void RemoveFormSales(int productNumber)
+
+        public void RemoveFormSoldItem(int productNumber)
         {
             bool alreadyInSales = false;
-            for (int i = 0; i < _sales.Count; i++)
+            for (int i = 0; i < _soldItem.Count; i++)
             {
-                if (_sales[i].Name == _sales[productNumber].Name)
+                if (_soldItem[i].Name == _soldItem[productNumber].Name)
                 {
                     alreadyInSales = true;
-                    i = _sales.Count;
+                    i = _soldItem.Count;
                 }
                 else
                 {
@@ -163,22 +163,23 @@ namespace HomeWork_6_4
                 }
             }
             if (alreadyInSales)
-                _sales[productNumber].SubtractAmount();
+                _soldItem[productNumber].SubtractAmount();
             else
-                _sales.Remove(_sales[productNumber]);
+                _soldItem.Remove(_soldItem[productNumber]);
         }
+
         public void AddMoney()
         {
-            for (int i = 0; i < _sales.Count; i++)
+            for (int i = 0; i < _soldItem.Count; i++)
             {
-                _money += _sales[i].Price;
+                _money += _soldItem[i].Price;
             }
         }
     }
+
     class Buyer
     {
         private int _money;
-        private List<Product> _purchasedProducts = new List<Product>();
         private List<Product> _basket = new List<Product>();
 
         public Buyer(int money)
@@ -194,40 +195,19 @@ namespace HomeWork_6_4
             {
                 _money -= moneyToPay;
                 Console.WriteLine("Покупка прошла успешно.");
-                if (_purchasedProducts.Count == 0)
-                {
-                    _purchasedProducts = _basket;
-                }
-                else
-                {
-                    bool alreanyInSales = false;
-
-                    for (int i = 0; i < _purchasedProducts.Count; i++)
-                    {
-                        for (int j = 0; j < _basket.Count; j++)
-                        {
-                            if (_basket[j].Name == _purchasedProducts[i].Name)
-                            {
-                                _purchasedProducts[i].AddAmount(_basket[j].Amount);
-                                alreanyInSales = false;
-                            }
-                            if (alreanyInSales)
-                            {
-                                _purchasedProducts.Add(new Product(_basket[j].Name, _basket[j].Price, _basket[j].Amount));
-                            }
-                        }
-                    }
-                }
                 _basket = null;
+
                 return true;
             }
             else
             {
                 Console.WriteLine($"Стимсоть всех товаров в корзине составляет - {moneyToPay} руб.");
                 Console.WriteLine("К сожалению у Вас недостаточно денег для совершения покупки");
+
                 return false;
             }
         }
+
         private bool CheckSolvency(ref int moneyToPay)
         {
             for (int i = 0; i < _basket.Count; i++)
@@ -238,10 +218,12 @@ namespace HomeWork_6_4
             else
                 return true;
         }
+
         public void ShowBalance()
         {
             Console.WriteLine($"У Вас на баласне - {_money} руб.");
         }
+
         public void ShowBasket()
         {
             int moneyToPay = 0;
@@ -252,6 +234,7 @@ namespace HomeWork_6_4
             }
             Console.WriteLine($"общая стоимость покупок - {moneyToPay} руб.");
         }
+
         public void AddToBasket(string productName, int productPrice)
         {
             bool alreadyInBasket = false;
@@ -274,6 +257,7 @@ namespace HomeWork_6_4
             else
                 _basket.Add(new Product(productName, productPrice, 1));
         }
+
         public bool RemoveFormBasket(int productNumber)
         {
             if (productNumber < 0 || productNumber > _basket.Count)
@@ -303,12 +287,8 @@ namespace HomeWork_6_4
                 return true;
             }
         }
-        public void ShowPurchasedItems()
-        {
-            for (int i = 0; i < _purchasedProducts.Count; i++)
-                Console.WriteLine($"{i + 1}) {_purchasedProducts[i].Name},{_purchasedProducts[i].Amount} штук.");
-        }
     }
+
     class Product
     {
         public int Amount { get; private set; }
@@ -321,10 +301,12 @@ namespace HomeWork_6_4
             Price = price;
             Amount = amount;
         }
+
         public void SubtractAmount(int amount = 1)
         {
             Amount -= amount;
         }
+
         public void AddAmount(int amount = 1)
         {
             Amount += amount;
