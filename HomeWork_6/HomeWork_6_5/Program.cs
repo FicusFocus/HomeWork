@@ -119,11 +119,11 @@ namespace HomeWork6_5
         public Train(int reservedPlace, Route route)
         {
             ReservedPlace = reservedPlace;
-            CreateWagon(ReservedPlace);
+            CreateWagons(ReservedPlace);
             Route = route;
         }
 
-        private void CreateWagon(int reservedPlace)
+        private void CreateWagons(int reservedPlace)
         {
             Random rand = new Random();
             AllPlace = 0;
