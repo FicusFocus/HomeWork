@@ -27,7 +27,7 @@ namespace HomeWork6_5
                 {
                     Console.Write($"В пути поезд - ");
                     _train.ShowInfo();
-                    Console.WriteLine($"Прибудет к месту назначения через {_route.TimeInRoute} часов\n\n");
+                    Console.WriteLine($"Прибудет к месту назначения через {_train.Route.TimeInRoute} часов\n\n");
                 }
                 else
                 {
@@ -44,13 +44,13 @@ namespace HomeWork6_5
                 }
                 else
                 {
-                    if (_route.TimeInRoute > 0)
+                    if (_train.Route.TimeInRoute > 0)
                     {
-                        _route.SkipHour();
+                        _train.Route.SkipHour();
                     }
                     else
                     {
-                        Console.WriteLine($"Поезд {_train.RouteName} прибыл.");
+                        Console.WriteLine($"Поезд {_train.Route.Name} прибыл.");
                         _route = null;
                         _train = null;
                         inRoute = false;
@@ -66,7 +66,7 @@ namespace HomeWork6_5
         }
         private void CreateTrain()
         {
-            _train = new Train(_route.Name, _soldTeickets);
+            _train = new Train( _soldTeickets, _route);
         }
         private void CreateRoute()
         {
@@ -109,18 +109,18 @@ namespace HomeWork6_5
     }
     class Train
     {
+        public Route Route { get; private set; }
         public int WagonsAmount { get; private set; }
-        public string RouteName { get; private set; }
         public int AllPlace { get; private set; }
         public int ReservedPlace { get; private set; }
 
         private List<Wagon> _wagons = new List<Wagon>();
 
-        public Train(string routeName, int reservedPlace)
+        public Train(int reservedPlace, Route route)
         {
-            RouteName = routeName;
             ReservedPlace = reservedPlace;
             CreateWagon(ReservedPlace);
+            Route = route;
         }
 
         private void CreateWagon(int reservedPlace)
@@ -138,7 +138,7 @@ namespace HomeWork6_5
 
         public void ShowInfo()
         {
-            Console.WriteLine($"поезд - {RouteName}, занято мест - {ReservedPlace}/{AllPlace}, количество вагонов - {_wagons.Count}.");
+            Console.WriteLine($"поезд - {Route.Name}, занято мест - {ReservedPlace}/{AllPlace}, количество вагонов - {_wagons.Count}.");
             for (int i = 0; i < _wagons.Count; i++)
             {
                 Console.WriteLine($"вагон {i + 1}) мест - {_wagons[i].PlaceAmount}.");
