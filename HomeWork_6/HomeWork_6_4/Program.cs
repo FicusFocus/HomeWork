@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 
-//Взаимодействие продавца и игрока лучше сделать в main, одна из сторон сделок не должна контролировать и напрямую вызывать методы другой
-
 namespace HomeWork_6_4
 {
     class Program
