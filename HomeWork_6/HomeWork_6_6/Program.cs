@@ -10,18 +10,32 @@ namespace HomeWork_6_6
     {
         static void Main(string[] args)
         {
-            Knight _knight = new Knight(50, 200, 3000);
-            Paladin _paladin = new Paladin(50, 200, 2500);
-            Druid _druid = new Druid(15, 100, 2200);
-            Assassin _assassin = new Assassin(15, 220, 1700);
-            Barbarian _barbarian = new Barbarian(30, 500, 2500);
+            Battle();
 
 
         }
 
-        public void battle()
+        static void Battle()
         {
+            Knight knight = new Knight();
+            Paladin paladin = new Paladin();
+            Druid druid = new Druid(15, 100, 2200);
+            Assassin assassin = new Assassin(15, 220, 1700);
+            Barbarian barbarian = new Barbarian(30, 500, 2500);
 
+            bool battleEnd = true;
+
+            while (battleEnd)
+            {
+                Console.WriteLine($"палладин против рыцаря");
+                Console.Write("Палладин - ");
+                paladin.ShowInfo();
+                Console.Write("Рыцарь - ");
+                knight.ShowInfo();
+
+
+                Console.ReadLine();
+            }
         }
     }
 
@@ -43,6 +57,11 @@ namespace HomeWork_6_6
             Helth -= damage - (armor * 100);
         }
 
+        public void ShowInfo()
+        {
+            Console.WriteLine($"урон - {Damage}, броня - {Armor}, HP - {Helth}");
+        }
+
         public bool SpellChance(int prockChance)
         {
             bool chance;
@@ -60,20 +79,14 @@ namespace HomeWork_6_6
 
     class Knight : Warrior
     {
-        public int MyProperty { get; private set; }
-        public Knight(int armor, int damage, int helth) : base(armor, damage, helth)
+        public Knight() : base(50, 200, 3000)
         {
-        }
-
-        public void Bleed()
-        {
-
         }
     }
 
     class Paladin : Warrior
     {
-        public Paladin(int armor, int damage, int helth) : base(armor, damage, helth)
+        public Paladin() : base(50, 200, 2500)
         {
         }
     }
