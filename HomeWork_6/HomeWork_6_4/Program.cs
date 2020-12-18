@@ -12,7 +12,6 @@ namespace HomeWork_6_4
             Random rand = new Random();
             Buyer buyer = new Buyer(rand.Next(50, 100));
             Seller seller = new Seller();
-            seller.Work(buyer);
 
             bool isWork = true;
 
@@ -118,84 +117,6 @@ namespace HomeWork_6_4
         public void AddMoney(int moneyToPay)
         {
             _money += moneyToPay;
-        }
-
-        public void Work(Buyer buyer)
-        {
-            bool isWork = true;
-
-            while (isWork)
-            {
-                Console.WriteLine("Добро пожаловать в онлайн аптеку!\n\n");
-                Console.WriteLine("1) просмотр списка лекарств\n" +
-                                  "2) добавить товар в корзину (по номеру)\n" +
-                                  "3) показать корзину покупок\n" +
-                                  "4) приобрести товары в корзине\n" +
-                                  "5) убрать товар из корзины\n" +
-                                  "7) выйти\n" +
-                                  "Выбирете действие: ");
-                switch (Console.ReadLine())
-                {
-                    case "1":
-                        ShowProducts();
-                        break;
-
-                    case "2":
-                        Console.Write("Введите номер продукта который желаете добавить в корзину:");
-                        int productNumber = Convert.ToInt32(Console.ReadLine()) - 1;
-                        if (productNumber < 0 || productNumber > Products.Count)
-                        {
-                            Console.WriteLine("Такого товара не существует.");
-                        }
-                        else
-                        {
-                            if (Products[productNumber].Amount == 0)
-                            {
-                                Console.WriteLine("Данного товара нет в наличии");
-                            }
-                            else
-                            {
-                                buyer.AddToBasket(Products[productNumber].Name, Products[productNumber].Price);
-                                Products[productNumber].SubtractAmount();
-                            }
-                        }
-                        break;
-
-                    case "3":
-                        buyer.ShowBasket();
-                        break;
-
-                    case "4":
-                        buyer.ShowBalance();
-                        int moneyToPay = 0;
-
-                        if (buyer.Pay(ref moneyToPay))
-                            _money += moneyToPay;
-                        break;
-
-                    case "5":
-                        Console.Write("Введите номер продукта который желаете исключить из корзины:");
-                        productNumber = Convert.ToInt32(Console.ReadLine());
-                        string productName;
-                        buyer.RemoveFormBasket(productNumber - 1, out productName);
-                        for (int i = 0; i < Products.Count; i++)
-                        {
-                            if (Products[i].Name == productName)
-                            {
-                                Products[i].AddAmount();
-                                continue;
-                            }
-                        }
-                        break;
-
-                    case "6":
-                        isWork = false;
-                        Console.WriteLine("Спасибо за покупки!");
-                        break;
-                }
-                Console.ReadKey();
-                Console.Clear();
-            }
         }
     }
 
