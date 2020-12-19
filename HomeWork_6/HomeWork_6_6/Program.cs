@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
+using HomeWork_6_6.Warriors;
+
 
 //Создать 5 бойцов, пользователь выбирает 2 из них и они сражаются друг с другом до смерти.
 // У каждого бойца свои статы. Каждый  боец должен иметь особую способность для атаки, 
@@ -12,103 +15,40 @@ namespace HomeWork_6_6
         {
             Battle();
 
-
+            
         }
 
         static void Battle()
         {
-            Knight knight = new Knight();
-            Paladin paladin = new Paladin();
-            Druid druid = new Druid(15, 100, 2200);
-            Assassin assassin = new Assassin(15, 220, 1700);
-            Barbarian barbarian = new Barbarian(30, 500, 2500);
+            List<Warrior> warriors = new List<Warrior>();
 
-            bool battleEnd = true;
+            warriors.Add(new Knight("Рыцарь"));
+            warriors.Add(new Palladin("Палладин"));
+            warriors.Add(new Druid("Друид"));
+            warriors.Add(new Assassin("Убийца"));
+            warriors.Add(new Barbarian("Варвар"));
 
-            while (battleEnd)
+            bool battleContinue = true;
+
+            Console.WriteLine($"палладин против рыцаря");
+            Console.Write("Палладин - ");
+            warriors[1].ShowInfo();
+            Console.Write("Рыцарь - ");
+            warriors[0].ShowInfo();
+
+            while (battleContinue)
             {
-                Console.WriteLine($"палладин против рыцаря");
-                Console.Write("Палладин - ");
-                paladin.ShowInfo();
-                Console.Write("Рыцарь - ");
-                knight.ShowInfo();
+                warriors[0].TakeDamage(warriors[1].Damage);
+                warriors[1].TakeDamage(warriors[0].Damage);
 
+                Console.Write("Палладин - ");
+                warriors[1].ShowInfo();
+                Console.Write("Рыцарь - ");
+                warriors[0].ShowInfo();
 
                 Console.ReadLine();
+                Console.Clear();
             }
-        }
-    }
-
-    class Warrior
-    {
-        protected int Helth;
-        protected int Damage;
-        protected int Armor;
-
-        public Warrior(int armor, int damage, int helth)
-        {
-            Helth = helth;
-            Armor = armor;
-            Damage = damage;
-        }
-
-        public void TakeDamage(int damage, int armor)
-        {
-            Helth -= damage - (armor * 100);
-        }
-
-        public void ShowInfo()
-        {
-            Console.WriteLine($"урон - {Damage}, броня - {Armor}, HP - {Helth}");
-        }
-
-        public bool SpellChance(int prockChance)
-        {
-            bool chance;
-
-            Random rand = new Random();
-            int intChance = rand.Next(0, 100);
-            if (intChance < prockChance)
-                chance = true;
-            else
-                chance = false;
-
-            return chance;
-        }
-    }
-
-    class Knight : Warrior
-    {
-        public Knight() : base(50, 200, 3000)
-        {
-        }
-    }
-
-    class Paladin : Warrior
-    {
-        public Paladin() : base(50, 200, 2500)
-        {
-        }
-    }
-
-    class Druid : Warrior
-    {
-        public Druid(int armor, int damage, int helth) : base(armor, damage, helth)
-        {
-        }
-    }
-
-    class Barbarian : Warrior
-    {
-        public Barbarian(int armor, int damage, int helth) : base(armor, damage, helth)
-        {
-        }
-    }
-
-    class Assassin : Warrior
-    {
-        public Assassin(int armor, int damage, int helth) : base(armor, damage, helth)
-        {
         }
     }
 }
