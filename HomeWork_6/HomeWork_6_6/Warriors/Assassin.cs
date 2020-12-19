@@ -1,10 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace HomeWork_6_6.Warriors
+﻿namespace HomeWork_6_6.Warriors
 {
-    class Assassin
+    class Assassin : Warrior
     {
+        public Assassin(string name) : base(name, 15, 220, 1700)
+        {
+        }
     }
 }

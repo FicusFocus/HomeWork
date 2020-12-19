@@ -7,44 +7,59 @@ using HomeWork_6_6.Warriors;
 // У каждого бойца свои статы. Каждый  боец должен иметь особую способность для атаки, 
 // которая свойственна только его классу.
 
+//TODO: урать лишние циклы и ифы из мэйнаю
+
 namespace HomeWork_6_6
 {
     class Program
     {
         static void Main(string[] args)
         {
-            Battle();
-
-            
-        }
-
-        static void Battle()
-        {
             List<Warrior> warriors = new List<Warrior>();
-
             warriors.Add(new Knight("Рыцарь"));
             warriors.Add(new Palladin("Палладин"));
             warriors.Add(new Druid("Друид"));
             warriors.Add(new Assassin("Убийца"));
             warriors.Add(new Barbarian("Варвар"));
 
-            bool battleContinue = true;
-
-            Console.WriteLine($"палладин против рыцаря");
-            Console.Write("Палладин - ");
-            warriors[1].ShowInfo();
-            Console.Write("Рыцарь - ");
-            warriors[0].ShowInfo();
-
-            while (battleContinue)
+            while (true)
             {
-                warriors[0].TakeDamage(warriors[1].Damage);
-                warriors[1].TakeDamage(warriors[0].Damage);
+                bool battleContinue = true;
+                int firstFiter;
+                int secondFiter;
 
-                Console.Write("Палладин - ");
-                warriors[1].ShowInfo();
-                Console.Write("Рыцарь - ");
-                warriors[0].ShowInfo();
+                Console.WriteLine("Выберите двух бойцов из списка которые будут сражаться.");
+
+                // убрать список бойцов в отдельный метод
+                for (int i = 0; i < warriors.Count; i++)
+                    Console.WriteLine($"{i + 1}){warriors[i].Name}: HP - {warriors[i].Helth}, броня - {warriors[i].Armor}, урон - {warriors[i].Damage}.");
+
+                Console.Write("Номер первого бойца: ");
+                firstFiter = Convert.ToInt32(Console.ReadLine()) - 1;
+                Console.Write("Номер второго бойца: ");
+                secondFiter = Convert.ToInt32(Console.ReadLine()) - 1;
+
+                while (battleContinue)
+                {
+                    warriors[firstFiter].TakeDamage(warriors[secondFiter].Damage);
+                    warriors[secondFiter].TakeDamage(warriors[firstFiter].Damage);
+
+                    Console.Write(warriors[firstFiter].Name);
+                    warriors[firstFiter].ShowInfo();
+                    Console.Write(warriors[secondFiter].Name);
+                    warriors[secondFiter].ShowInfo();
+
+                    Console.WriteLine("");
+
+                    if (warriors[firstFiter].Helth <= 0 || warriors[secondFiter].Helth <= 0)
+                    {
+                        if(warriors[firstFiter].Helth <= 0)
+                            Console.WriteLine($"Победу одержал {warriors[secondFiter].Name}.");
+                        else
+                            Console.WriteLine($"Победу одержал {warriors[firstFiter].Name}.");
+                        battleContinue = false;
+                    }
+                }
 
                 Console.ReadLine();
                 Console.Clear();
