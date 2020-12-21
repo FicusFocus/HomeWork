@@ -32,21 +32,11 @@ namespace HomeWork_6_4
                     case "2":
                         Console.Write("Введите номер продукта который желаете добавить в корзину:");
                         int productNumber = Convert.ToInt32(Console.ReadLine()) - 1;
-                        if (productNumber < 0 || productNumber > seller.Products.Count)
+
+                        if(seller.CheckProductAvailability(productNumber, out string productName, out int productPrice))
                         {
-                            Console.WriteLine("Такого товара не существует.");
-                        }
-                        else
-                        {
-                            if (seller.Products[productNumber].Amount == 0)
-                            {
-                                Console.WriteLine("Данного товара нет в наличии");
-                            }
-                            else
-                            {
-                                buyer.AddToBasket(seller.Products[productNumber].Name, seller.Products[productNumber].Price);
-                                seller.Products[productNumber].SubtractAmount();
-                            }
+                            buyer.AddToBasket(productName, productPrice);
+                            seller.SubtractProductsAmount(productName);
                         }
                         break;
 
@@ -56,25 +46,21 @@ namespace HomeWork_6_4
 
                     case "4":
                         buyer.ShowBalance();
-                        int moneyToPay = 0;
+                        int moneyToPay;
 
-                        if (buyer.Pay(ref moneyToPay))
+                        if (buyer.Pay(out moneyToPay))
                             seller.AddMoney(moneyToPay);
                         break;
 
                     case "5":
+                        buyer.ShowBasket();
                         Console.Write("Введите номер продукта который желаете исключить из корзины:");
                         productNumber = Convert.ToInt32(Console.ReadLine());
-                        string productName;
-                        buyer.RemoveFormBasket(productNumber - 1, out productName);
-                        for (int i = 0; i < seller.Products.Count; i++)
-                        {
-                            if (seller.Products[i].Name == productName)
-                            {
-                                seller.Products[i].AddAmount();
-                                continue;
-                            }
-                        }
+
+                        buyer.RemoveFormBasket(productNumber - 1, out bool isRemove, out productName);
+
+                        if (isRemove)
+                            seller.AddProductsAmount(productName);
                         break;
 
                     case "6":
@@ -91,24 +77,74 @@ namespace HomeWork_6_4
     class Seller
     {
         private int _money;
-        public List<Product> Products { get; private set; } = new List<Product>();
+        private List<Product> _products = new List<Product>();
         
         public Seller()
         {
-            Products.Add(new Product("Аспирин", 30, 100));
-            Products.Add(new Product("Аскорбинка", 5, 100));
-            Products.Add(new Product("Уголь активированный", 10, 100));
-            Products.Add(new Product("Гематогенка", 20, 0));
+            _products.Add(new Product("Аспирин", 30, 100));
+            _products.Add(new Product("Аскорбинка", 5, 100));
+            _products.Add(new Product("Уголь активированный", 10, 100));
+            _products.Add(new Product("Гематогенка", 20, 0));
+        }
+
+        public bool CheckProductAvailability(int productNumber, out string productName, out int productPrice)
+        {
+            productName = null;
+            productPrice = 0;
+
+            if (productNumber < 0 || productNumber > _products.Count)
+            {
+                Console.WriteLine("Такого товара не существует.");
+                return false;
+            }
+            else
+            {
+                if (_products[productNumber].Amount == 0)
+                {
+                    Console.WriteLine("Данного товара нет в наличии");
+                    return false;
+                }
+                else
+                {
+                    productName = _products[productNumber].Name;
+                    productPrice = _products[productNumber].Price;
+                    return true;
+                }
+            }
+        }
+
+        public void AddProductsAmount(string productName)
+        {
+            for (int i = 0; i < _products.Count; i++)
+            {
+                if(_products[i].Name == productName)
+                {
+                    _products[i].AddAmount();
+                    continue;
+                }
+            }
+        }
+
+        public void SubtractProductsAmount(string productName)
+        {
+            for (int i = 0; i < _products.Count; i++)
+            {
+                if (_products[i].Name == productName)
+                {
+                    _products[i].SubtractAmount();
+                    continue;
+                }
+            }
         }
 
         public void ShowProducts()
         {
-            for (int i = 0; i < Products.Count; i++)
+            for (int i = 0; i < _products.Count; i++)
             {
-                if (Products[i].Amount <= 0)
-                    Console.WriteLine($"{i + 1}) {Products[i].Name} - нет в наличии");
+                if (_products[i].Amount <= 0)
+                    Console.WriteLine($"{i + 1}) {_products[i].Name} - нет в наличии");
                 else
-                    Console.WriteLine($"{i + 1}) {Products[i].Name} - {Products[i].Price} руб.");
+                    Console.WriteLine($"{i + 1}) {_products[i].Name} - {_products[i].Price} руб.");
             }
         }
 
@@ -128,9 +164,10 @@ namespace HomeWork_6_4
             _money = money;
         }
 
-        public bool Pay(ref int moneyToPay)
+        public bool Pay(out int moneyToPay)
         {
-            if (CheckSolvency(ref moneyToPay))
+            
+            if (CheckSolvency(out moneyToPay))
             {
                 _money -= moneyToPay;
                 Console.WriteLine("Покупка прошла успешно.");
@@ -147,8 +184,23 @@ namespace HomeWork_6_4
             }
         }
 
-        private bool CheckSolvency(ref int moneyToPay)
+        private bool checkProductAvailabilityInBasket(int productNumber)
         {
+            if (productNumber < 0 || productNumber > _basket.Count)
+            {
+                Console.WriteLine("Такого товара в корзине нет.");
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+
+        private bool CheckSolvency(out int moneyToPay)
+        {
+            moneyToPay = 0;
+
             for (int i = 0; i < _basket.Count; i++)
                 moneyToPay += _basket[i].Price * _basket[i].Amount;
 
@@ -197,22 +249,21 @@ namespace HomeWork_6_4
                 _basket.Add(new Product(productName, productPrice, 1));
         }
 
-        public bool RemoveFormBasket(int productNumber, out string productName)
+        public void RemoveFormBasket(int productNumber, out bool isRemove, out string productName)
         {
-            if (productNumber < 0 || productNumber > _basket.Count)
-            {
-                Console.WriteLine("Данного продукта в корзине не нет.");
-                productName = null;
-                return false;
-            }
-            else
+            if (checkProductAvailabilityInBasket(productNumber))
             {
                 if (_basket[productNumber].Amount > 1)
                     _basket[productNumber].SubtractAmount();
                 else
                     _basket.Remove(_basket[productNumber]);
+                isRemove = true;
                 productName = _basket[productNumber].Name;
-                return true;
+            }
+            else
+            {
+                isRemove = false;
+                productName = null;
             }
         }
     }
