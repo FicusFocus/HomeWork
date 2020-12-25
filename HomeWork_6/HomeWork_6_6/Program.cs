@@ -51,7 +51,7 @@ namespace HomeWork_6_6
                     Console.WriteLine($"{Warriors[secondFiter].Name} атакует {Warriors[firstFiter].Name} " +
                                       $"и наносит урон в размере - {damdge}");
                     Warriors[firstFiter].ShowHP();
-                    Console.WriteLine("");
+                    Console.WriteLine();
 
                     if (Warriors[firstFiter].Helth <= 0 || Warriors[secondFiter].Helth <= 0)
                     {
