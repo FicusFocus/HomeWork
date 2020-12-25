@@ -17,9 +17,11 @@ namespace HomeWork_6_6
             Damage = damage;
         }
 
-        public void TakeDamage(int damage)
+        public int TakeDamage(int damage)
         {
-            Helth -= damage * Armor / 100;
+            damage = damage - (damage * Armor / 100);
+            Helth -= damage;
+            return damage;
         }
 
         public void ShowInfo()
@@ -27,18 +29,21 @@ namespace HomeWork_6_6
             Console.WriteLine($" урон - {Damage}, броня - {Armor}, HP - {Helth}");
         }
 
+        public void ShowHP()
+        {
+            Console.WriteLine($"осталось доровья - {Helth}");
+        }
+
         public bool SpellChance(int prockChance)
         {
-            bool chance;
-
             Random rand = new Random();
-            int intChance = rand.Next(0, 100);
-            if (intChance < prockChance)
-                chance = true;
+            int Chance = rand.Next(0, 100);
+            if (Chance < prockChance)
+                return true;
             else
-                chance = false;
+                return false;
 
-            return chance;
+            
         }
     }
 }

@@ -7,7 +7,7 @@ using HomeWork_6_6.Warriors;
 // У каждого бойца свои статы. Каждый  боец должен иметь особую способность для атаки, 
 // которая свойственна только его классу.
 
-//TODO: урать лишние циклы и ифы из мэйнаю
+//TODO: криво работает бой. исправить.
 
 namespace HomeWork_6_6
 {
@@ -15,12 +15,12 @@ namespace HomeWork_6_6
     {
         static void Main(string[] args)
         {
-            List<Warrior> warriors = new List<Warrior>();
-            warriors.Add(new Knight("Рыцарь"));
-            warriors.Add(new Palladin("Палладин"));
-            warriors.Add(new Druid("Друид"));
-            warriors.Add(new Assassin("Убийца"));
-            warriors.Add(new Barbarian("Варвар"));
+            List<Warrior> Warriors = new List<Warrior>(); //Это должно быть в отдельном класе, как и оснавная бойня.
+            Warriors.Add(new Knight("Рыцарь"));
+            Warriors.Add(new Palladin("Палладин"));
+            Warriors.Add(new Druid("Друид"));
+            Warriors.Add(new Assassin("Убийца"));
+            Warriors.Add(new Barbarian("Варвар"));
 
             while (true)
             {
@@ -31,8 +31,8 @@ namespace HomeWork_6_6
                 Console.WriteLine("Выберите двух бойцов из списка которые будут сражаться.");
 
                 // убрать список бойцов в отдельный метод
-                for (int i = 0; i < warriors.Count; i++)
-                    Console.WriteLine($"{i + 1}){warriors[i].Name}: HP - {warriors[i].Helth}, броня - {warriors[i].Armor}, урон - {warriors[i].Damage}.");
+                for (int i = 0; i < Warriors.Count; i++)
+                    Console.WriteLine($"{i + 1}){Warriors[i].Name}: HP - {Warriors[i].Helth}, броня - {Warriors[i].Armor}, урон - {Warriors[i].Damage}.");
 
                 Console.Write("Номер первого бойца: ");
                 firstFiter = Convert.ToInt32(Console.ReadLine()) - 1;
@@ -41,22 +41,33 @@ namespace HomeWork_6_6
 
                 while (battleContinue)
                 {
-                    warriors[firstFiter].TakeDamage(warriors[secondFiter].Damage);
-                    warriors[secondFiter].TakeDamage(warriors[firstFiter].Damage);
+                    int damdge;
 
-                    Console.Write(warriors[firstFiter].Name);
-                    warriors[firstFiter].ShowInfo();
-                    Console.Write(warriors[secondFiter].Name);
-                    warriors[secondFiter].ShowInfo();
+                    damdge = Warriors[secondFiter].TakeDamage(Warriors[firstFiter].Damage);
+                    Console.WriteLine($"{Warriors[firstFiter].Name} атакует {Warriors[secondFiter].Name} " +
+                                      $"и наносит урон в размере - {damdge}");
+                    damdge = Warriors[firstFiter].TakeDamage(Warriors[secondFiter].Damage);
+                    Console.WriteLine($"{Warriors[secondFiter].Name} атакует {Warriors[firstFiter].Name}");
+
+
+                    Warriors[firstFiter].TakeDamage(Warriors[secondFiter].Damage);
+                    Warriors[secondFiter].TakeDamage(Warriors[firstFiter].Damage);
+
+                    Console.Write(Warriors[firstFiter].Name);
+                    Console.WriteLine("нанес урон " + damage1 + " ");
+                    Warriors[firstFiter].ShowInfo();
+                    Console.Write(Warriors[secondFiter].Name);
+                    Console.WriteLine("нанес урон " + damage2 + " ");
+                    Warriors[secondFiter].ShowInfo();
 
                     Console.WriteLine("");
 
-                    if (warriors[firstFiter].Helth <= 0 || warriors[secondFiter].Helth <= 0)
+                    if (Warriors[firstFiter].Helth <= 0 || Warriors[secondFiter].Helth <= 0)
                     {
-                        if(warriors[firstFiter].Helth <= 0)
-                            Console.WriteLine($"Победу одержал {warriors[secondFiter].Name}.");
+                        if(Warriors[firstFiter].Helth <= 0)
+                            Console.WriteLine($"Победу одержал {Warriors[secondFiter].Name}.");
                         else
-                            Console.WriteLine($"Победу одержал {warriors[firstFiter].Name}.");
+                            Console.WriteLine($"Победу одержал {Warriors[firstFiter].Name}.");
                         battleContinue = false;
                     }
                 }
