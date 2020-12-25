@@ -19,7 +19,13 @@ namespace HomeWork_6_6
 
         public int TakeDamage(int damage)
         {
-            damage = damage - (damage * Armor / 100);
+            Random rand = new Random();
+
+            int lowerBar = damage - (damage * 25 / 100);
+            int upperBar = damage + (damage * 25 / 100);
+            int finalDamage = rand.Next(lowerBar, upperBar);
+
+            damage = finalDamage - (finalDamage * Armor / 100);
             Helth -= damage;
             return damage;
         }
@@ -31,7 +37,7 @@ namespace HomeWork_6_6
 
         public void ShowHP()
         {
-            Console.WriteLine($"осталось доровья - {Helth}");
+            Console.WriteLine($"осталось здоровья - {Helth}");
         }
 
         public bool SpellChance(int prockChance)

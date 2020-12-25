@@ -46,20 +46,11 @@ namespace HomeWork_6_6
                     damdge = Warriors[secondFiter].TakeDamage(Warriors[firstFiter].Damage);
                     Console.WriteLine($"{Warriors[firstFiter].Name} атакует {Warriors[secondFiter].Name} " +
                                       $"и наносит урон в размере - {damdge}");
+                    Warriors[secondFiter].ShowHP();
                     damdge = Warriors[firstFiter].TakeDamage(Warriors[secondFiter].Damage);
-                    Console.WriteLine($"{Warriors[secondFiter].Name} атакует {Warriors[firstFiter].Name}");
-
-
-                    Warriors[firstFiter].TakeDamage(Warriors[secondFiter].Damage);
-                    Warriors[secondFiter].TakeDamage(Warriors[firstFiter].Damage);
-
-                    Console.Write(Warriors[firstFiter].Name);
-                    Console.WriteLine("нанес урон " + damage1 + " ");
-                    Warriors[firstFiter].ShowInfo();
-                    Console.Write(Warriors[secondFiter].Name);
-                    Console.WriteLine("нанес урон " + damage2 + " ");
-                    Warriors[secondFiter].ShowInfo();
-
+                    Console.WriteLine($"{Warriors[secondFiter].Name} атакует {Warriors[firstFiter].Name} " +
+                                      $"и наносит урон в размере - {damdge}");
+                    Warriors[firstFiter].ShowHP();
                     Console.WriteLine("");
 
                     if (Warriors[firstFiter].Helth <= 0 || Warriors[secondFiter].Helth <= 0)
