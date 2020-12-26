@@ -19,17 +19,21 @@ namespace HomeWork_6_6
             Damage = damage;
         }
 
-        public virtual int TakeDamage(int damage)
+        public virtual int CalculateDamage(int damage)
         {
             Random rand = new Random();
 
             int lowerBar = damage - (damage * 25 / 100);
             int upperBar = damage + (damage * 25 / 100);
-            int finalDamage = rand.Next(lowerBar, upperBar);
+            damage = rand.Next(lowerBar, upperBar);
 
-            damage = finalDamage - (finalDamage * Armor / 100);
-            CurrentHealth -= damage;
             return damage;
+        }
+
+        public virtual void TakeDamage(int damage)
+        {
+            damage = damage - (damage * Armor / 100);
+            CurrentHealth -= damage;
         }
 
         public void ShowInfo()

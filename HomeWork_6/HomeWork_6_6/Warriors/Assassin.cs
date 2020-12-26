@@ -9,21 +9,26 @@ namespace HomeWork_6_6.Warriors
 {
     class Assassin : Warrior
     {
+        private int _critChanse = 15;
+        private int _criticalDamage = 170;
+        private int _dodgeChance = 25;
+
         public Assassin(string name) : base(name, 15, 220, 1700){}
 
-        public override int TakeDamage(int damage)
+        public override void TakeDamage(int damage)
         {
-            int dodgeChance = 25;
-
-            if(SpellChance(dodgeChance))
-            {
+            if(SpellChance(_dodgeChance))
                 Console.WriteLine("Боец уклонился");
-                return 0;
-            }
             else
-            {
-                return base.TakeDamage(damage);
-            }
+                base.TakeDamage(damage);
+        }
+
+        public override int CalculateDamage(int damage)
+        {
+            if(SpellChance(_critChanse))
+                damage = Damage * _criticalDamage / 100; 
+
+            return base.CalculateDamage(damage);
         }
     }
 }

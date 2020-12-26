@@ -2,8 +2,6 @@
 {
     class Barbarian : Warrior
     {
-        public Barbarian(string name) : base(name, 30, 500, 2500)
-        {
-        }
+        public Barbarian(string name) : base(name, 30, 500, 2500){}
     }
 }

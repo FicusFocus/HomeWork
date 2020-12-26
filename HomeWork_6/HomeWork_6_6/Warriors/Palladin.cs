@@ -9,9 +9,11 @@ namespace HomeWork_6_6.Warriors
 {
     class Palladin : Warrior
     {
+        private int _prayPower = 30;
+
         public Palladin(string name) : base(name ,50 , 200, 2500){}
 
-        public override int TakeDamage(int damage)
+        public override void TakeDamage(int damage)
         {
             if(CurrentHealth < 2500 * 10 / 100)
             {
@@ -21,12 +23,12 @@ namespace HomeWork_6_6.Warriors
                     Console.WriteLine("Палладин помолился и восстановил часть здоровья");
                 }
             }
-            return base.TakeDamage(damage);
+            base.TakeDamage(damage);
         }
 
-        private void Pray(int prayPower = 30)
+        private void Pray()
         {
-            CurrentHealth += Helth * prayPower / 100;
+            CurrentHealth += Helth * _prayPower / 100;
         }
     }
 }
