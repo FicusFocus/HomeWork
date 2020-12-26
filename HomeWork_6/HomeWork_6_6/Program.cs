@@ -7,7 +7,8 @@ using HomeWork_6_6.Warriors;
 // У каждого бойца свои статы. Каждый  боец должен иметь особую способность для атаки, 
 // которая свойственна только его классу.
 
-//TODO: криво работает бой. исправить.
+//TODO: вылазит эксэпшн если ввесли число больше 5 при выборе бойца.
+//TODO: 
 
 namespace HomeWork_6_6
 {
@@ -53,9 +54,9 @@ namespace HomeWork_6_6
                     Warriors[firstFiter].ShowHP();
                     Console.WriteLine();
 
-                    if (Warriors[firstFiter].Helth <= 0 || Warriors[secondFiter].Helth <= 0)
+                    if (Warriors[firstFiter].CurrentHealth <= 0 || Warriors[secondFiter].CurrentHealth <= 0)
                     {
-                        if(Warriors[firstFiter].Helth <= 0)
+                        if(Warriors[firstFiter].CurrentHealth <= 0)
                             Console.WriteLine($"Победу одержал {Warriors[secondFiter].Name}.");
                         else
                             Console.WriteLine($"Победу одержал {Warriors[firstFiter].Name}.");

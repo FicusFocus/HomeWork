@@ -6,6 +6,7 @@ namespace HomeWork_6_6
     {
         public string Name { get; protected set; }
         public int Helth { get; protected set; }
+        public int CurrentHealth { get; protected set; }
         public int Damage { get; protected set; }
         public int Armor { get; protected set; }
 
@@ -13,11 +14,12 @@ namespace HomeWork_6_6
         {
             Name = name;
             Helth = helth;
+            CurrentHealth = Helth;
             Armor = armor;
             Damage = damage;
         }
 
-        public int TakeDamage(int damage)
+        public virtual int TakeDamage(int damage)
         {
             Random rand = new Random();
 
@@ -26,7 +28,7 @@ namespace HomeWork_6_6
             int finalDamage = rand.Next(lowerBar, upperBar);
 
             damage = finalDamage - (finalDamage * Armor / 100);
-            Helth -= damage;
+            CurrentHealth -= damage;
             return damage;
         }
 
@@ -37,7 +39,7 @@ namespace HomeWork_6_6
 
         public void ShowHP()
         {
-            Console.WriteLine($"осталось здоровья - {Helth}");
+            Console.WriteLine($"осталось здоровья - {CurrentHealth}");
         }
 
         public bool SpellChance(int prockChance)
