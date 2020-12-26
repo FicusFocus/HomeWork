@@ -61,6 +61,8 @@ namespace HomeWork_6_6
                         else
                             Console.WriteLine($"Победу одержал {Warriors[firstFiter].Name}.");
                         battleContinue = false;
+                        Warriors[firstFiter].Refresh();
+                        Warriors[secondFiter].Refresh();
                     }
                 }
 
