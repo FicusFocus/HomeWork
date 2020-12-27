@@ -8,7 +8,6 @@ namespace HomeWork_6_6.Warriors
 {
     class Druid : Warrior
     {
-        private int _baseDamage = 150;
         private int _increaseAttack = 30;
         private int _healChance = 15;
         private int _healPover = 300;

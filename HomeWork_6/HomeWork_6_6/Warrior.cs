@@ -46,11 +46,6 @@ namespace HomeWork_6_6
             Console.WriteLine($"осталось здоровья - {CurrentHealth}");
         }
 
-        public void Refresh()
-        {
-            CurrentHealth = Helth;
-        }
-
         public bool SpellChance(int prockChance)
         {
             Random rand = new Random();

@@ -17,7 +17,7 @@ namespace HomeWork_6_6.Warriors
         {
             if(CurrentHealth < 2500 * 10 / 100)
             {
-                if (SpellChance(20))
+                if (SpellChance(30))
                 {
                     Pray();
                     Console.WriteLine("Палладин помолился и восстановил часть здоровья");
