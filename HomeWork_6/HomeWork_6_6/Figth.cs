@@ -57,6 +57,7 @@ namespace HomeWork_6_6
         private void CheckInput(out int firstFiter, out int secondFiter)
         {
             bool inputIncorrect = true;
+
             firstFiter = 0;
             secondFiter = 0;
 
