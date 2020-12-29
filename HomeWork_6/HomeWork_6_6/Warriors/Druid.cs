@@ -1,9 +1,5 @@
 ﻿using System;
 
-//2200ХР, армор 15%.
-//урон - 150, после кажой атаки урон увеличивается на 50.
-//шанс 15% востановить хп на 300.
-
 namespace HomeWork_6_6.Warriors
 {
     class Druid : Warrior

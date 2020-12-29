@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 using HomeWork_6_6.Warriors;
 
 namespace HomeWork_6_6
@@ -9,22 +8,17 @@ namespace HomeWork_6_6
     {
         private List<Warrior> _warriors = new List<Warrior>();
 
-        public void Battle()
+        public void StartFight()
         {
             while (true)
             {
                 bool battleContinue = true;
-                int firstFiter;
-                int secondFiter;
+                int firstFiter = 0;
+                int secondFiter = 0;
 
                 CrateFighters();
                 ShowFighters();
-
-                Console.WriteLine("Выберите двух бойцов из списка которые будут сражаться.");
-                Console.Write("Номер первого бойца: ");
-                firstFiter = Convert.ToInt32(Console.ReadLine()) - 1;
-                Console.Write("Номер второго бойца: ");
-                secondFiter = Convert.ToInt32(Console.ReadLine()) - 1;
+                CheckInput(ref firstFiter, ref secondFiter);
 
                 while (battleContinue)
                 {
@@ -60,6 +54,49 @@ namespace HomeWork_6_6
             }
         }
 
+        private void CheckInput(ref int firstFiter, ref int secondFiter)
+        {
+            bool inputIncorrect = true;
+            firstFiter = 0;
+            secondFiter = 0;
+
+            while (inputIncorrect)
+            {
+                bool firstInput = false;
+                bool secondfinput = false;
+                string input;
+
+                Console.WriteLine("Выберите двух бойцов из списка которые будут сражаться.");
+                Console.Write("Номер первого бойца: ");
+                input = Console.ReadLine();
+
+                if (int.TryParse(input, out firstFiter))
+                {
+                    firstFiter--;
+                    firstInput = true;
+                }
+                else 
+                {
+                    Console.WriteLine("Неверное значение"); 
+                }
+
+                Console.Write("Номер первого бойца: ");
+                input = Console.ReadLine();
+                if (int.TryParse(input, out secondFiter))
+                {
+                    secondFiter--;
+                    secondfinput = true;
+                }
+                else
+                {
+                    Console.WriteLine("Неверное значение");
+                }
+
+                if (firstInput && secondfinput)
+                    inputIncorrect = false;
+            }
+        }
+
         private void CrateFighters()
         {
             _warriors.Add(new Knight("Рыцарь"));
@@ -72,8 +109,10 @@ namespace HomeWork_6_6
         private void ShowFighters()
         {
             for (int i = 0; i < _warriors.Count; i++)
-                Console.WriteLine($"{i + 1}){_warriors[i].Name}: HP - {_warriors[i].Helth}, броня - {_warriors[i].Armor}, урон - {_warriors[i].Damage}.");
-
+            {
+                Console.Write($"\n{i + 1}) ");
+                _warriors[i].ShowInfo();
+            }
         }
     }
 }

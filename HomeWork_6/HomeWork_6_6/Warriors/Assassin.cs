@@ -1,10 +1,5 @@
 ﻿using System;
 
-//1700ХР, армор 15%. 
-//урон  220.
-//Крит шанс - увеличенная атака на 170%, 
-//шанс уклониться - 25%
-
 namespace HomeWork_6_6.Warriors
 {
     class Assassin : Warrior
