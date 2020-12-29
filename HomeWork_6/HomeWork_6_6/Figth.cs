@@ -13,12 +13,12 @@ namespace HomeWork_6_6
             while (true)
             {
                 bool battleContinue = true;
-                int firstFiter = 0;
-                int secondFiter = 0;
+                int firstFiter;
+                int secondFiter;
 
                 CrateFighters();
                 ShowFighters();
-                CheckInput(ref firstFiter, ref secondFiter);
+                CheckInput(out firstFiter, out secondFiter);
 
                 while (battleContinue)
                 {
@@ -54,7 +54,7 @@ namespace HomeWork_6_6
             }
         }
 
-        private void CheckInput(ref int firstFiter, ref int secondFiter)
+        private void CheckInput(out int firstFiter, out int secondFiter)
         {
             bool inputIncorrect = true;
             firstFiter = 0;
