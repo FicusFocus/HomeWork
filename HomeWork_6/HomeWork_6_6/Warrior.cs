@@ -23,9 +23,9 @@ namespace HomeWork_6_6
         {
             Random rand = new Random();
 
-            int lowerBar = damage - (damage * 25 / 100);
-            int upperBar = damage + (damage * 25 / 100);
-            damage = rand.Next(lowerBar, upperBar);
+            int minimalDamage = damage - (damage * 25 / 100);
+            int maximumDamage = damage + (damage * 25 / 100);
+            damage = rand.Next(minimalDamage, maximumDamage);
 
             return damage;
         }
@@ -38,18 +38,19 @@ namespace HomeWork_6_6
 
         public void ShowInfo()
         {
-            Console.WriteLine($" урон - {Damage}, броня - {Armor}, HP - {Helth}");
+            Console.WriteLine($"{Name}: урон - {Damage}, броня - {Armor}, HP - {Helth}");
         }
 
         public void ShowHP()
         {
-            Console.WriteLine($"осталось здоровья - {CurrentHealth}");
+            Console.WriteLine($"У {Name} осталось {CurrentHealth} XP");
         }
 
         public bool SpellChance(int prockChance)
         {
             Random rand = new Random();
             int Chance = rand.Next(0, 100);
+
             if (Chance < prockChance)
                 return true;
             else
