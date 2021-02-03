@@ -72,6 +72,7 @@ namespace HomeWork_6_7
 
             productAmount = _products.Count;
         }
+
         public void AddMoney(int moneyToPay)
         {
             _money += moneyToPay;
@@ -153,7 +154,6 @@ namespace HomeWork_6_7
     class Buyer
     {
         public int MoneyToPay { get; private set; } = 0;
-
         private int _money;
         private List<Product> _basket = new List<Product>();
 
