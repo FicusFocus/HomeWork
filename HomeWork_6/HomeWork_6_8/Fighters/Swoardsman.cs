@@ -6,6 +6,6 @@ namespace HomeWork_6_8.Fighters
 {
     class Swoardsman : Fighter
     {
-        public Swoardsman(string name) : base(name, '@', 1, 70, 500, 20) { }
+        public Swoardsman(string name) : base(name, 70, 500, 20) { }
     }
 }

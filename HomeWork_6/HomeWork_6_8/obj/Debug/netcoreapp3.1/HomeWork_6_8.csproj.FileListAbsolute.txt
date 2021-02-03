@@ -11,3 +11,16 @@ D:\DoNotComeIn\projects\GitHub Repositories\HomeWork\HomeWork_6\HomeWork_6_8\obj
 D:\DoNotComeIn\projects\GitHub Repositories\HomeWork\HomeWork_6\HomeWork_6_8\obj\Debug\netcoreapp3.1\HomeWork_6_8.dll
 D:\DoNotComeIn\projects\GitHub Repositories\HomeWork\HomeWork_6\HomeWork_6_8\obj\Debug\netcoreapp3.1\HomeWork_6_8.pdb
 D:\DoNotComeIn\projects\GitHub Repositories\HomeWork\HomeWork_6\HomeWork_6_8\obj\Debug\netcoreapp3.1\HomeWork_6_8.genruntimeconfig.cache
+D:\Програмирование\Visual_Studio_Projects\c# light\Less1\HomeWork\HomeWork_6\HomeWork_6_8\obj\Debug\netcoreapp3.1\HomeWork_6_8.csprojAssemblyReference.cache
+D:\Програмирование\Visual_Studio_Projects\c# light\Less1\HomeWork\HomeWork_6\HomeWork_6_8\obj\Debug\netcoreapp3.1\HomeWork_6_8.AssemblyInfoInputs.cache
+D:\Програмирование\Visual_Studio_Projects\c# light\Less1\HomeWork\HomeWork_6\HomeWork_6_8\obj\Debug\netcoreapp3.1\HomeWork_6_8.AssemblyInfo.cs
+D:\Програмирование\Visual_Studio_Projects\c# light\Less1\HomeWork\HomeWork_6\HomeWork_6_8\obj\Debug\netcoreapp3.1\HomeWork_6_8.csproj.CoreCompileInputs.cache
+D:\Програмирование\Visual_Studio_Projects\c# light\Less1\HomeWork\HomeWork_6\HomeWork_6_8\obj\Debug\netcoreapp3.1\HomeWork_6_8.dll
+D:\Програмирование\Visual_Studio_Projects\c# light\Less1\HomeWork\HomeWork_6\HomeWork_6_8\obj\Debug\netcoreapp3.1\HomeWork_6_8.pdb
+D:\Програмирование\Visual_Studio_Projects\c# light\Less1\HomeWork\HomeWork_6\HomeWork_6_8\bin\Debug\netcoreapp3.1\HomeWork_6_8.exe
+D:\Програмирование\Visual_Studio_Projects\c# light\Less1\HomeWork\HomeWork_6\HomeWork_6_8\bin\Debug\netcoreapp3.1\HomeWork_6_8.deps.json
+D:\Програмирование\Visual_Studio_Projects\c# light\Less1\HomeWork\HomeWork_6\HomeWork_6_8\bin\Debug\netcoreapp3.1\HomeWork_6_8.runtimeconfig.json
+D:\Програмирование\Visual_Studio_Projects\c# light\Less1\HomeWork\HomeWork_6\HomeWork_6_8\bin\Debug\netcoreapp3.1\HomeWork_6_8.runtimeconfig.dev.json
+D:\Програмирование\Visual_Studio_Projects\c# light\Less1\HomeWork\HomeWork_6\HomeWork_6_8\bin\Debug\netcoreapp3.1\HomeWork_6_8.dll
+D:\Програмирование\Visual_Studio_Projects\c# light\Less1\HomeWork\HomeWork_6\HomeWork_6_8\bin\Debug\netcoreapp3.1\HomeWork_6_8.pdb
+D:\Програмирование\Visual_Studio_Projects\c# light\Less1\HomeWork\HomeWork_6\HomeWork_6_8\obj\Debug\netcoreapp3.1\HomeWork_6_8.genruntimeconfig.cache
