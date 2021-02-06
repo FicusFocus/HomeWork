@@ -21,7 +21,7 @@ namespace HomeWork_6_8
             CurrentHealth = helth;
         }
 
-        public void TakeDamage(int damage)
+        public int TakeDamage(ref int damage)
         {
             Random rand = new Random(); 
 
@@ -30,6 +30,12 @@ namespace HomeWork_6_8
 
             damage = rand.Next(minDamage, maxDamage);
             CurrentHealth -= damage;
+            return damage;
+        }
+
+        public void ShowHelth()
+        {
+            Console.WriteLine($"На текущий момент у {Name} - {CurrentHealth}/{Helth} HP");
         }
     }
 }
