@@ -55,8 +55,6 @@ namespace HomeWork_6_6
                 return true;
             else
                 return false;
-
-            
         }
     }
 }
