@@ -7,14 +7,12 @@ namespace HomeWork_6_9
     class Fish
     {
         public string Name { get; private set; }
-        public int Size { get; private set; }
         public int Age { get; private set; }
         public int MaxAge { get; private set; }
 
-        public Fish(string name, int size, int maxAge, int age = 0)
+        public Fish(string name, int maxAge, int age = 0)
         {
             Name = name;
-            Size = size;
             MaxAge = maxAge;
             Age = age;
         }

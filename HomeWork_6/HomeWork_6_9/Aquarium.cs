@@ -15,9 +15,9 @@ namespace HomeWork_6_9
         private List<Fish> _fishInAquarium = new List<Fish>();
         private List<Fish> _fish = new List<Fish>();
 
-        private void AllFish()
+        public Aquarium()
         {
-            _fish.Add(new Fish(""))
+            FishList();
         }
 
         public void AddFish()
@@ -31,6 +31,17 @@ namespace HomeWork_6_9
             {
                 _fish[i].Showinfo();
             }
+        }
+
+        private void FishList()
+        {
+            _fish.Add(new Fish("Скат", 23));
+            _fish.Add(new Fish("Бычок", 6));
+            _fish.Add(new Fish("Сомик", 10));
+            _fish.Add(new Fish("Илистый прыгун", 3));
+            _fish.Add(new Fish("Пескарь", 7));
+            _fish.Add(new Fish("Угорь", 12));
+            _fish.Add(new Fish("Рыба игла", 10));
         }
     }
 }
