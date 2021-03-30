@@ -13,7 +13,9 @@ namespace HomeWork_6_9
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Aquarium aquarium = new Aquarium();
+
+            aquarium.LifeInside();
         }
     }
 }

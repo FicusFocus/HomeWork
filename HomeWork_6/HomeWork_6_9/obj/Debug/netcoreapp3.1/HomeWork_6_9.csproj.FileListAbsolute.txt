@@ -1,0 +1,13 @@
+D:\DoNotComeIn\projects\GitHub Repositories\HomeWork\HomeWork_6\HomeWork_6_9\bin\Debug\netcoreapp3.1\HomeWork_6_9.exe
+D:\DoNotComeIn\projects\GitHub Repositories\HomeWork\HomeWork_6\HomeWork_6_9\bin\Debug\netcoreapp3.1\HomeWork_6_9.deps.json
+D:\DoNotComeIn\projects\GitHub Repositories\HomeWork\HomeWork_6\HomeWork_6_9\bin\Debug\netcoreapp3.1\HomeWork_6_9.runtimeconfig.json
+D:\DoNotComeIn\projects\GitHub Repositories\HomeWork\HomeWork_6\HomeWork_6_9\bin\Debug\netcoreapp3.1\HomeWork_6_9.runtimeconfig.dev.json
+D:\DoNotComeIn\projects\GitHub Repositories\HomeWork\HomeWork_6\HomeWork_6_9\bin\Debug\netcoreapp3.1\HomeWork_6_9.dll
+D:\DoNotComeIn\projects\GitHub Repositories\HomeWork\HomeWork_6\HomeWork_6_9\bin\Debug\netcoreapp3.1\HomeWork_6_9.pdb
+D:\DoNotComeIn\projects\GitHub Repositories\HomeWork\HomeWork_6\HomeWork_6_9\obj\Debug\netcoreapp3.1\HomeWork_6_9.csprojAssemblyReference.cache
+D:\DoNotComeIn\projects\GitHub Repositories\HomeWork\HomeWork_6\HomeWork_6_9\obj\Debug\netcoreapp3.1\HomeWork_6_9.AssemblyInfoInputs.cache
+D:\DoNotComeIn\projects\GitHub Repositories\HomeWork\HomeWork_6\HomeWork_6_9\obj\Debug\netcoreapp3.1\HomeWork_6_9.AssemblyInfo.cs
+D:\DoNotComeIn\projects\GitHub Repositories\HomeWork\HomeWork_6\HomeWork_6_9\obj\Debug\netcoreapp3.1\HomeWork_6_9.csproj.CoreCompileInputs.cache
+D:\DoNotComeIn\projects\GitHub Repositories\HomeWork\HomeWork_6\HomeWork_6_9\obj\Debug\netcoreapp3.1\HomeWork_6_9.dll
+D:\DoNotComeIn\projects\GitHub Repositories\HomeWork\HomeWork_6\HomeWork_6_9\obj\Debug\netcoreapp3.1\HomeWork_6_9.pdb
+D:\DoNotComeIn\projects\GitHub Repositories\HomeWork\HomeWork_6\HomeWork_6_9\obj\Debug\netcoreapp3.1\HomeWork_6_9.genruntimeconfig.cache

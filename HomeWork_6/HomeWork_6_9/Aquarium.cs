@@ -7,41 +7,76 @@ using System.Text;
 //Все рыбы отображаются списком, так же у рыб есть возраст. За 1 итерацию рыбы стареют на определенное количество жизней и могут умереть.
 //Рыб так же вывести в консоль, чтоб можно было мониторить показатели.
 
+//TODO: Криво добавляется возраст рыб. Несколько одинаковых рыб считает за одны и в итоге дает один возраст. Изменить создание рыб нр- Скат, Скат1 и т.д
+//TODO: Добавить рыбам смерть.
+//TODO: Сделать шкалу хп рыб в процентах.
+
 namespace HomeWork_6_9
 {
     class Aquarium
     {
         private int _placeAmount = 10;
         private List<Fish> _fishInAquarium = new List<Fish>();
-        private List<Fish> _fish = new List<Fish>();
+        private List<Fish> _fishs = new List<Fish>();
 
         public Aquarium()
         {
             FishList();
         }
 
-        public void AddFish()
+        public void LifeInside()
         {
+            FillTheAquarium();
 
+            while (true)
+            {
+                ShowInhabitants();
+
+
+                Console.ReadLine();
+                Console.Clear();
+
+                AddFishsAge();
+            }
         }
 
-        public void ShowInhabitants()
+        private void AddFishsAge()
         {
-            for (int i = 0; i < _fish.Count; i++)
+            for (int i = 0; i < _fishInAquarium.Count; i++)
             {
-                _fish[i].Showinfo();
+                _fishInAquarium[i].AddAge();
+            }
+        }
+
+        private void FillTheAquarium()
+        {
+            Random rand = new Random();
+            while (_fishInAquarium.Count < _placeAmount)
+            {
+                int randdomfish = rand.Next(0, _fishs.Count);
+                _fishInAquarium.Add(_fishs[randdomfish]);
+            }
+
+            Console.WriteLine("Аквариум Полон.\n");
+        }
+
+        private void ShowInhabitants()
+        {
+            foreach (var fish in _fishInAquarium)
+            {
+                fish.Showinfo();
             }
         }
 
         private void FishList()
         {
-            _fish.Add(new Fish("Скат", 23));
-            _fish.Add(new Fish("Бычок", 6));
-            _fish.Add(new Fish("Сомик", 10));
-            _fish.Add(new Fish("Илистый прыгун", 3));
-            _fish.Add(new Fish("Пескарь", 7));
-            _fish.Add(new Fish("Угорь", 12));
-            _fish.Add(new Fish("Рыба игла", 10));
+            _fishs.Add(new Fish("Скат", 23));
+            _fishs.Add(new Fish("Бычок", 6));
+            _fishs.Add(new Fish("Сомик", 10));
+            _fishs.Add(new Fish("Илистый прыгун", 3));
+            _fishs.Add(new Fish("Пескарь", 7));
+            _fishs.Add(new Fish("Угорь", 12));
+            _fishs.Add(new Fish("Рыба игла", 10));
         }
     }
 }
