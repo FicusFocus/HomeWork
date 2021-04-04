@@ -7,7 +7,7 @@ using System.Text;
 //Все рыбы отображаются списком, так же у рыб есть возраст. За 1 итерацию рыбы стареют на определенное количество жизней и могут умереть.
 //Рыб так же вывести в консоль, чтоб можно было мониторить показатели.
 
-//TODO: Криво добавляется возраст рыб. Несколько одинаковых рыб считает за одны и в итоге дает один возраст. Изменить создание рыб нр- Скат, Скат1 и т.д
+//TODO: Криво добавляется возраст рыб. Несколько одинаковых рыб считает за одну и в итоге дает один возраст. Изменить создание рыб нр- Скат, Скат1 и т.д
 //TODO: Добавить рыбам смерть.
 //TODO: Сделать шкалу хп рыб в процентах.
 
@@ -54,10 +54,41 @@ namespace HomeWork_6_9
             while (_fishInAquarium.Count < _placeAmount)
             {
                 int randdomfish = rand.Next(0, _fishs.Count);
-                _fishInAquarium.Add(_fishs[randdomfish]);
+                string fishName = _fishs[randdomfish].Name;
+                string newName = fishName;
+                int fishNumber = 1;
+
+                while (CheckNames(newName))
+                {
+                    fishNumber++;
+                    newName = fishName + Convert.ToString(fishNumber);
+                    CheckNames(newName);
+                }
+
+                _fishInAquarium.Add(new Fish(newName, _fishs[randdomfish].MaxAge));
             }
 
             Console.WriteLine("Аквариум Полон.\n");
+        }
+
+        public bool CheckNames(string fishName)
+        {
+            bool alreadyInAquarium = false;
+
+            for (int i = 0; i < _fishInAquarium.Count; i++)
+            {
+                if (_fishInAquarium[i].Name == fishName)
+                {
+                    alreadyInAquarium = true;
+                    break;
+                }
+                else
+                {
+                    alreadyInAquarium = false;
+                }
+            }
+
+            return alreadyInAquarium;
         }
 
         private void ShowInhabitants()
