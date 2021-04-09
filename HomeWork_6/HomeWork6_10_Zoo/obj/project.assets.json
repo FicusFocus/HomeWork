@@ -8,25 +8,20 @@
     ".NETCoreApp,Version=v3.1": []
   },
   "packageFolders": {
-    "C:\\Users\\User\\.nuget\\packages\\": {},
-    "C:\\Microsoft\\Xamarin\\NuGet\\": {}
+    "C:\\Users\\user\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Програмирование\\Visual_Studio_Projects\\c# light\\Less1\\HomeWork\\HomeWork_6\\HomeWork6_10_Zoo\\HomeWork6_10_Zoo.csproj",
+      "projectUniqueName": "D:\\DoNotComeIn\\projects\\GitHub Repositories\\HomeWork\\HomeWork_6\\HomeWork6_10_Zoo\\HomeWork6_10_Zoo.csproj",
       "projectName": "HomeWork6_10_Zoo",
-      "projectPath": "D:\\Програмирование\\Visual_Studio_Projects\\c# light\\Less1\\HomeWork\\HomeWork_6\\HomeWork6_10_Zoo\\HomeWork6_10_Zoo.csproj",
-      "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-      "outputPath": "D:\\Програмирование\\Visual_Studio_Projects\\c# light\\Less1\\HomeWork\\HomeWork_6\\HomeWork6_10_Zoo\\obj\\",
+      "projectPath": "D:\\DoNotComeIn\\projects\\GitHub Repositories\\HomeWork\\HomeWork_6\\HomeWork6_10_Zoo\\HomeWork6_10_Zoo.csproj",
+      "packagesPath": "C:\\Users\\user\\.nuget\\packages\\",
+      "outputPath": "D:\\DoNotComeIn\\projects\\GitHub Repositories\\HomeWork\\HomeWork_6\\HomeWork6_10_Zoo\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Microsoft\\Xamarin\\NuGet\\"
-      ],
       "configFilePaths": [
-        "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        "C:\\Users\\user\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp3.1"

@@ -1,0 +1,13 @@
+D:\DoNotComeIn\projects\GitHub Repositories\HomeWork\HomeWork_6\HomeWork6_10_Zoo\obj\Debug\netcoreapp3.1\HomeWork6_10_Zoo.csprojAssemblyReference.cache
+D:\DoNotComeIn\projects\GitHub Repositories\HomeWork\HomeWork_6\HomeWork6_10_Zoo\obj\Debug\netcoreapp3.1\HomeWork6_10_Zoo.AssemblyInfoInputs.cache
+D:\DoNotComeIn\projects\GitHub Repositories\HomeWork\HomeWork_6\HomeWork6_10_Zoo\obj\Debug\netcoreapp3.1\HomeWork6_10_Zoo.AssemblyInfo.cs
+D:\DoNotComeIn\projects\GitHub Repositories\HomeWork\HomeWork_6\HomeWork6_10_Zoo\obj\Debug\netcoreapp3.1\HomeWork6_10_Zoo.csproj.CoreCompileInputs.cache
+D:\DoNotComeIn\projects\GitHub Repositories\HomeWork\HomeWork_6\HomeWork6_10_Zoo\bin\Debug\netcoreapp3.1\HomeWork6_10_Zoo.exe
+D:\DoNotComeIn\projects\GitHub Repositories\HomeWork\HomeWork_6\HomeWork6_10_Zoo\bin\Debug\netcoreapp3.1\HomeWork6_10_Zoo.deps.json
+D:\DoNotComeIn\projects\GitHub Repositories\HomeWork\HomeWork_6\HomeWork6_10_Zoo\bin\Debug\netcoreapp3.1\HomeWork6_10_Zoo.runtimeconfig.json
+D:\DoNotComeIn\projects\GitHub Repositories\HomeWork\HomeWork_6\HomeWork6_10_Zoo\bin\Debug\netcoreapp3.1\HomeWork6_10_Zoo.runtimeconfig.dev.json
+D:\DoNotComeIn\projects\GitHub Repositories\HomeWork\HomeWork_6\HomeWork6_10_Zoo\bin\Debug\netcoreapp3.1\HomeWork6_10_Zoo.dll
+D:\DoNotComeIn\projects\GitHub Repositories\HomeWork\HomeWork_6\HomeWork6_10_Zoo\bin\Debug\netcoreapp3.1\HomeWork6_10_Zoo.pdb
+D:\DoNotComeIn\projects\GitHub Repositories\HomeWork\HomeWork_6\HomeWork6_10_Zoo\obj\Debug\netcoreapp3.1\HomeWork6_10_Zoo.dll
+D:\DoNotComeIn\projects\GitHub Repositories\HomeWork\HomeWork_6\HomeWork6_10_Zoo\obj\Debug\netcoreapp3.1\HomeWork6_10_Zoo.pdb
+D:\DoNotComeIn\projects\GitHub Repositories\HomeWork\HomeWork_6\HomeWork6_10_Zoo\obj\Debug\netcoreapp3.1\HomeWork6_10_Zoo.genruntimeconfig.cache
