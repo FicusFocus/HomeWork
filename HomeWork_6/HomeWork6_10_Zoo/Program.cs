@@ -15,58 +15,49 @@ namespace HomeWork6_10_Zoo
         static void Main(string[] args)
         {
             Zoo zoo = new Zoo();
-            zoo.AnimalsList();
-            zoo.ShowAnimalsInfo();
-            //while (true)
-            //{
-            //    Console.WriteLine("Добро пожадловать в Зоопарк!");
-            //    Console.WriteLine("\n\nВыберите действие:\n" +
-            //                      "1)Список животных зоопарка.\n" +
-            //                      "2)Список вольеров\n");
-            //}
+            
         }
     }
 
     class Zoo
     {
-        private List<Animal> _animals = new List<Animal>();
+        private List<Aviary> _aviarys = new List<Aviary>();
 
-        public void ShowAnimalsInfo()
+        public Zoo()
         {
-            for (int i = 0; i < _animals.Count; i++)
+            AviarysList();
+        }
+
+        public void Excursion()
+        {
+            while (true)
             {
-                _animals[i].ShowInfo();
+                Console.WriteLine("Добро пожадловать в Зоопарк!");
+                Console.WriteLine("\n\nВыберите к какому вольеру желаете подойти:\n" +
+                                  "1)Вольер со слонами\n" +
+                                  "2) Вольер с попугаями\n" +
+                                  "3) Вольер с тюленями\n" +
+                                  "4) Вольер со львами\n" +
+                                  "5) Вольер с гиенами\n" +
+                                  "6) Вольер с дикими собаками Динго\n" +
+                                  "7) Вольер с лисами\n");
             }
         }
 
-        public void AnimalsList()
+        public void ShowAAviaryInfo()
         {
-            _animals.Add(new Animal("Elephant", "male", "toot"));
-            _animals.Add(new Animal("Parrot", "male", "tweet"));
-            _animals.Add(new Animal("Seal", "male", "ow-ow-ow"));
-            _animals.Add(new Animal("Lion", "male", "roar"));
-            _animals.Add(new Animal("Hyena", "male", "laugh"));
-            _animals.Add(new Animal("Dingo", "male", "woof"));
-            _animals.Add(new Animal("Fox", "male", "What does the fox say? ヽ(ﾟ〇ﾟ)/"));
-        }
-    }
-
-    class Animal
-    {
-        public string Name { get; private set; }
-        public string Gender { get; private set; }
-        public string Sound { get; private set; }
-
-        public Animal(string name, string gender, string sound)
-        {
-            Name = name;
-            Gender = gender;
-            Sound = sound;
+            
         }
 
-        public void ShowInfo()
+        public void AviarysList()
         {
-            Console.WriteLine($"{Name}, пол - {Gender}, Издаваемый звук - {Sound}");
+            _aviarys.Add(new Aviary(4, "Elephant", "toot"));
+            _aviarys.Add(new Aviary(15, "Parrot", "tweet"));
+            _aviarys.Add(new Aviary(8, "Seal", "ow-ow-ow"));
+            _aviarys.Add(new Aviary(5, "Lion", "roar"));
+            _aviarys.Add(new Aviary(10, "Hyena", "laugh"));
+            _aviarys.Add(new Aviary(8, "Dingo", "woof"));
+            _aviarys.Add(new Aviary(9, "Fox", "What does the fox say? ヽ(ﾟ〇ﾟ)/"));
         }
     }
 }
