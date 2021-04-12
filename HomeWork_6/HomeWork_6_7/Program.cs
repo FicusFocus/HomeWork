@@ -1,16 +1,28 @@
 ﻿using System;
 using System.Collections.Generic;
 
+//Доработать. 
+//1. ref int productAmount - вместо вот этой конструкции сделайте свойство у class Shop, которое будет возвращать длину списка товаров. 
+//готово
+//2. Класс shop, не используется метод public void ShowBuyersBasket(), тогда и поле private Queue<Buyer> _buyers = new Queue<Buyer>(); не нужно 
+//готово
+//3. productNumber > _products.Count - если будет номер равен количеству, тогда будет _products[productNumber], что вызовет ошибку. ???? нихуя непонял
+//готов или не готов??
+//4.Очередность.Сначала поля, потом свойства. 
+//готово
+//5. class Product и int Amount - товар один, он не может знать о количестве. ???? нихуя непонял
+//Это другой уровень абстракции.Информация обколичестве должна обрабатываться в другом месте, можно создать дополнительный класс, 
+//который будет содержать сам товар и работу с количеством.
+
 namespace HomeWork_6_7
 {
     class Program
     {
         static void Main(string[] args)
         {
-            int productsAmount = 0;
             int buyersAmount = 10;
 
-            Shop seller = new Shop(ref productsAmount);
+            Shop seller = new Shop();
             Random rand = new Random();
 
             while (buyersAmount > 0)
@@ -23,7 +35,7 @@ namespace HomeWork_6_7
 
                 for (int i = 0; i < productsInBasket; i++)
                 {
-                    int productNumber = rand.Next(0, productsAmount);
+                    int productNumber = rand.Next(0, seller.ProductAmount);
 
                     if (seller.CheckProductAvailability(productNumber, out string productName, out int productPrice))
                     {
@@ -60,9 +72,10 @@ namespace HomeWork_6_7
     {
         private int _money = 0;
         private List<Product> _products = new List<Product>();
-        private Queue<Buyer> _buyers = new Queue<Buyer>();
+        //private Queue<Buyer> _buyers = new Queue<Buyer>();
+        public int ProductAmount { get; private set; }
 
-        public Shop(ref int productAmount)
+        public Shop()
         {
             _products.Add(new Product("Колбаска", 260, 100));
             _products.Add(new Product("Сыр", 370, 100));
@@ -70,7 +83,7 @@ namespace HomeWork_6_7
             _products.Add(new Product("Шоколадка", 70, 100));
             _products.Add(new Product("Пильмеши", 280, 100));
 
-            productAmount = _products.Count;
+            ProductAmount = _products.Count;
         }
 
         public void AddMoney(int moneyToPay)
@@ -88,21 +101,23 @@ namespace HomeWork_6_7
             }
         }
 
-        public void ShowBuyersBasket()
-        {
-            foreach (var buyer in _buyers)
-            {
-                buyer.ShowBasket();
-                Console.WriteLine("\n");
-            }
-        }
+        //public void ShowBuyersBasket()
+        //{
+        //    foreach (var buyer in _buyers)
+        //    {
+        //        buyer.ShowBasket();
+        //        Console.WriteLine("\n");
+        //    }
+        //}
 
         public bool CheckProductAvailability(int productNumber, out string productName, out int productPrice)
         {
             productName = null;
             productPrice = 0;
 
-            if (productNumber < 0 || productNumber > _products.Count)
+            //3. productNumber > _products.Count - если будет номер равен количеству, тогда будет _products[productNumber], что вызовет ошибку.
+
+            if (productNumber < 0 || productNumber >= _products.Count)
             {
                 return false;
             }
@@ -153,9 +168,9 @@ namespace HomeWork_6_7
 
     class Buyer
     {
-        public int MoneyToPay { get; private set; } = 0;
         private int _money;
         private List<Product> _basket = new List<Product>();
+        public int MoneyToPay { get; private set; } = 0;
 
         public Buyer()
         {
