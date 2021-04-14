@@ -1,17 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 
-//Доработать. 
-//1. ref int productAmount - вместо вот этой конструкции сделайте свойство у class Shop, которое будет возвращать длину списка товаров. 
-//готово
-//2. Класс shop, не используется метод public void ShowBuyersBasket(), тогда и поле private Queue<Buyer> _buyers = new Queue<Buyer>(); не нужно 
-//готово
-//3. productNumber > _products.Count - если будет номер равен количеству, тогда будет _products[productNumber], что вызовет ошибку. ???? нихуя непонял
-//готов или не готов??
-//4.Очередность.Сначала поля, потом свойства. 
-//готово
-//5. class Product и int Amount - товар один, он не может знать о количестве. ???? нихуя непонял
-//Это другой уровень абстракции.Информация обколичестве должна обрабатываться в другом месте, можно создать дополнительный класс, 
+//5. class Product и int Amount - товар один, он не может знать о количестве. 
+//Это другой уровень абстракции. Информация о количестве должна обрабатываться в другом месте, можно создать дополнительный класс, 
 //который будет содержать сам товар и работу с количеством.
 
 namespace HomeWork_6_7
@@ -71,17 +62,16 @@ namespace HomeWork_6_7
     class Shop
     {
         private int _money = 0;
-        private List<Product> _products = new List<Product>();
-        //private Queue<Buyer> _buyers = new Queue<Buyer>();
+        private List<ProductList> _products = new List<ProductList>();
         public int ProductAmount { get; private set; }
 
         public Shop()
         {
-            _products.Add(new Product("Колбаска", 260, 100));
-            _products.Add(new Product("Сыр", 370, 100));
-            _products.Add(new Product("Хлеб", 20, 100));
-            _products.Add(new Product("Шоколадка", 70, 100));
-            _products.Add(new Product("Пильмеши", 280, 100));
+            _products.Add(new ProductList("Колбаска", 260, 100));
+            _products.Add(new ProductList("Сыр", 370, 100));
+            _products.Add(new ProductList("Хлеб", 20, 100));
+            _products.Add(new ProductList("Шоколадка", 70, 100));
+            _products.Add(new ProductList("Пильмеши", 280, 100));
 
             ProductAmount = _products.Count;
         }
@@ -100,15 +90,6 @@ namespace HomeWork_6_7
                                   $"В наличии - {_products[i].Amount} штук.");
             }
         }
-
-        //public void ShowBuyersBasket()
-        //{
-        //    foreach (var buyer in _buyers)
-        //    {
-        //        buyer.ShowBasket();
-        //        Console.WriteLine("\n");
-        //    }
-        //}
 
         public bool CheckProductAvailability(int productNumber, out string productName, out int productPrice)
         {
@@ -169,7 +150,7 @@ namespace HomeWork_6_7
     class Buyer
     {
         private int _money;
-        private List<Product> _basket = new List<Product>();
+        private List<ProductList> _basket = new List<ProductList>();
         public int MoneyToPay { get; private set; } = 0;
 
         public Buyer()
@@ -202,7 +183,7 @@ namespace HomeWork_6_7
             }
             else
             {
-                _basket.Add(new Product(productName, productPrice, 1));
+                _basket.Add(new ProductList(productName, productPrice, 1));
                 MoneyToPay += _basket[_basket.Count - 1].Price;
             }
         }
@@ -256,27 +237,37 @@ namespace HomeWork_6_7
         }
     }
 
+    class ProductList : Product
+    {
+        public int _amount { get; private set; }
+
+        public ProductList(string name, int price, int amount) : base(name, price)
+        {
+            _amount = amount;
+        }
+
+
+        public void AddAmount(int amount = 1)
+        {
+            _amount += amount;
+        }
+
+        public void SubtractAmount(int amount = 1)
+        {
+            _amount -= amount;
+        }
+    }
+
     class Product
     {
         public string Name { get; private set; }
         public int Price { get; private set; }
         public int Amount { get; private set; }
 
-        public Product(string name, int price, int amount = 1)
+        public Product(string name, int price)
         {
             Name = name;
             Price = price;
-            Amount = amount;
-        }
-
-        public void AddAmount(int amount = 1)
-        {
-            Amount += amount;
-        }
-
-        public void SubtractAmount(int amount = 1)
-        {
-            Amount -= amount;
         }
     }
 }
