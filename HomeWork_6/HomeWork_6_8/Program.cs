@@ -1,6 +1,23 @@
 ﻿using System;
 using System.Collections.Generic;
 
+//Доработать. 
+//1. int CalculateDamage(int damage) - зачем получать свой показатель урона, если у метода есть доступ к этим данным у своего класса? 
+//
+//2. SpellChance - методы именуются с глагола.То, какие есть глаголы у слова spell не могу подобрать, чтобы они подходили для данного метода. 
+//готово
+//3. prockChance - как переводится слово prock?
+//готово
+//4. if (Chance<prockChance) return true; else return false; - это можно записать проще - return Chance<prockChance 
+//готово
+//5. Дубляж кода.При нанесении урона и при определении мертвых.Разница только в том, кто кого атакуете.
+//Эту логику можно вынести в отдельные методы. 
+//готово
+//6. У вас ничьи не может быть? 
+//готово
+//7. fight.StartFight(); - не повторяйте имя класса внутри имени его методов/полей.
+//готово
+
 namespace HomeWork_6_8
 {
     class Program
@@ -8,58 +25,8 @@ namespace HomeWork_6_8
         static void Main(string[] args)
         {
             Fight fight = new Fight();
-            fight.StartFight();
+            fight.BeginBattle();
             Console.ReadLine();
-        }
-    }
-
-    class Fighter
-    {
-        public string Name { get; protected set; }
-        public int Damage { get; protected set; }
-        public int Helth { get; protected set; }
-        public int CurrentHealth { get; protected set; }
-        public int Armor { get; protected set; }
-
-        public Fighter(string name, int damage, int helth, int armor, int positionX = 0, int positionY = 0)
-        {
-            Name = name;
-            Damage = damage;
-            Helth = helth;
-            Armor = armor;
-            CurrentHealth = helth;
-        }
-
-        public virtual int CalculateDamage(int damage)
-        {
-            Random rand = new Random();
-
-            int maxDamage = damage + (damage * 25 / 100);
-            int minDamage = damage - (damage * 25 / 100);
-
-            return damage = rand.Next(minDamage, maxDamage);
-        }
-
-        public virtual void TakeDamage(ref int damage)
-        {
-            damage = damage - (damage * Armor / 100);
-            CurrentHealth -= damage;
-        }
-
-        public void ShowHelth()
-        {
-            Console.WriteLine($"На текущий момент у {Name} - {CurrentHealth}/{Helth} HP");
-        }
-
-        public bool SpellChance(int prockChance)
-        {
-            Random rand = new Random();
-            int Chance = rand.Next(0, 100);
-
-            if (Chance < prockChance)
-                return true;
-            else
-                return false;
         }
     }
 
@@ -67,8 +34,9 @@ namespace HomeWork_6_8
     {
         private List<Fighter> _firstSquad = new List<Fighter>();
         private List<Fighter> _secondSquad = new List<Fighter>();
+        public Random Rand = new Random();
 
-        public void StartFight()
+        public void BeginBattle()
         {
             bool win = false;
             Random rand = new Random();
@@ -78,59 +46,62 @@ namespace HomeWork_6_8
             while (win == false)
             {
                 ShowFightersInfo();
+
                 Console.WriteLine("\n");
-
-                for (int i = 0; i < _firstSquad.Count; i++)
-                {
-                    int damage = _firstSquad[i].CalculateDamage(_firstSquad[i].Damage);
-                    int enemyFighter = rand.Next(0, _secondSquad.Count);
-                    _secondSquad[rand.Next(0, _secondSquad.Count)].TakeDamage(ref damage);
-
-                    Console.WriteLine($"Боец {_firstSquad[i].Name} нанес {damage} урона - {_secondSquad[enemyFighter].Name}");
-                }
+                AttackEnemy(_firstSquad, _secondSquad);
                 Console.WriteLine("\n");
+                AttackEnemy(_secondSquad, _firstSquad);
 
-                for (int i = 0; i < _secondSquad.Count; i++)
-                {
-                    int damage = _secondSquad[i].CalculateDamage(_secondSquad[i].Damage);
-                    int enemyFighter = rand.Next(0, _firstSquad.Count);
-                    _firstSquad[enemyFighter].TakeDamage(ref damage);
+                FinDeadMan(_firstSquad);
+                FinDeadMan(_secondSquad);
 
-                    Console.WriteLine($"Боец {_secondSquad[i].Name} нанес {damage} урона - {_firstSquad[enemyFighter].Name}");
-                }
-
-                for (int i = 0; i < _firstSquad.Count; i++)
-                {
-                    if (_firstSquad[i].CurrentHealth <= 0)
-                    {
-                        Console.WriteLine($"{_firstSquad[i].Name} - умер");
-                        _firstSquad.Remove(_firstSquad[i]);
-                    }
-                }
-
-                for (int i = 0; i < _secondSquad.Count; i++)
-                {
-                    if (_secondSquad[i].CurrentHealth <= 0)
-                    {
-                        Console.WriteLine($"{_secondSquad[i].Name} - умер");
-                        _secondSquad.Remove(_secondSquad[i]);
-                    }
-                }
-
-                if (_firstSquad.Count == 0 || _secondSquad.Count == 0)
-                {
-                    if (_firstSquad.Count == 0)
-                        Console.WriteLine("Победил второй отряд.");
-                    else
-                        Console.WriteLine("Победил первый отряд.");
-
-                    win = true;
-                }
+                win = FindWinner();
 
                 Console.ReadLine();
                 Console.Clear();
             }
 
+        }
+
+        public bool FindWinner()
+        {
+            if (_firstSquad.Count == 0 || _secondSquad.Count == 0)
+            {
+                if (_firstSquad.Count == 0)
+                    Console.WriteLine("Победил второй отряд.");
+                else if(_secondSquad.Count == 0)
+                    Console.WriteLine("Победил первый отряд.");
+                else
+                    Console.WriteLine("Пичья");
+
+                return true;
+            }
+
+            return false;
+        }
+
+        public void FinDeadMan(List<Fighter> squad)
+        {
+            for (int i = 0; i < squad.Count; i++)
+            {
+                if (squad[i].CurrentHealth <= 0)
+                {
+                    Console.WriteLine($"{squad[i].Name} - умер");
+                    squad.Remove(squad[i]);
+                }
+            }
+        }
+
+        public void AttackEnemy(List<Fighter> alliedSquad, List<Fighter> anemySquad)
+        {
+            for (int i = 0; i < alliedSquad.Count; i++)
+            {
+                int damage = alliedSquad[i].CalculateDamage(alliedSquad[i].Damage);
+                int enemyFighter = Rand.Next(0, anemySquad.Count);
+                anemySquad[enemyFighter].TakeDamage(ref damage);
+
+                Console.WriteLine($"Боец {alliedSquad[i].Name} нанес {damage} урона - {anemySquad[enemyFighter].Name}");
+            }
         }
 
         public void ShowFightersInfo()
@@ -162,6 +133,54 @@ namespace HomeWork_6_8
         }
     }
 
+    class Fighter
+    {
+        public string Name { get; protected set; }
+        public int Damage { get; protected set; }
+        public int Helth { get; protected set; }
+        public int CurrentHealth { get; protected set; }
+        public int Armor { get; protected set; }
+
+        public Fighter(string name, int damage, int helth, int armor, int positionX = 0, int positionY = 0)
+        {
+            Name = name;
+            Damage = damage;
+            Helth = helth;
+            Armor = armor;
+            CurrentHealth = helth;
+        }
+
+        //1. int CalculateDamage(int damage) - зачем получать свой показатель урона, если у метода есть доступ к этим данным у своего класса?
+
+        public virtual int CalculateDamage(int damage)
+        {
+            Random rand = new Random();
+
+            int maxDamage = damage + (damage * 25 / 100);
+            int minDamage = damage - (damage * 25 / 100);
+
+            return damage = rand.Next(minDamage, maxDamage);
+        }
+
+        public virtual void TakeDamage(ref int damage)
+        {
+            damage = damage - (damage * Armor / 100);
+            CurrentHealth -= damage;
+        }
+
+        public void ShowHelth()
+        {
+            Console.WriteLine($"На текущий момент у {Name} - {CurrentHealth}/{Helth} HP");
+        }
+
+        public bool CalculateOpportunity(int chanceOfTriggering)
+        {
+            Random rand = new Random();
+            int Chance = rand.Next(0, 100);
+            return (Chance < chanceOfTriggering);
+        }
+    }
+
     class Spearman : Fighter
     {
         private int _critChanse = 40;
@@ -175,10 +194,10 @@ namespace HomeWork_6_8
 
         public override int CalculateDamage(int damage)
         {
-            if (SpellChance(_critChanse))
+            if (CalculateOpportunity(_critChanse))
             {
                 damage += Damage * _criticalDamage / 100;
-                Console.WriteLine($"{Name} совершает критическое попадание и нанесет {damage} урона.");
+                Console.WriteLine($"{Name} совершает критическое попадание и наносит {damage} урона.");
             }
 
             return base.CalculateDamage(damage);
@@ -188,7 +207,7 @@ namespace HomeWork_6_8
         {
             if (_healTiksAmount > 0)
             {
-                if (SpellChance(_healChanse))
+                if (CalculateOpportunity(_healChanse))
                 {
                     CurrentHealth += _healingPover;
                     _healingPover += _increasedHealing;
@@ -212,7 +231,7 @@ namespace HomeWork_6_8
 
         public override void TakeDamage(ref int damage)
         {
-            if (SpellChance(_blockChance))
+            if (CalculateOpportunity(_blockChance))
             {
                 damage = 0;
                 Console.WriteLine($"{Name} блокирует удар щитом, урон не прошел.");
