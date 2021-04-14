@@ -1,6 +1,24 @@
 ﻿using System;
 using System.Collections.Generic;
 
+//1. FishList - не глагол 
+//готово
+//2. else { alreadyInAquarium = false; } - лишнее.Оно и так останется false, если не нашел имя 
+//
+//3. randdomfish - 2 слова 
+//
+//4. FillTheAquarium - The не надо. 
+//готово
+//5. FillTheAquarium - много дубляжа кода. 
+//
+//6. private List<Fish> _fishInAquarium = new List<Fish>(); private List<Fish> _fishs = new List<Fish>(); 
+//- Поля/свойства не инициализируем в классе, для этого есть конструктор. 
+//
+//7. while (true) - у цикла обязательно должно быть условие окончания 
+//готово
+//8. LifeInside - не глагол.
+//
+
 namespace HomeWork_6_9
 {
     class Program
@@ -21,14 +39,21 @@ namespace HomeWork_6_9
 
         public Aquarium()
         {
-            FishList();
+            _fishs.Add(new Fish("Скат", 23));
+            _fishs.Add(new Fish("Бычок", 6));
+            _fishs.Add(new Fish("Сомик", 10));
+            _fishs.Add(new Fish("Илистый прыгун", 3));
+            _fishs.Add(new Fish("Пескарь", 7));
+            _fishs.Add(new Fish("Угорь", 12));
+            _fishs.Add(new Fish("Рыба игла", 10));
         }
 
         public void LifeInside()
         {
-            FillTheAquarium();
+            FillAquarium();
+            bool closeProgramm = false;
 
-            while (true)
+            while (closeProgramm == false)
             {
                 ShowInhabitants();
                 CheckAge();
@@ -36,10 +61,12 @@ namespace HomeWork_6_9
                 if (_fishInAquarium.Count < _placeAmount)
                 {
                     Console.WriteLine("Освободились места, добавляется новая рыбка.");
-                    FillTheAquarium();
+                    FillAquarium();
                 }
 
-                Console.ReadLine();
+                if (Console.ReadKey().Key == ConsoleKey.Escape)
+                    closeProgramm = true;
+
                 Console.Clear();
                 AddAge();
             }
@@ -74,7 +101,7 @@ namespace HomeWork_6_9
             _fishInAquarium.RemoveAt(fishNumber);
         }
 
-        public void FillTheAquarium()
+        public void FillAquarium()
         {
             Random rand = new Random();
             while (_fishInAquarium.Count < _placeAmount)
@@ -123,17 +150,6 @@ namespace HomeWork_6_9
             {
                 fish.Showinfo();
             }
-        }
-
-        public void FishList()
-        {
-            _fishs.Add(new Fish("Скат", 23));
-            _fishs.Add(new Fish("Бычок", 6));
-            _fishs.Add(new Fish("Сомик", 10));
-            _fishs.Add(new Fish("Илистый прыгун", 3));
-            _fishs.Add(new Fish("Пескарь", 7));
-            _fishs.Add(new Fish("Угорь", 12));
-            _fishs.Add(new Fish("Рыба игла", 10));
         }
     }
 
