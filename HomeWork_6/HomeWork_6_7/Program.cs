@@ -1,10 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 
-//5. class Product и int Amount - товар один, он не может знать о количестве. 
-//Это другой уровень абстракции. Информация о количестве должна обрабатываться в другом месте, можно создать дополнительный класс, 
-//который будет содержать сам товар и работу с количеством.
-
 namespace HomeWork_6_7
 {
     class Program
@@ -62,18 +58,18 @@ namespace HomeWork_6_7
     class Shop
     {
         private int _money = 0;
-        private List<ProductList> _products = new List<ProductList>();
+        private List<Storage> _productsInStorage = new List<Storage>();
         public int ProductAmount { get; private set; }
 
         public Shop()
         {
-            _products.Add(new ProductList("Колбаска", 260, 100));
-            _products.Add(new ProductList("Сыр", 370, 100));
-            _products.Add(new ProductList("Хлеб", 20, 100));
-            _products.Add(new ProductList("Шоколадка", 70, 100));
-            _products.Add(new ProductList("Пильмеши", 280, 100));
+            _productsInStorage.Add(new Storage("Колбаска", 260, 100));
+            _productsInStorage.Add(new Storage("Сыр", 370, 100));
+            _productsInStorage.Add(new Storage("Хлеб", 20, 100));
+            _productsInStorage.Add(new Storage("Шоколадка", 70, 100));
+            _productsInStorage.Add(new Storage("Пильмеши", 280, 100));
 
-            ProductAmount = _products.Count;
+            ProductAmount = _productsInStorage.Count;
         }
 
         public void AddMoney(int moneyToPay)
@@ -83,11 +79,11 @@ namespace HomeWork_6_7
 
         public void ShowProducts()
         {
-            for (int i = 0; i < _products.Count; i++)
+            for (int i = 0; i < _productsInStorage.Count; i++)
             {
-                Console.WriteLine($"{_products[i].Name}, " +
-                                  $"{_products[i].Price}. " +
-                                  $"В наличии - {_products[i].Amount} штук.");
+                Console.WriteLine($"{_productsInStorage[i].Name}, " +
+                                  $"{_productsInStorage[i].Price}. " +
+                                  $"В наличии - {_productsInStorage[i].Amount} штук.");
             }
         }
 
@@ -98,20 +94,20 @@ namespace HomeWork_6_7
 
             //3. productNumber > _products.Count - если будет номер равен количеству, тогда будет _products[productNumber], что вызовет ошибку.
 
-            if (productNumber < 0 || productNumber >= _products.Count)
+            if (productNumber < 0 || productNumber >= _productsInStorage.Count)
             {
                 return false;
             }
             else
             {
-                if (_products[productNumber].Amount == 0)
+                if (_productsInStorage[productNumber].Amount == 0)
                 {
                     return false;
                 }
                 else
                 {
-                    productName = _products[productNumber].Name;
-                    productPrice = _products[productNumber].Price;
+                    productName = _productsInStorage[productNumber].Name;
+                    productPrice = _productsInStorage[productNumber].Price;
                     return true;
                 }
             }
@@ -119,11 +115,11 @@ namespace HomeWork_6_7
 
         public void SubtractProductsAmount(string productName)
         {
-            for (int i = 0; i < _products.Count; i++)
+            for (int i = 0; i < _productsInStorage.Count; i++)
             {
-                if (_products[i].Name == productName)
+                if (_productsInStorage[i].Name == productName)
                 {
-                    _products[i].SubtractAmount();
+                    _productsInStorage[i].SubtractAmount();
                     continue;
                 }
             }
@@ -131,11 +127,11 @@ namespace HomeWork_6_7
 
         public void AddProductsAmount(string productName)
         {
-            for (int i = 0; i < _products.Count; i++)
+            for (int i = 0; i < _productsInStorage.Count; i++)
             {
-                if (_products[i].Name == productName)
+                if (_productsInStorage[i].Name == productName)
                 {
-                    _products[i].AddAmount();
+                    _productsInStorage[i].AddAmount();
                     continue;
                 }
             }
@@ -150,7 +146,7 @@ namespace HomeWork_6_7
     class Buyer
     {
         private int _money;
-        private List<ProductList> _basket = new List<ProductList>();
+        private List<Storage> _basket = new List<Storage>();
         public int MoneyToPay { get; private set; } = 0;
 
         public Buyer()
@@ -183,7 +179,7 @@ namespace HomeWork_6_7
             }
             else
             {
-                _basket.Add(new ProductList(productName, productPrice, 1));
+                _basket.Add(new Storage(productName, productPrice, 1));
                 MoneyToPay += _basket[_basket.Count - 1].Price;
             }
         }
@@ -237,11 +233,11 @@ namespace HomeWork_6_7
         }
     }
 
-    class ProductList : Product
+    class Storage : Product
     {
         public int _amount { get; private set; }
 
-        public ProductList(string name, int price, int amount) : base(name, price)
+        public Storage(string name, int price, int amount) : base(name, price)
         {
             _amount = amount;
         }
