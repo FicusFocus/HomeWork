@@ -1,23 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 
-//Доработать. 
-//1. int CalculateDamage(int damage) - зачем получать свой показатель урона, если у метода есть доступ к этим данным у своего класса? 
-//
-//2. SpellChance - методы именуются с глагола.То, какие есть глаголы у слова spell не могу подобрать, чтобы они подходили для данного метода. 
-//готово
-//3. prockChance - как переводится слово prock?
-//готово
-//4. if (Chance<prockChance) return true; else return false; - это можно записать проще - return Chance<prockChance 
-//готово
-//5. Дубляж кода.При нанесении урона и при определении мертвых.Разница только в том, кто кого атакуете.
-//Эту логику можно вынести в отдельные методы. 
-//готово
-//6. У вас ничьи не может быть? 
-//готово
-//7. fight.StartFight(); - не повторяйте имя класса внутри имени его методов/полей.
-//готово
-
 namespace HomeWork_6_8
 {
     class Program
@@ -96,7 +79,7 @@ namespace HomeWork_6_8
         {
             for (int i = 0; i < alliedSquad.Count; i++)
             {
-                int damage = alliedSquad[i].CalculateDamage(alliedSquad[i].Damage);
+                int damage = alliedSquad[i].CalculateDamage(alliedSquad[i].AverageDamage);
                 int enemyFighter = Rand.Next(0, anemySquad.Count);
                 anemySquad[enemyFighter].TakeDamage(ref damage);
 
@@ -136,21 +119,19 @@ namespace HomeWork_6_8
     class Fighter
     {
         public string Name { get; protected set; }
-        public int Damage { get; protected set; }
+        public int AverageDamage { get; protected set; }
         public int Helth { get; protected set; }
         public int CurrentHealth { get; protected set; }
         public int Armor { get; protected set; }
 
-        public Fighter(string name, int damage, int helth, int armor, int positionX = 0, int positionY = 0)
+        public Fighter(string name, int averageDamage, int helth, int armor)
         {
             Name = name;
-            Damage = damage;
+            AverageDamage = averageDamage;
             Helth = helth;
             Armor = armor;
             CurrentHealth = helth;
         }
-
-        //1. int CalculateDamage(int damage) - зачем получать свой показатель урона, если у метода есть доступ к этим данным у своего класса?
 
         public virtual int CalculateDamage(int damage)
         {
@@ -196,7 +177,7 @@ namespace HomeWork_6_8
         {
             if (CalculateOpportunity(_critChanse))
             {
-                damage += Damage * _criticalDamage / 100;
+                damage += AverageDamage * _criticalDamage / 100;
                 Console.WriteLine($"{Name} совершает критическое попадание и наносит {damage} урона.");
             }
 
