@@ -91,13 +91,13 @@ namespace HomeWork_6_8
         {
             Console.WriteLine("\nПервый отряд:");
 
-            for (int i = 0; i < _firstSquad.Count; i++)
-                _firstSquad[i].ShowHelth();
+            foreach (var squad in _firstSquad)
+                squad.ShowHelth();
 
             Console.WriteLine("\nВторой отряд:");
 
-            for (int i = 0; i < _secondSquad.Count; i++)
-                _secondSquad[i].ShowHelth();
+            foreach (var squad in _secondSquad)
+                squad.ShowHelth();
         }
 
         private void AddFighters()
