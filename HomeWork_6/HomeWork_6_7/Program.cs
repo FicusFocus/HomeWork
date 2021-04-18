@@ -1,27 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 
-//1. if (productNumber < 0 || productNumber >= _productsInStorage.Count) - у вас есть свойство ProductsAmount, 
-//его можно использовать вместо _productsInStorage.Count 
-//готово
-//2. При запуске кода все продукты с супермаркете отсутствуют в наличии 
-//готово
-//3. for (int i = 0; i < _productsInStorage.Count; i++) - в большинстве таких циклов можно обойтись использованием foreach 
-//готово
-//4. class Storage : Product - склад не может являться продуктом, склад должен содержать их. 
-//готово
-//5. public void ChangeBasket - по названию непонятно как именно изменяется содержимое корзины 
-//готово
-//6. if (_basket[productNumber].Amount > 1) ... else { ... } - код в этих условиях дублируется и есть общая часть, 
-//которую можно вынести из них 
-//готово
-//7. public int _amount { get; private set; } - не забывайте про правила именования.
-//Также это свойство не используется вне класса, поэтому оно не должно быть public 
-//готово
-//8. public bool CheckProductAvailability(int productNumber, out string productName, out int productPrice) - модификаторы out не нужны, 
-//так как после выполнения метода их значения остаются как были
-//готово
-
 namespace HomeWork_6_7
 {
     class Program
