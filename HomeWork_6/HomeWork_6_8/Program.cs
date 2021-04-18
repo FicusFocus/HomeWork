@@ -79,7 +79,7 @@ namespace HomeWork_6_8
         {
             for (int i = 0; i < alliedSquad.Count; i++)
             {
-                int damage = alliedSquad[i].CalculateDamage(alliedSquad[i].AverageDamage);
+                int damage = alliedSquad[i].CalculateDamage();
                 int enemyFighter = Rand.Next(0, anemySquad.Count);
                 anemySquad[enemyFighter].TakeDamage(ref damage);
 
@@ -133,14 +133,13 @@ namespace HomeWork_6_8
             CurrentHealth = helth;
         }
 
-        public virtual int CalculateDamage(int damage)
+        public virtual int CalculateDamage()
         {
             Random rand = new Random();
+            int maxDamage = AverageDamage + (AverageDamage * 25 / 100);
+            int minDamage = AverageDamage - (AverageDamage * 25 / 100);
 
-            int maxDamage = damage + (damage * 25 / 100);
-            int minDamage = damage - (damage * 25 / 100);
-
-            return damage = rand.Next(minDamage, maxDamage);
+            return rand.Next(minDamage, maxDamage);
         }
 
         public virtual void TakeDamage(ref int damage)
@@ -170,18 +169,19 @@ namespace HomeWork_6_8
         private int _healTiksAmount = 3;
         private int _increasedHealing = 30;
         private int _healingPover = 50;
+        private int _damage = 0;
 
         public Spearman(string name) : base(name, 70, 400, 20) { }
 
-        public override int CalculateDamage(int damage)
+        public override int CalculateDamage()
         {
             if (CalculateOpportunity(_critChanse))
             {
-                damage += AverageDamage * _criticalDamage / 100;
-                Console.WriteLine($"{Name} совершает критическое попадание и наносит {damage} урона.");
+                _damage += AverageDamage * _criticalDamage / 100;
+                Console.WriteLine($"{Name} совершает критическое попадание и наносит {_damage} урона.");
             }
 
-            return base.CalculateDamage(damage);
+            return base.CalculateDamage();
         }
 
         public override void TakeDamage(ref int damage)
