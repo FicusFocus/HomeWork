@@ -9,7 +9,7 @@ using System.Collections.Generic;
 //3. for (int i = 0; i < _productsInStorage.Count; i++) - в большинстве таких циклов можно обойтись использованием foreach 
 //готово
 //4. class Storage : Product - склад не может являться продуктом, склад должен содержать их. 
-//
+//готово
 //5. public void ChangeBasket - по названию непонятно как именно изменяется содержимое корзины 
 //готово
 //6. if (_basket[productNumber].Amount > 1) ... else { ... } - код в этих условиях дублируется и есть общая часть, 
@@ -20,7 +20,7 @@ using System.Collections.Generic;
 //готово
 //8. public bool CheckProductAvailability(int productNumber, out string productName, out int productPrice) - модификаторы out не нужны, 
 //так как после выполнения метода их значения остаются как были
-//
+//готово
 
 namespace HomeWork_6_7
 {
@@ -44,8 +44,10 @@ namespace HomeWork_6_7
                 for (int i = 0; i < productsInBasket; i++)
                 {
                     int productNumber = rand.Next(0, seller.ProductAmount);
+                    string productName = null;
+                    int productPrice = 0;
 
-                    if (seller.CheckProductAvailability(productNumber, out string productName, out int productPrice))
+                    if (seller.CheckProductAvailability(productNumber, ref productName, ref productPrice))
                     {
                         buyer.AddToBasket(productName, productPrice);
                         seller.SubtractProductsAmount(productName);
@@ -101,14 +103,11 @@ namespace HomeWork_6_7
         public void ShowProducts()
         {
             foreach (var product in _productsInStorage)
-                Console.WriteLine($"{product.Name}, {product.Price}. В наличии - {product.Amount} штук.");
+                Console.WriteLine($"{product.Product.Name}, {product.Product.Price}. В наличии - {product.Amount} штук.");
         }
 
-        public bool CheckProductAvailability(int productNumber, out string productName, out int productPrice) // out нужен (вроде как).
+        public bool CheckProductAvailability(int productNumber, ref string productName, ref int productPrice)
         {
-            productName = null;
-            productPrice = 0;
-
             if (productNumber < 0 || productNumber >= ProductAmount)
             {
                 return false;
@@ -121,8 +120,8 @@ namespace HomeWork_6_7
                 }
                 else
                 {
-                    productName = _productsInStorage[productNumber].Name;
-                    productPrice = _productsInStorage[productNumber].Price;
+                    productName = _productsInStorage[productNumber].Product.Name;
+                    productPrice = _productsInStorage[productNumber].Product.Price;
                     return true;
                 }
             }
@@ -132,7 +131,7 @@ namespace HomeWork_6_7
         {
             for (int i = 0; i < _productsInStorage.Count; i++)
             {
-                if (_productsInStorage[i].Name == productName)
+                if (_productsInStorage[i].Product.Name == productName)
                 {
                     _productsInStorage[i].SubtractAmount();
                     continue;
@@ -144,7 +143,7 @@ namespace HomeWork_6_7
         {
             for (int i = 0; i < _productsInStorage.Count; i++)
             {
-                if (_productsInStorage[i].Name == productName)
+                if (_productsInStorage[i].Product.Name == productName)
                 {
                     _productsInStorage[i].AddAmount();
                     continue;
@@ -176,7 +175,7 @@ namespace HomeWork_6_7
             int numberInBasket = 0;
             for (int i = 0; i < _basket.Count; i++)
             {
-                if (_basket[i].Name == productName)
+                if (_basket[i].Product.Name == productName)
                 {
                     numberInBasket = i;
                     i = _basket.Count;
@@ -190,43 +189,34 @@ namespace HomeWork_6_7
             if (alreadyInBasket)
             {
                 _basket[numberInBasket].AddAmount();
-                MoneyToPay += _basket[numberInBasket].Price;
+                MoneyToPay += _basket[numberInBasket].Product.Price;
             }
             else
             {
                 _basket.Add(new Storage(productName, productPrice, 1));
-                MoneyToPay += _basket[_basket.Count - 1].Price;
+                MoneyToPay += _basket[_basket.Count - 1].Product.Price;
             }
         }
 
         public void ShowBasket()
         {
             for (int i = 0; i < _basket.Count; i++)
-                Console.WriteLine($"    {i + 1}) {_basket[i].Name}, {_basket[i].Amount} штук. Стоимость - {_basket[i].Amount * _basket[i].Price}");
+                Console.WriteLine($"    {i + 1}) {_basket[i].Product.Name}, {_basket[i].Amount} штук. Стоимость - {_basket[i].Amount * _basket[i].Product.Price}");
         }
 
         public void RemoveFromBasket(ref string productName)
         {
             Random rand = new Random();
             int productNumber = rand.Next(0, _basket.Count);
-            productName = _basket[productNumber].Name;
+            productName = _basket[productNumber].Product.Name;
+
+            Console.WriteLine($"Из корзины покупок был(а) удален(а) 1 {_basket[productNumber].Product.Name}.");
+            MoneyToPay -= _basket[productNumber].Product.Price;
 
             if (_basket[productNumber].Amount > 1)
-            {
-                ShowDeleteMassage(productNumber);
                 _basket[productNumber].SubtractAmount();
-            }
             else
-            {
-                ShowDeleteMassage(productNumber);
                 _basket.RemoveAt(productNumber);
-            }
-        }
-
-        private void ShowDeleteMassage(int productNumber) // кривое название
-        {
-            Console.WriteLine($"Из корзины покупок был(а) удален(а) 1 {_basket[productNumber].Name}.");
-            MoneyToPay -= _basket[productNumber].Price;
         }
 
         public bool CheckSolvency()
@@ -252,12 +242,14 @@ namespace HomeWork_6_7
         }
     }
 
-    class Storage : Product
+    class Storage
     {
         public int Amount { get; private set; }
+        public Product Product {get; private set;}
 
-        public Storage(string name, int price, int amount) : base(name, price)
+        public Storage(string name, int price, int amount)
         {
+            Product = new Product(name, price);
             Amount = amount;
         }
 
