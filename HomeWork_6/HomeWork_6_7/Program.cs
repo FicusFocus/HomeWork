@@ -1,6 +1,27 @@
 ﻿using System;
 using System.Collections.Generic;
 
+//1. if (productNumber < 0 || productNumber >= _productsInStorage.Count) - у вас есть свойство ProductsAmount, 
+//его можно использовать вместо _productsInStorage.Count 
+//готово
+//2. При запуске кода все продукты с супермаркете отсутствуют в наличии 
+//готово
+//3. for (int i = 0; i < _productsInStorage.Count; i++) - в большинстве таких циклов можно обойтись использованием foreach 
+//готово
+//4. class Storage : Product - склад не может являться продуктом, склад должен содержать их. 
+//
+//5. public void ChangeBasket - по названию непонятно как именно изменяется содержимое корзины 
+//готово
+//6. if (_basket[productNumber].Amount > 1) ... else { ... } - код в этих условиях дублируется и есть общая часть, 
+//которую можно вынести из них 
+//готово
+//7. public int _amount { get; private set; } - не забывайте про правила именования.
+//Также это свойство не используется вне класса, поэтому оно не должно быть public 
+//готово
+//8. public bool CheckProductAvailability(int productNumber, out string productName, out int productPrice) - модификаторы out не нужны, 
+//так как после выполнения метода их значения остаются как были
+//
+
 namespace HomeWork_6_7
 {
     class Program
@@ -37,7 +58,7 @@ namespace HomeWork_6_7
                 {
                     string productName = null;
 
-                    buyer.ChangeBasket(ref productName);
+                    buyer.RemoveFromBasket(ref productName);
                     seller.AddProductsAmount(productName);
                 }
 
@@ -79,22 +100,16 @@ namespace HomeWork_6_7
 
         public void ShowProducts()
         {
-            for (int i = 0; i < _productsInStorage.Count; i++)
-            {
-                Console.WriteLine($"{_productsInStorage[i].Name}, " +
-                                  $"{_productsInStorage[i].Price}. " +
-                                  $"В наличии - {_productsInStorage[i].Amount} штук.");
-            }
+            foreach (var product in _productsInStorage)
+                Console.WriteLine($"{product.Name}, {product.Price}. В наличии - {product.Amount} штук.");
         }
 
-        public bool CheckProductAvailability(int productNumber, out string productName, out int productPrice)
+        public bool CheckProductAvailability(int productNumber, out string productName, out int productPrice) // out нужен (вроде как).
         {
             productName = null;
             productPrice = 0;
 
-            //3. productNumber > _products.Count - если будет номер равен количеству, тогда будет _products[productNumber], что вызовет ошибку.
-
-            if (productNumber < 0 || productNumber >= _productsInStorage.Count)
+            if (productNumber < 0 || productNumber >= ProductAmount)
             {
                 return false;
             }
@@ -190,7 +205,7 @@ namespace HomeWork_6_7
                 Console.WriteLine($"    {i + 1}) {_basket[i].Name}, {_basket[i].Amount} штук. Стоимость - {_basket[i].Amount * _basket[i].Price}");
         }
 
-        public void ChangeBasket(ref string productName)
+        public void RemoveFromBasket(ref string productName)
         {
             Random rand = new Random();
             int productNumber = rand.Next(0, _basket.Count);
@@ -198,16 +213,20 @@ namespace HomeWork_6_7
 
             if (_basket[productNumber].Amount > 1)
             {
-                Console.WriteLine($"Из корзины покупок был(а) удален(а) 1 {_basket[productNumber].Name}.");
-                MoneyToPay -= _basket[productNumber].Price;
+                ShowDeleteMassage(productNumber);
                 _basket[productNumber].SubtractAmount();
             }
             else
             {
-                Console.WriteLine($"Из корзины был(а) удален(а) {_basket[productNumber].Name}.");
-                MoneyToPay -= _basket[productNumber].Price;
+                ShowDeleteMassage(productNumber);
                 _basket.RemoveAt(productNumber);
             }
+        }
+
+        private void ShowDeleteMassage(int productNumber) // кривое название
+        {
+            Console.WriteLine($"Из корзины покупок был(а) удален(а) 1 {_basket[productNumber].Name}.");
+            MoneyToPay -= _basket[productNumber].Price;
         }
 
         public bool CheckSolvency()
@@ -235,22 +254,21 @@ namespace HomeWork_6_7
 
     class Storage : Product
     {
-        public int _amount { get; private set; }
+        public int Amount { get; private set; }
 
         public Storage(string name, int price, int amount) : base(name, price)
         {
-            _amount = amount;
+            Amount = amount;
         }
-
 
         public void AddAmount(int amount = 1)
         {
-            _amount += amount;
+            Amount += amount;
         }
 
         public void SubtractAmount(int amount = 1)
         {
-            _amount -= amount;
+            Amount -= amount;
         }
     }
 
@@ -258,7 +276,6 @@ namespace HomeWork_6_7
     {
         public string Name { get; private set; }
         public int Price { get; private set; }
-        public int Amount { get; private set; }
 
         public Product(string name, int price)
         {
