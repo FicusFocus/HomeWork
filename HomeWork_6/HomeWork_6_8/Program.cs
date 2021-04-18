@@ -169,7 +169,6 @@ namespace HomeWork_6_8
         private int _healTiksAmount = 3;
         private int _increasedHealing = 30;
         private int _healingPover = 50;
-        private int _damage = 0;
 
         public Spearman(string name) : base(name, 70, 400, 20) { }
 
@@ -177,8 +176,9 @@ namespace HomeWork_6_8
         {
             if (CalculateOpportunity(_critChanse))
             {
-                _damage += AverageDamage * _criticalDamage / 100;
-                Console.WriteLine($"{Name} совершает критическое попадание и наносит {_damage} урона.");
+                int damage = AverageDamage;
+                damage += AverageDamage * _criticalDamage / 100;
+                Console.WriteLine($"{Name} совершает критическое попадание и наносит {damage} урона.");
             }
 
             return base.CalculateDamage();
