@@ -17,7 +17,7 @@ namespace HomeWork_6_8
     {
         private List<Fighter> _firstSquad = new List<Fighter>();
         private List<Fighter> _secondSquad = new List<Fighter>();
-        public Random Rand = new Random();
+        private Random _rand = new Random();
 
         public void BeginBattle()
         {
@@ -35,8 +35,8 @@ namespace HomeWork_6_8
                 Console.WriteLine("\n");
                 AttackEnemy(_secondSquad, _firstSquad);
 
-                FinDeadMan(_firstSquad);
-                FinDeadMan(_secondSquad);
+                FindDeadMan(_firstSquad);
+                FindDeadMan(_secondSquad);
 
                 win = FindWinner();
 
@@ -63,7 +63,7 @@ namespace HomeWork_6_8
             return false;
         }
 
-        public void FinDeadMan(List<Fighter> squad)
+        public void FindDeadMan(List<Fighter> squad)
         {
             for (int i = 0; i < squad.Count; i++)
             {
@@ -80,7 +80,7 @@ namespace HomeWork_6_8
             for (int i = 0; i < alliedSquad.Count; i++)
             {
                 int damage = alliedSquad[i].CalculateDamage();
-                int enemyFighter = Rand.Next(0, anemySquad.Count);
+                int enemyFighter = _rand.Next(0, anemySquad.Count);
                 anemySquad[enemyFighter].TakeDamage(ref damage);
 
                 Console.WriteLine($"Боец {alliedSquad[i].Name} нанес {damage} урона - {anemySquad[enemyFighter].Name}");
@@ -118,6 +118,7 @@ namespace HomeWork_6_8
 
     class Fighter
     {
+        private Random _rand = new Random();
         public string Name { get; protected set; }
         public int AverageDamage { get; protected set; }
         public int Helth { get; protected set; }
@@ -135,11 +136,10 @@ namespace HomeWork_6_8
 
         public virtual int CalculateDamage()
         {
-            Random rand = new Random();
             int maxDamage = AverageDamage + (AverageDamage * 25 / 100);
             int minDamage = AverageDamage - (AverageDamage * 25 / 100);
 
-            return rand.Next(minDamage, maxDamage);
+            return _rand.Next(minDamage, maxDamage);
         }
 
         public virtual void TakeDamage(ref int damage)
