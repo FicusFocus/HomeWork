@@ -1,24 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 
-//1. FishList - не глагол 
-//готово
-//2. else { alreadyInAquarium = false; } - лишнее.Оно и так останется false, если не нашел имя 
-//готово
-//3. randdomfish - 2 слова 
-//готово
-//4. FillTheAquarium - The не надо. 
-//готово
-//5. FillTheAquarium - много дубляжа кода. 
-//
-//6. private List<Fish> _fishInAquarium = new List<Fish>(); private List<Fish> _fishs = new List<Fish>(); 
-//- Поля/свойства не инициализируем в классе, для этого есть конструктор. 
-//
-//7. while (true) - у цикла обязательно должно быть условие окончания 
-//готово
-//8. LifeInside - не глагол.
-//готово
-
 namespace HomeWork_6_9
 {
     class Program

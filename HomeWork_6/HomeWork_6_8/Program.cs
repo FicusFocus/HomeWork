@@ -118,7 +118,7 @@ namespace HomeWork_6_8
 
     class Fighter
     {
-        private Random _rand = new Random();
+        private static Random _rand = new Random();
         public string Name { get; protected set; }
         public int AverageDamage { get; protected set; }
         public int Helth { get; protected set; }
