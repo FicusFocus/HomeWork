@@ -32,7 +32,7 @@ namespace HomeWork_6_9
 
         public void ShowLifeInside()
         {
-            FillAquarium();
+            LaunchFishes();
             bool closeProgramm = false;
 
             while (closeProgramm == false)
@@ -43,7 +43,7 @@ namespace HomeWork_6_9
                 if (_fishesInside.Count < _placeAmount)
                 {
                     Console.WriteLine("Освободились места, добавляется новая рыбка.");
-                    FillAquarium();
+                    LaunchFishes();
                 }
 
                 if (Console.ReadKey().Key == ConsoleKey.Escape)
@@ -88,7 +88,7 @@ namespace HomeWork_6_9
             _fishesInside.RemoveAt(fishNumber);
         }
 
-        public void FillAquarium()
+        public void LaunchFishes()
         {
             Random rand = new Random();
             while (_fishesInside.Count < _placeAmount)
