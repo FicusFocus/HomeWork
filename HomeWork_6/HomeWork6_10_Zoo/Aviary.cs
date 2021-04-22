@@ -28,12 +28,28 @@ namespace HomeWork6_10_Zoo
             }
         }
 
+        public void ShowInfo()
+        {
+            int male = 0;
+            int female = 0;
+
+            foreach (var animal in _animals)
+            {
+                if (animal.Gender == "Самец")
+                    male++;
+                else
+                    female++;
+            }
+
+            Console.WriteLine($"Вальер с {_name}, издает звук {_sound}, самок - {female}, самцов - {male}.");
+        }
+
         private string RandomGender()
         {
             Random rand = new Random();
             List<string> genders = new List<string>();
-            genders.Add("male");
-            genders.Add("female");
+            genders.Add("Самец");
+            genders.Add("Самка");
 
             int randomGender = rand.Next(0, genders.Count);
 

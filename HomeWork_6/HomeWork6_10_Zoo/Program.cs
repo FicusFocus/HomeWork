@@ -15,22 +15,10 @@ namespace HomeWork6_10_Zoo
         static void Main(string[] args)
         {
             Zoo zoo = new Zoo();
-            
-        }
-    }
 
-    class Zoo
-    {
-        private List<Aviary> _aviarys = new List<Aviary>();
+            bool isWork = true;
 
-        public Zoo()
-        {
-            AviarysList();
-        }
-
-        public void Excursion()
-        {
-            while (true)
+            while (isWork)
             {
                 Console.WriteLine("Добро пожадловать в Зоопарк!");
                 Console.WriteLine("\n\nВыберите к какому вольеру желаете подойти:\n" +
@@ -40,24 +28,40 @@ namespace HomeWork6_10_Zoo
                                   "4) Вольер со львами\n" +
                                   "5) Вольер с гиенами\n" +
                                   "6) Вольер с дикими собаками Динго\n" +
-                                  "7) Вольер с лисами\n");
+                                  "7) Вольер с лисами\n" +
+                                  "Нажмите Esc для выхода из программы.\n\n");
+
+                switch (Console.ReadKey().Key)
+                {
+                    case ConsoleKey.Escape:
+                        Console.WriteLine("Всего доброго.");
+                        isWork = false;
+                        break;
+
+                    case ConsoleKey.D1:
+                        zoo.ShowAviaryInfo(1);
+                        break;
+
+                    case ConsoleKey.D2:
+                        break;
+
+                    case ConsoleKey.D3:
+                        break;
+
+                    case ConsoleKey.D4:
+                        break;
+
+                    case ConsoleKey.D5:
+                        break;
+
+                    case ConsoleKey.D6:
+                        break;
+
+                    case ConsoleKey.D7:
+                        break;
+                }
             }
-        }
 
-        public void ShowAAviaryInfo()
-        {
-            
-        }
-
-        public void AviarysList()
-        {
-            _aviarys.Add(new Aviary(4, "Elephant", "toot"));
-            _aviarys.Add(new Aviary(15, "Parrot", "tweet"));
-            _aviarys.Add(new Aviary(8, "Seal", "ow-ow-ow"));
-            _aviarys.Add(new Aviary(5, "Lion", "roar"));
-            _aviarys.Add(new Aviary(10, "Hyena", "laugh"));
-            _aviarys.Add(new Aviary(8, "Dingo", "woof"));
-            _aviarys.Add(new Aviary(9, "Fox", "What does the fox say? ヽ(ﾟ〇ﾟ)/"));
         }
     }
 }
