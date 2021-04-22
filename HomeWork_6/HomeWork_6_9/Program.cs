@@ -16,18 +16,18 @@ namespace HomeWork_6_9
     class Aquarium
     {
         private int _placeAmount = 10;
-        private List<Fish> _fishInAquarium = new List<Fish>();
-        private List<Fish> _fishs = new List<Fish>();
+        private List<Fish> _fishesInside = new List<Fish>();
+        private List<Fish> _listOfPossibleFishes = new List<Fish>();
 
         public Aquarium()
         {
-            _fishs.Add(new Fish("Скат", 23));
-            _fishs.Add(new Fish("Бычок", 6));
-            _fishs.Add(new Fish("Сомик", 10));
-            _fishs.Add(new Fish("Илистый прыгун", 3));
-            _fishs.Add(new Fish("Пескарь", 7));
-            _fishs.Add(new Fish("Угорь", 12));
-            _fishs.Add(new Fish("Рыба игла", 10));
+            _listOfPossibleFishes.Add(new Fish("Скат", 23));
+            _listOfPossibleFishes.Add(new Fish("Бычок", 6));
+            _listOfPossibleFishes.Add(new Fish("Сомик", 10));
+            _listOfPossibleFishes.Add(new Fish("Илистый прыгун", 3));
+            _listOfPossibleFishes.Add(new Fish("Пескарь", 7));
+            _listOfPossibleFishes.Add(new Fish("Угорь", 12));
+            _listOfPossibleFishes.Add(new Fish("Рыба игла", 10));
         }
 
         public void ShowLifeInside()
@@ -40,7 +40,7 @@ namespace HomeWork_6_9
                 ShowInhabitants();
                 CheckAge();
 
-                if (_fishInAquarium.Count < _placeAmount)
+                if (_fishesInside.Count < _placeAmount)
                 {
                     Console.WriteLine("Освободились места, добавляется новая рыбка.");
                     FillAquarium();
@@ -56,40 +56,45 @@ namespace HomeWork_6_9
 
         public void CheckAge()
         {
-            for (int i = 0; i < _fishInAquarium.Count; i++)
+            bool isEverybodyAlive = true;
+
+            for (int i = 0; i < _fishesInside.Count; i++)
             {
-                if (_fishInAquarium[i].Age >= _fishInAquarium[i].MaxAge)
+                if (_fishesInside[i].Age >= _fishesInside[i].MaxAge)
                 {
-                    Console.WriteLine($"Мертвую рыбку {_fishInAquarium[i].Name} выкинули.");
+                    Console.WriteLine($"Мертвую рыбку {_fishesInside[i].Name} выкинули.");
                     DeleteFish(i);
+                    isEverybodyAlive = false;
+                    i--;
                 }
-                else
-                {
-                    Console.WriteLine("Все рыбки живы и здоровы.");
-                }
+            }
+
+            if (isEverybodyAlive)
+            {
+                Console.WriteLine("Все рыбки живы.");
             }
         }
 
         private void AddAge()
         {
-            for (int i = 0; i < _fishInAquarium.Count; i++)
+            for (int i = 0; i < _fishesInside.Count; i++)
             {
-                _fishInAquarium[i].AddAge();
+                _fishesInside[i].AddAge();
             }
         }
 
         public void DeleteFish(int fishNumber)
         {
-            _fishInAquarium.RemoveAt(fishNumber);
+            _fishesInside.RemoveAt(fishNumber);
         }
 
         public void FillAquarium()
         {
             Random rand = new Random();
-            while (_fishInAquarium.Count < _placeAmount)
+            while (_fishesInside.Count < _placeAmount)
             {
-                int randdomFish = rand.Next(0, _fishs.Count);
-                string fishName = _fishs[randdomFish].Name;
+                int randdomFish = rand.Next(0, _listOfPossibleFishes.Count);
+                string fishName = _listOfPossibleFishes[randdomFish].Name;
                 string newName = fishName;
                 int fishNumber = 1;
 
@@ -100,7 +105,7 @@ namespace HomeWork_6_9
                     CheckNames(newName);
                 }
 
-                _fishInAquarium.Add(new Fish(newName, _fishs[randdomFish].MaxAge));
+                _fishesInside.Add(new Fish(newName, _listOfPossibleFishes[randdomFish].MaxAge));
             }
 
             Console.WriteLine("Аквариум Полон.\n");
@@ -110,9 +115,9 @@ namespace HomeWork_6_9
         {
             bool alreadyInAquarium = false;
 
-            for (int i = 0; i < _fishInAquarium.Count; i++)
+            for (int i = 0; i < _fishesInside.Count; i++)
             {
-                if (_fishInAquarium[i].Name == fishName)
+                if (_fishesInside[i].Name == fishName)
                 {
                     alreadyInAquarium = true;
                     break;
@@ -124,7 +129,7 @@ namespace HomeWork_6_9
 
         public void ShowInhabitants()
         {
-            foreach (var fish in _fishInAquarium)
+            foreach (var fish in _fishesInside)
             {
                 fish.Showinfo();
             }
