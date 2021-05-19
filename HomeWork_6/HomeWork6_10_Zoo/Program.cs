@@ -1,13 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 
-//Пользователь запускает приложение и перед ним находится меню, 
-//в котором он может выбрать, к какому вольеру подойти.
-//При приближении к вольеру, 
-//пользователю выводится информация о том, что это за вольер, 
-//сколько животных там обитает, их пол и какой звук издает животное.
-//Вольеров в зоопарке может быть много, в решении нужно создать минимум 4 вольера.
-
 namespace HomeWork6_10_Zoo
 {
     class Program
@@ -22,46 +15,132 @@ namespace HomeWork6_10_Zoo
             {
                 Console.WriteLine("Добро пожадловать в Зоопарк!");
                 Console.WriteLine("\n\nВыберите к какому вольеру желаете подойти:\n" +
-                                  "1)Вольер со слонами\n" +
+                                  "1) Вольер со слонами\n" +
                                   "2) Вольер с попугаями\n" +
                                   "3) Вольер с тюленями\n" +
                                   "4) Вольер со львами\n" +
                                   "5) Вольер с гиенами\n" +
                                   "6) Вольер с дикими собаками Динго\n" +
                                   "7) Вольер с лисами\n" +
-                                  "Нажмите Esc для выхода из программы.\n\n");
+                                  "Введите exit для выхода из программы.");
 
-                switch (Console.ReadKey().Key)
+                string userInput = Console.ReadLine();
+
+                Console.Clear();
+
+                if (int.TryParse(userInput, out int result))
                 {
-                    case ConsoleKey.Escape:
-                        Console.WriteLine("Всего доброго.");
-                        isWork = false;
-                        break;
-
-                    case ConsoleKey.D1:
-                        zoo.ShowAviaryInfo(1);
-                        break;
-
-                    case ConsoleKey.D2:
-                        break;
-
-                    case ConsoleKey.D3:
-                        break;
-
-                    case ConsoleKey.D4:
-                        break;
-
-                    case ConsoleKey.D5:
-                        break;
-
-                    case ConsoleKey.D6:
-                        break;
-
-                    case ConsoleKey.D7:
-                        break;
+                    zoo.ShowAviaryInfo(result - 1);
                 }
+                else if(userInput == "exit" || userInput == "Exit")
+                {
+                    Console.WriteLine("Всего доброго.");
+                    isWork = false;
+                }
+                else
+                {
+                    Console.WriteLine("Неизвестная команда.");
+                }
+
+                Console.ReadLine();
+                Console.Clear();
             }
 
+        }
+    }
+
+    class Zoo
+    {
+        private List<Aviary> _aviarys = new List<Aviary>();
+
+        public Zoo()
+        {
+            AddAviarys();
+        }
+
+        public void ShowAviaryInfo(int aviaryNumber)
+        {
+            _aviarys[aviaryNumber].ShowInfo();
+        }
+
+        public void AddAviarys()
+        {
+            _aviarys.Add(new Aviary(4, "Слоны", "\"Туу\""));
+            _aviarys.Add(new Aviary(15, "Попугаи", "\"чирик-чирик\""));
+            _aviarys.Add(new Aviary(8, "Тюлени", "\"оу-оу-оу\""));
+            _aviarys.Add(new Aviary(5, "Лъвы", "\"Рычит\""));
+            _aviarys.Add(new Aviary(10, "Гиены", "\"Смеется\""));
+            _aviarys.Add(new Aviary(8, "Дикие собаки Динго", "\"Гав\""));
+            _aviarys.Add(new Aviary(9, "Лисы", "\"What the fox say? ヽ(ﾟОﾟ)/\""));
+        }
+    }
+
+    class Aviary
+    {
+        private static Random _rand = new Random();
+        private List<Animal> _animals = new List<Animal>();
+        private int _plaseAmount;
+        private string _name;
+        private string _gender;
+        private string _sound;
+
+        public Aviary(int plaseAmount, string name, string sound)
+        {
+            _plaseAmount = plaseAmount;
+            _name = name;
+            _sound = sound;
+
+            FillTheAviary();
+        }
+
+        public void FillTheAviary()
+        {
+            for (int i = 0; i < _plaseAmount; i++)
+            {
+                _animals.Add(new Animal(_name + (i + 1), _sound, _gender = AssignRandomGender()));
+            }
+        }
+
+        public void ShowInfo()
+        {
+            int male = 0;
+            int female = 0;
+
+            foreach (var animal in _animals)
+            {
+                if (animal.Gender == "Самец")
+                    male++;
+                else
+                    female++;
+            }
+
+            Console.WriteLine($"В вольере содержаться {_name}. {_name} издаеют звук {_sound}, самок - {female}, самцов - {male}.");
+        }
+
+        private string AssignRandomGender()
+        {
+            List<string> genders = new List<string>();
+            genders.Add("Самец");
+            genders.Add("Самка");
+
+            int randomGender = _rand.Next(0, genders.Count);
+
+            return genders[randomGender];
+        }
+    }
+
+    class Animal
+    {
+        public string Name { get; private set; }
+        public string Gender { get; private set; }
+        public string Sound { get; private set; }
+        public int Amount { get; private set; }
+
+        public Animal(string name, string sound, string gender)
+        {
+            Name = name;
+            Gender = gender;
+            Sound = sound;
         }
     }
 }
