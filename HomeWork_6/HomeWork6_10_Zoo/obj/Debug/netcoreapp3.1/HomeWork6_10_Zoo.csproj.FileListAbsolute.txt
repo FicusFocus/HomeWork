@@ -11,3 +11,16 @@ D:\DoNotComeIn\projects\GitHub Repositories\HomeWork\HomeWork_6\HomeWork6_10_Zoo
 D:\DoNotComeIn\projects\GitHub Repositories\HomeWork\HomeWork_6\HomeWork6_10_Zoo\obj\Debug\netcoreapp3.1\HomeWork6_10_Zoo.dll
 D:\DoNotComeIn\projects\GitHub Repositories\HomeWork\HomeWork_6\HomeWork6_10_Zoo\obj\Debug\netcoreapp3.1\HomeWork6_10_Zoo.pdb
 D:\DoNotComeIn\projects\GitHub Repositories\HomeWork\HomeWork_6\HomeWork6_10_Zoo\obj\Debug\netcoreapp3.1\HomeWork6_10_Zoo.genruntimeconfig.cache
+D:\Програмирование\Visual_Studio_Projects\c# light\Less1\HomeWork\HomeWork_6\HomeWork6_10_Zoo\bin\Debug\netcoreapp3.1\HomeWork6_10_Zoo.exe
+D:\Програмирование\Visual_Studio_Projects\c# light\Less1\HomeWork\HomeWork_6\HomeWork6_10_Zoo\bin\Debug\netcoreapp3.1\HomeWork6_10_Zoo.deps.json
+D:\Програмирование\Visual_Studio_Projects\c# light\Less1\HomeWork\HomeWork_6\HomeWork6_10_Zoo\bin\Debug\netcoreapp3.1\HomeWork6_10_Zoo.runtimeconfig.json
+D:\Програмирование\Visual_Studio_Projects\c# light\Less1\HomeWork\HomeWork_6\HomeWork6_10_Zoo\bin\Debug\netcoreapp3.1\HomeWork6_10_Zoo.runtimeconfig.dev.json
+D:\Програмирование\Visual_Studio_Projects\c# light\Less1\HomeWork\HomeWork_6\HomeWork6_10_Zoo\bin\Debug\netcoreapp3.1\HomeWork6_10_Zoo.dll
+D:\Програмирование\Visual_Studio_Projects\c# light\Less1\HomeWork\HomeWork_6\HomeWork6_10_Zoo\bin\Debug\netcoreapp3.1\HomeWork6_10_Zoo.pdb
+D:\Програмирование\Visual_Studio_Projects\c# light\Less1\HomeWork\HomeWork_6\HomeWork6_10_Zoo\obj\Debug\netcoreapp3.1\HomeWork6_10_Zoo.csprojAssemblyReference.cache
+D:\Програмирование\Visual_Studio_Projects\c# light\Less1\HomeWork\HomeWork_6\HomeWork6_10_Zoo\obj\Debug\netcoreapp3.1\HomeWork6_10_Zoo.AssemblyInfoInputs.cache
+D:\Програмирование\Visual_Studio_Projects\c# light\Less1\HomeWork\HomeWork_6\HomeWork6_10_Zoo\obj\Debug\netcoreapp3.1\HomeWork6_10_Zoo.AssemblyInfo.cs
+D:\Програмирование\Visual_Studio_Projects\c# light\Less1\HomeWork\HomeWork_6\HomeWork6_10_Zoo\obj\Debug\netcoreapp3.1\HomeWork6_10_Zoo.csproj.CoreCompileInputs.cache
+D:\Програмирование\Visual_Studio_Projects\c# light\Less1\HomeWork\HomeWork_6\HomeWork6_10_Zoo\obj\Debug\netcoreapp3.1\HomeWork6_10_Zoo.dll
+D:\Програмирование\Visual_Studio_Projects\c# light\Less1\HomeWork\HomeWork_6\HomeWork6_10_Zoo\obj\Debug\netcoreapp3.1\HomeWork6_10_Zoo.pdb
+D:\Програмирование\Visual_Studio_Projects\c# light\Less1\HomeWork\HomeWork_6\HomeWork6_10_Zoo\obj\Debug\netcoreapp3.1\HomeWork6_10_Zoo.genruntimeconfig.cache

@@ -14,15 +14,8 @@ namespace HomeWork6_10_Zoo
             while (isWork)
             {
                 Console.WriteLine("Добро пожадловать в Зоопарк!");
-                Console.WriteLine("\n\nВыберите к какому вольеру желаете подойти:\n" +
-                                  "1) Вольер со слонами\n" +
-                                  "2) Вольер с попугаями\n" +
-                                  "3) Вольер с тюленями\n" +
-                                  "4) Вольер со львами\n" +
-                                  "5) Вольер с гиенами\n" +
-                                  "6) Вольер с дикими собаками Динго\n" +
-                                  "7) Вольер с лисами\n" +
-                                  "Введите exit для выхода из программы.");
+                Console.WriteLine("\nВыберите к какому вольеру желаете подойти:\n");
+                zoo.ShowAllAviarys();
 
                 string userInput = Console.ReadLine();
 
@@ -30,7 +23,7 @@ namespace HomeWork6_10_Zoo
 
                 if (int.TryParse(userInput, out int result))
                 {
-                    zoo.ShowAviaryInfo(result - 1);
+                    zoo.ChooseAviary(result - 1);
                 }
                 else if(userInput == "exit" || userInput == "Exit")
                 {
@@ -58,20 +51,34 @@ namespace HomeWork6_10_Zoo
             AddAviarys();
         }
 
+        public void ChooseAviary(int aviaryNumber)
+        {
+            if (aviaryNumber < 0 || aviaryNumber > _aviarys.Count)
+                Console.WriteLine("Такого вольера не существует");
+            else
+                ShowAviaryInfo(aviaryNumber);
+        }
+
         public void ShowAviaryInfo(int aviaryNumber)
         {
             _aviarys[aviaryNumber].ShowInfo();
         }
 
-        public void AddAviarys()
+        public void ShowAllAviarys()
         {
-            _aviarys.Add(new Aviary(4, "Слоны", "\"Туу\""));
-            _aviarys.Add(new Aviary(15, "Попугаи", "\"чирик-чирик\""));
-            _aviarys.Add(new Aviary(8, "Тюлени", "\"оу-оу-оу\""));
-            _aviarys.Add(new Aviary(5, "Лъвы", "\"Рычит\""));
-            _aviarys.Add(new Aviary(10, "Гиены", "\"Смеется\""));
-            _aviarys.Add(new Aviary(8, "Дикие собаки Динго", "\"Гав\""));
-            _aviarys.Add(new Aviary(9, "Лисы", "\"What the fox say? ヽ(ﾟОﾟ)/\""));
+            for (int i = 0; i < _aviarys.Count; i++)
+                Console.WriteLine($"Вольер {i + 1}) {_aviarys[i].Name} ");
+        }
+
+        private void AddAviarys()
+        {
+            _aviarys.Add(new Aviary(4, "Слонн", "\"Туу\"", "Слоны"));
+            _aviarys.Add(new Aviary(15, "Попугай", "\"чирик-чирик\"", "Попугаи"));
+            _aviarys.Add(new Aviary(8, "Тюлень", "\"оу-оу-оу\"", "Тюлени"));
+            _aviarys.Add(new Aviary(5, "Лев", "\"Рычит\"", "Львы"));
+            _aviarys.Add(new Aviary(10, "Гиена", "\"Смеется\"", "Гиены"));
+            _aviarys.Add(new Aviary(8, "Динго", "\"Гав\"", "Дикие собаки Динго"));
+            _aviarys.Add(new Aviary(9, "Лиса", "\"What the fox say? ヽ(ﾟОﾟ)/\"", "Лисы"));
         }
     }
 
@@ -79,42 +86,36 @@ namespace HomeWork6_10_Zoo
     {
         private static Random _rand = new Random();
         private List<Animal> _animals = new List<Animal>();
-        private int _plaseAmount;
-        private string _name;
-        private string _gender;
-        private string _sound;
+        private int _males = 0;
+        private int _females = 0;
 
-        public Aviary(int plaseAmount, string name, string sound)
+        public string Name { get; private set; }
+
+
+        public Aviary(int plaseAmount, string AnimalName, string AnimalSound, string name)
         {
-            _plaseAmount = plaseAmount;
-            _name = name;
-            _sound = sound;
-
-            FillTheAviary();
+            Name = name;
+            FillTheAviary(plaseAmount, AnimalName, AnimalSound);
         }
 
-        public void FillTheAviary()
+        private void FillTheAviary(int plaseAmount, string  name, string sound)
         {
-            for (int i = 0; i < _plaseAmount; i++)
+            for (int i = 0; i < plaseAmount; i++)
             {
-                _animals.Add(new Animal(_name + (i + 1), _sound, _gender = AssignRandomGender()));
+                string gender;
+                _animals.Add(new Animal(name + (i + 1), sound, gender = AssignRandomGender()));
+
+                if (_animals[i].Gender == "Самец")
+                    _males++;
+                else
+                    _females++;
             }
         }
 
         public void ShowInfo()
         {
-            int male = 0;
-            int female = 0;
-
-            foreach (var animal in _animals)
-            {
-                if (animal.Gender == "Самец")
-                    male++;
-                else
-                    female++;
-            }
-
-            Console.WriteLine($"В вольере содержаться {_name}. {_name} издаеют звук {_sound}, самок - {female}, самцов - {male}.");
+            Console.WriteLine($"В вольере содержаться {Name}. {Name} издаеют звук {_animals[0].Sound}, " +
+                              $"самок - {_females}, самцов - {_males}. Всего животных - {_animals.Count}.");
         }
 
         private string AssignRandomGender()
@@ -134,7 +135,6 @@ namespace HomeWork6_10_Zoo
         public string Name { get; private set; }
         public string Gender { get; private set; }
         public string Sound { get; private set; }
-        public int Amount { get; private set; }
 
         public Animal(string name, string sound, string gender)
         {
