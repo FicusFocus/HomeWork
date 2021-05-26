@@ -23,12 +23,11 @@ namespace HomeWork_6_11_CarService
 
             while (carsAmount > 0)
             {
-                Car car = new Car();
                 Console.WriteLine("В автосервис на ремонт прибыла новая машина");
 
                 string brokenPartName = null;
-                int brokenPartNumber = rand.Next(0, carService.PartsAmount);
                 int brokenPartPrice = 0;
+                int brokenPartNumber = rand.Next(0, carService.PartsAmount);
 
                 if (carService.CheckSparePartAvailabiliti(brokenPartNumber, ref brokenPartName, ref brokenPartPrice))
                 {
@@ -60,10 +59,25 @@ namespace HomeWork_6_11_CarService
 
         public bool CheckSparePartAvailabiliti(int sparePartNumber, ref string sparePartName, ref int sparePartPrice)
         {
+            bool inStorage = false;
 
+            sparePartPrice = 0;
+            sparePartName = null;
+            
+            for (int i = 0; i < _spareParts.Count; i++)
+            {
+                if (_spareParts[i].SparePart.Name == _spareParts[sparePartNumber].SparePart.Name && _spareParts[i].Amount > 0)
+                {
+                    sparePartName = _spareParts[i].SparePart.Name;
+                    sparePartPrice = _spareParts[i].SparePart.Price;
+                    return inStorage = true;
+                }
+            }
 
+            if (inStorage == false)
+                Console.WriteLine("Детали нет на складе");
 
-            return true;
+            return inStorage;
         }
     }
 
