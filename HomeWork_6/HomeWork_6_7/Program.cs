@@ -49,7 +49,7 @@ namespace HomeWork_6_7
                 buyer = null;
                 buyersAmount--;
                 Console.WriteLine($"\nПокупатель обслужен. Еще в очереди находится {buyersAmount} покупателей.");
-                seller.SowMoney();
+                seller.ShowMoney();
                 Console.ReadLine();
             }
 
@@ -130,7 +130,7 @@ namespace HomeWork_6_7
             }
         }
 
-        public void SowMoney()
+        public void ShowMoney()
         {
             Console.WriteLine($"на счету - {_money} рублей");
         }
