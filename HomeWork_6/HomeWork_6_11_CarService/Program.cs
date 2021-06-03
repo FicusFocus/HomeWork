@@ -43,13 +43,14 @@ namespace HomeWork_6_11_CarService
 
                 car = null;
                 carsAmount--;
-                Console.WriteLine($"\nКлиент обслужен. Еще в очереди находится {carsAmount} машин.\n");
                 carService.ShowMoney();
                 carService.ShowStorage();
 
                 Console.ReadLine();
                 Console.Clear();
             }
+
+            Console.WriteLine("Все покупатели были обслужены.");
         }
     }
 
