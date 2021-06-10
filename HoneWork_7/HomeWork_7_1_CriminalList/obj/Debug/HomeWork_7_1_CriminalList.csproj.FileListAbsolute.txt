@@ -1,0 +1,7 @@
+D:\DoNotComeIn\projects\GitHub Repositories\HomeWork\HoneWork_7\HomeWork_7_1_CriminalList\bin\Debug\HomeWork_7_1_CriminalList.exe.config
+D:\DoNotComeIn\projects\GitHub Repositories\HomeWork\HoneWork_7\HomeWork_7_1_CriminalList\bin\Debug\HomeWork_7_1_CriminalList.exe
+D:\DoNotComeIn\projects\GitHub Repositories\HomeWork\HoneWork_7\HomeWork_7_1_CriminalList\bin\Debug\HomeWork_7_1_CriminalList.pdb
+D:\DoNotComeIn\projects\GitHub Repositories\HomeWork\HoneWork_7\HomeWork_7_1_CriminalList\obj\Debug\HomeWork_7_1_CriminalList.csprojAssemblyReference.cache
+D:\DoNotComeIn\projects\GitHub Repositories\HomeWork\HoneWork_7\HomeWork_7_1_CriminalList\obj\Debug\HomeWork_7_1_CriminalList.csproj.CoreCompileInputs.cache
+D:\DoNotComeIn\projects\GitHub Repositories\HomeWork\HoneWork_7\HomeWork_7_1_CriminalList\obj\Debug\HomeWork_7_1_CriminalList.exe
+D:\DoNotComeIn\projects\GitHub Repositories\HomeWork\HoneWork_7\HomeWork_7_1_CriminalList\obj\Debug\HomeWork_7_1_CriminalList.pdb
