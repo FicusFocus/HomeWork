@@ -14,42 +14,23 @@ namespace HomeWork_6_11_CarService
 
             while (carsAmount > 0)
             {
-                Client car = new Client();
-                int moneyToPay = 0;
+                Client client = new Client();
+                int brokenPartNumber = rand.Next(0, carService.PartsAmount);
 
                 Console.WriteLine("В автосервис на ремонт прибыла новая машина");
 
-                string brokenPartName = null;
-                int brokenPartPrice = 0;
-                int PriceForRepairs = 0;
-                int brokenPartNumber = rand.Next(0, carService.PartsAmount);
+                carService.ServeClient(client, brokenPartNumber);
 
-                if (carService.CheckSparePartAvailabiliti(brokenPartNumber, ref brokenPartName, ref brokenPartPrice, ref PriceForRepairs))
-                {
-                    car.AddToBasket(brokenPartName, brokenPartPrice);
-                    carService.SubtractSparePartsAmount(brokenPartName);
-                    moneyToPay = brokenPartPrice + PriceForRepairs;
-
-                    if (car.CheckSolvency(moneyToPay))
-                    {
-                        carService.AddMoney(car.MoneyToPay);
-                        Console.WriteLine($"\nКлиент обслужен. Еще в очереди находится {carsAmount} машин.\n");
-                    }
-                    else
-                    {
-                        Console.WriteLine("Клиент небыл обслужен.");
-                    }
-                }
-
-                car = null;
+                client = null;
                 carsAmount--;
-                Console.WriteLine($"\nКлиент обслужен. Еще в очереди находится {carsAmount} машин.\n");
                 carService.ShowMoney();
                 carService.ShowStorage();
 
                 Console.ReadLine();
                 Console.Clear();
             }
+
+            Console.WriteLine("Все покупатели были обслужены.");
         }
     }
 
@@ -71,35 +52,48 @@ namespace HomeWork_6_11_CarService
             PartsAmount = _spareParts.Count;
         }
 
-        public bool CheckSparePartAvailabiliti(int sparePartNumber, ref string sparePartName, ref int sparePartPrice, ref int sparePartPriceForRepairs)
+        public void ServeClient(Client client, int brokenPartNumber)
+        {
+            int moneyToPay = 0;
+
+            if (TryFindSparePartInStorage(brokenPartNumber))
+            {
+                client.AddToBasket(_spareParts[brokenPartNumber].SparePart.Name, _spareParts[brokenPartNumber].SparePart.Price);
+                SubtractSparePartsAmount(_spareParts[brokenPartNumber].SparePart.Name);
+                moneyToPay = _spareParts[brokenPartNumber].SparePart.Price + _spareParts[brokenPartNumber].PriceForRepairs;
+
+                if (client.TryPay(moneyToPay))
+                {
+                    AddMoney(moneyToPay);
+                    Console.WriteLine($"\nКлиент обслужен.\n");
+                }
+                else
+                {
+                    Console.WriteLine("Клиент небыл обслужен.");
+                }
+            }
+        }
+
+        public bool TryFindSparePartInStorage(int sparePartNumber)
         {
             bool inStorage = false;
-
-            sparePartPrice = 0;
-            sparePartPriceForRepairs = 0;
-            sparePartName = null;
             
             for (int i = 0; i < _spareParts.Count; i++)
             {
                 if (_spareParts[i].SparePart.Name == _spareParts[sparePartNumber].SparePart.Name && _spareParts[i].Amount > 0)
                 {
                     Console.WriteLine($"Сломанная деталь - {_spareParts[i].SparePart.Name}. стоимость детали - {_spareParts[i].SparePart.Price}, стоимость замены - {_spareParts[i].PriceForRepairs}");
-                    sparePartName = _spareParts[i].SparePart.Name;
-                    sparePartPrice = _spareParts[i].SparePart.Price;
-                    sparePartPriceForRepairs = _spareParts[i].PriceForRepairs;
                     return inStorage = true;
                 }
                 else if (_spareParts[i].SparePart.Name == _spareParts[sparePartNumber].SparePart.Name && _spareParts[i].Amount <= 0)
                 {
                     Console.WriteLine($"Сломанная деталь - {_spareParts[i].SparePart.Name}. На складе подобных не осталось.\n");
-                    Console.WriteLine("штраф - 20$");
-
-                    SubtractMoney(_fine);
+                    PayFine();
                 }
             }
 
             if (inStorage == false)
-                Console.WriteLine("Детали нет на складе");
+                Console.WriteLine("Подобной детали на складе не существует.");
 
             return inStorage;
         }
@@ -129,6 +123,17 @@ namespace HomeWork_6_11_CarService
             _money += moneyToPay;
         }
 
+        public void ShowMoney()
+        {
+            Console.WriteLine($"на балансе сервисного центра - {_money}$\n");
+        }
+
+        private void PayFine()
+        {
+            Console.WriteLine($"Так как сервисный центр не смог выполнить обязательства перед кленом он платит штраф в размере - {_fine}$");
+            SubtractMoney(_fine);
+        }
+
         private void SubtractMoney(int moneyToFine)
         {
             if (moneyToFine > _money)
@@ -141,11 +146,6 @@ namespace HomeWork_6_11_CarService
                 _money -= moneyToFine;
             }
         }
-
-        public void ShowMoney()
-        {
-            Console.WriteLine($"на балансе сервисного центра - {_money}$");
-        }
     }
 
     class Client
@@ -153,7 +153,6 @@ namespace HomeWork_6_11_CarService
         private Random _rand = new Random();
         private SparePart _basket;
         private int _money;
-        public int MoneyToPay { get; private set; }
 
         public Client()
         {
@@ -165,7 +164,7 @@ namespace HomeWork_6_11_CarService
             _basket = new SparePart(brokenPartName, brokenPartPrice);
         }
 
-        public bool CheckSolvency(int moneyToPay)
+        public bool TryPay(int moneyToPay)
         {
             Console.WriteLine($"Стоимость покупки - {moneyToPay}$, на счету клиента - {_money}$.");
 
@@ -176,16 +175,10 @@ namespace HomeWork_6_11_CarService
             }
             else
             {
-                MoneyToPay = moneyToPay;
-                Pay();
+                _money -= moneyToPay;
+                Console.WriteLine($"Покупатель произвел оплату в размере - {moneyToPay}$. за: {_basket.Name}");
                 return true;
             }
-        }
-
-        private void Pay()
-        {
-            _money -= MoneyToPay;
-            Console.WriteLine($"Покупатель произвел оплату в размере - {MoneyToPay}$. за: {_basket.Name}");
         }
     }
 

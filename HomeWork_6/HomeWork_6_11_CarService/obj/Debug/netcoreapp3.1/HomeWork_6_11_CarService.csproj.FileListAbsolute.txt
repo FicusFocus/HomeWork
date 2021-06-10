@@ -11,3 +11,16 @@ D:\DoNotComeIn\projects\GitHub Repositories\HomeWork\HomeWork_6\HomeWork_6_11_Ca
 D:\DoNotComeIn\projects\GitHub Repositories\HomeWork\HomeWork_6\HomeWork_6_11_CarService\obj\Debug\netcoreapp3.1\HomeWork_6_11_CarService.dll
 D:\DoNotComeIn\projects\GitHub Repositories\HomeWork\HomeWork_6\HomeWork_6_11_CarService\obj\Debug\netcoreapp3.1\HomeWork_6_11_CarService.pdb
 D:\DoNotComeIn\projects\GitHub Repositories\HomeWork\HomeWork_6\HomeWork_6_11_CarService\obj\Debug\netcoreapp3.1\HomeWork_6_11_CarService.genruntimeconfig.cache
+D:\Програмирование\Visual_Studio_Projects\c# light\Less1\HomeWork\HomeWork_6\HomeWork_6_11_CarService\bin\Debug\netcoreapp3.1\HomeWork_6_11_CarService.exe
+D:\Програмирование\Visual_Studio_Projects\c# light\Less1\HomeWork\HomeWork_6\HomeWork_6_11_CarService\bin\Debug\netcoreapp3.1\HomeWork_6_11_CarService.deps.json
+D:\Програмирование\Visual_Studio_Projects\c# light\Less1\HomeWork\HomeWork_6\HomeWork_6_11_CarService\bin\Debug\netcoreapp3.1\HomeWork_6_11_CarService.runtimeconfig.json
+D:\Програмирование\Visual_Studio_Projects\c# light\Less1\HomeWork\HomeWork_6\HomeWork_6_11_CarService\bin\Debug\netcoreapp3.1\HomeWork_6_11_CarService.runtimeconfig.dev.json
+D:\Програмирование\Visual_Studio_Projects\c# light\Less1\HomeWork\HomeWork_6\HomeWork_6_11_CarService\bin\Debug\netcoreapp3.1\HomeWork_6_11_CarService.dll
+D:\Програмирование\Visual_Studio_Projects\c# light\Less1\HomeWork\HomeWork_6\HomeWork_6_11_CarService\bin\Debug\netcoreapp3.1\HomeWork_6_11_CarService.pdb
+D:\Програмирование\Visual_Studio_Projects\c# light\Less1\HomeWork\HomeWork_6\HomeWork_6_11_CarService\obj\Debug\netcoreapp3.1\HomeWork_6_11_CarService.csprojAssemblyReference.cache
+D:\Програмирование\Visual_Studio_Projects\c# light\Less1\HomeWork\HomeWork_6\HomeWork_6_11_CarService\obj\Debug\netcoreapp3.1\HomeWork_6_11_CarService.AssemblyInfoInputs.cache
+D:\Програмирование\Visual_Studio_Projects\c# light\Less1\HomeWork\HomeWork_6\HomeWork_6_11_CarService\obj\Debug\netcoreapp3.1\HomeWork_6_11_CarService.AssemblyInfo.cs
+D:\Програмирование\Visual_Studio_Projects\c# light\Less1\HomeWork\HomeWork_6\HomeWork_6_11_CarService\obj\Debug\netcoreapp3.1\HomeWork_6_11_CarService.csproj.CoreCompileInputs.cache
+D:\Програмирование\Visual_Studio_Projects\c# light\Less1\HomeWork\HomeWork_6\HomeWork_6_11_CarService\obj\Debug\netcoreapp3.1\HomeWork_6_11_CarService.dll
+D:\Програмирование\Visual_Studio_Projects\c# light\Less1\HomeWork\HomeWork_6\HomeWork_6_11_CarService\obj\Debug\netcoreapp3.1\HomeWork_6_11_CarService.pdb
+D:\Програмирование\Visual_Studio_Projects\c# light\Less1\HomeWork\HomeWork_6\HomeWork_6_11_CarService\obj\Debug\netcoreapp3.1\HomeWork_6_11_CarService.genruntimeconfig.cache
