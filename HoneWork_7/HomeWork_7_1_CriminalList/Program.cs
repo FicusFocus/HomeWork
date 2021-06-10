@@ -2,12 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 
-//У нас есть список всех преступников.
-//В преступнике есть поля: ФИО, заключен ли он под стражу, рост, вес, национальность.
-//Вашей программой будут пользоваться детективы.
-//У детектива запрашиваются данные (рост, вес, национальность), и детективу выводятся все преступники, которые подходят под эти параметры, 
-//но уже заключенные под стражу выводиться не должны. 
-
 namespace HomeWork_7_1_CriminalList
 {
     class Program
@@ -15,7 +9,7 @@ namespace HomeWork_7_1_CriminalList
         static void Main(string[] args)
         {
             List<Criminal> criminals = new List<Criminal>();
-#region
+            #region
             criminals.Add(new Criminal("Осипов И.А.", true, 178, 85, Nationality.Русский));
             criminals.Add(new Criminal("Чилищин Е.О.", false, 187, 90, Nationality.Русский));
             criminals.Add(new Criminal("Иваненко И.П.", true, 160, 93, Nationality.Украинец));
@@ -30,49 +24,93 @@ namespace HomeWork_7_1_CriminalList
             criminals.Add(new Criminal("Лучко В.И", false, 187, 90, Nationality.Украинец));
             criminals.Add(new Criminal("Бондарев Д.А.", false, 188, 93, Nationality.Русский));
             #endregion
-            Console.WriteLine("Введите данные преступника (рост, вес, национальность):");
-            Console.Write("Введите рост - ");
-            int height = Convert.ToInt32(Console.ReadLine());
-            Console.Write("\nВведите вес - ");
-            int weigth = Convert.ToInt32(Console.ReadLine());
-            Console.Write($"Выберите национальность:\n1) - {Nationality.Грузин}\n2) - {Nationality.Русский}\n 3) {Nationality.Украинец}");
-            int nattionalityNumber = Convert.ToInt32(Console.ReadLine());
 
-            var filteredCriminals = criminals.Where(criminal => criminal.Height == height).
-                                    Where(criminal => criminal.Weight == weigth);
-                                    //Where(criminal => criminal.Nationality == Nationality);
+            bool isWork = true;
 
-            foreach (var criminal in filteredCriminals)
+            while (isWork)
             {
-                Console.WriteLine(criminal.FullName);
+                Console.WriteLine("По какому параметру желаете найти пресутпника:\n" +
+                                  "1) по росту\n" +
+                                  "2) по весу\n" +
+                                  "3) по национальности\n" +
+                                  "4) по всем параметрам сразу.");
+
+
+                switch (Console.ReadKey().Key)
+                {
+
+                    case ConsoleKey.Escape:
+                        isWork = false;
+                        Console.WriteLine("Сеанс завершен.");
+                        break;
+
+                    case ConsoleKey.D1:
+                        Console.Write("Введите предпологаемый рост цели:");
+
+                        int height;
+                        string input = Console.ReadLine();
+                        bool result = int.TryParse(input, out height);
+
+                        var filteredCriminals = criminals.Where(criminal => criminal.Height == height).Where(criminal => criminal.IsInCustody == false);
+
+                        foreach (var criminal in filteredCriminals)
+                            Console.WriteLine(criminal.FullName);
+                        break;
+
+                    case ConsoleKey.D2:
+                        Console.Write("Введите предпологаемый вес цели:");
+
+                        int weigth;
+                        input = Console.ReadLine();
+                        result = int.TryParse(input, out weigth);
+                        filteredCriminals = criminals.Where(criminal => criminal.Weight == weigth).Where(criminal => criminal.IsInCustody == false);
+
+                        foreach (var criminal in filteredCriminals)
+                            Console.WriteLine(criminal.FullName);
+                        break;
+
+                    case ConsoleKey.D3:
+                        Console.WriteLine($"Выберите национальность:\n1) - {(Nationality)1}\n2) - {(Nationality)2}\n 3) {(Nationality)3}\n");
+                        
+                        int nattionalityNumber;
+                        input = Console.ReadLine();
+                        result = int.TryParse(input, out nattionalityNumber);
+                        filteredCriminals = criminals.Where(criminal => (criminal.Nationality == (Nationality)nattionalityNumber)).Where(criminal => criminal.IsInCustody == false);
+
+                        foreach (var criminal in filteredCriminals)
+                            Console.WriteLine(criminal.FullName);
+
+                        break;
+                }
+
+                Console.ReadLine();
+                Console.Clear();
             }
-
-            Console.ReadLine();
         }
-    }
 
-    enum Nationality
-    {
-        Русский,
-        Украинец,
-        Грузин
-    }
-
-    class Criminal
-    {
-        public string FullName { get; private set; }
-        public bool IsInCustody { get; private set; }
-        public int Height { get;  set; }
-        public int Weight { get;  set; }
-        public Nationality Nationality { get; private set; }
-
-        public Criminal(string fullName, bool isInCustody, int height, int weight, Nationality nationality)
+        enum Nationality
         {
-            FullName = fullName;
-            IsInCustody = isInCustody;
-            Height = height;
-            Weight = weight;
-            Nationality = nationality;
+            Русский = 1,
+            Украинец,
+            Грузин
+        }
+
+        class Criminal
+        {
+            public string FullName { get; private set; }
+            public bool IsInCustody { get; private set; }
+            public int Height { get; set; }
+            public int Weight { get; set; }
+            public Nationality Nationality { get; private set; }
+
+            public Criminal(string fullName, bool isInCustody, int height, int weight, Nationality nationality)
+            {
+                FullName = fullName;
+                IsInCustody = isInCustody;
+                Height = height;
+                Weight = weight;
+                Nationality = nationality;
+            }
         }
     }
 }
