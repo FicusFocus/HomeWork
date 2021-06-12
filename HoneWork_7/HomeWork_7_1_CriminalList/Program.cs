@@ -32,9 +32,7 @@ namespace HomeWork_7_1_CriminalList
                 Console.WriteLine("По какому параметру желаете найти пресутпника:\n" +
                                   "1) по росту\n" +
                                   "2) по весу\n" +
-                                  "3) по национальности\n" +
-                                  "4) по всем параметрам сразу.");
-
+                                  "3) по национальности");
 
                 switch (Console.ReadKey().Key)
                 {
@@ -87,30 +85,30 @@ namespace HomeWork_7_1_CriminalList
                 Console.Clear();
             }
         }
+    }
 
-        enum Nationality
+    enum Nationality
+    {
+        Русский = 1,
+        Украинец,
+        Грузин
+    }
+
+    class Criminal
+    {
+        public string FullName { get; private set; }
+        public bool IsInCustody { get; private set; }
+        public int Height { get; set; }
+        public int Weight { get; set; }
+        public Nationality Nationality { get; private set; }
+
+        public Criminal(string fullName, bool isInCustody, int height, int weight, Nationality nationality)
         {
-            Русский = 1,
-            Украинец,
-            Грузин
-        }
-
-        class Criminal
-        {
-            public string FullName { get; private set; }
-            public bool IsInCustody { get; private set; }
-            public int Height { get; set; }
-            public int Weight { get; set; }
-            public Nationality Nationality { get; private set; }
-
-            public Criminal(string fullName, bool isInCustody, int height, int weight, Nationality nationality)
-            {
-                FullName = fullName;
-                IsInCustody = isInCustody;
-                Height = height;
-                Weight = weight;
-                Nationality = nationality;
-            }
+            FullName = fullName;
+            IsInCustody = isInCustody;
+            Height = height;
+            Weight = weight;
+            Nationality = nationality;
         }
     }
 }
