@@ -1,0 +1,7 @@
+D:\DoNotComeIn\projects\GitHub Repositories\HomeWork\HoneWork_7\HomeWork_7_3_AnarchyInTheHospital\bin\Debug\HomeWork_7_3_AnarchyInTheHospital.exe.config
+D:\DoNotComeIn\projects\GitHub Repositories\HomeWork\HoneWork_7\HomeWork_7_3_AnarchyInTheHospital\bin\Debug\HomeWork_7_3_AnarchyInTheHospital.exe
+D:\DoNotComeIn\projects\GitHub Repositories\HomeWork\HoneWork_7\HomeWork_7_3_AnarchyInTheHospital\bin\Debug\HomeWork_7_3_AnarchyInTheHospital.pdb
+D:\DoNotComeIn\projects\GitHub Repositories\HomeWork\HoneWork_7\HomeWork_7_3_AnarchyInTheHospital\obj\Debug\HomeWork_7_3_AnarchyInTheHospital.csprojAssemblyReference.cache
+D:\DoNotComeIn\projects\GitHub Repositories\HomeWork\HoneWork_7\HomeWork_7_3_AnarchyInTheHospital\obj\Debug\HomeWork_7_3_AnarchyInTheHospital.csproj.CoreCompileInputs.cache
+D:\DoNotComeIn\projects\GitHub Repositories\HomeWork\HoneWork_7\HomeWork_7_3_AnarchyInTheHospital\obj\Debug\HomeWork_7_3_AnarchyInTheHospital.exe
+D:\DoNotComeIn\projects\GitHub Repositories\HomeWork\HoneWork_7\HomeWork_7_3_AnarchyInTheHospital\obj\Debug\HomeWork_7_3_AnarchyInTheHospital.pdb
