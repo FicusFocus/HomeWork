@@ -57,11 +57,11 @@ namespace HomeWork_7_2_Amnesty
     {
         public string Fullname { get; private set; }
         public bool IsInCustody { get; private set; }
-        public CriminalTip criminalTip { get; private set; }
+        public CriminalTip CriminalTip { get; private set; }
 
         public Criminal(string fullName, CriminalTip criminalTip)
         {
-            this.criminalTip = criminalTip;
+            CriminalTip = criminalTip;
             Fullname = fullName;
             IsInCustody = true;
         }
