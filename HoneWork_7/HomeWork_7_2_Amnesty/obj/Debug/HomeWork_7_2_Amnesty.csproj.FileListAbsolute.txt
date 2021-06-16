@@ -5,3 +5,10 @@ D:\DoNotComeIn\projects\GitHub Repositories\HomeWork\HoneWork_7\HomeWork_7_2_Amn
 D:\DoNotComeIn\projects\GitHub Repositories\HomeWork\HoneWork_7\HomeWork_7_2_Amnesty\obj\Debug\HomeWork_7_2_Amnesty.csproj.CoreCompileInputs.cache
 D:\DoNotComeIn\projects\GitHub Repositories\HomeWork\HoneWork_7\HomeWork_7_2_Amnesty\obj\Debug\HomeWork_7_2.exe
 D:\DoNotComeIn\projects\GitHub Repositories\HomeWork\HoneWork_7\HomeWork_7_2_Amnesty\obj\Debug\HomeWork_7_2.pdb
+D:\Програмирование\Visual_Studio_Projects\c# light\Less1\HomeWork\HoneWork_7\HomeWork_7_2_Amnesty\bin\Debug\HomeWork_7_2.exe.config
+D:\Програмирование\Visual_Studio_Projects\c# light\Less1\HomeWork\HoneWork_7\HomeWork_7_2_Amnesty\bin\Debug\HomeWork_7_2.exe
+D:\Програмирование\Visual_Studio_Projects\c# light\Less1\HomeWork\HoneWork_7\HomeWork_7_2_Amnesty\bin\Debug\HomeWork_7_2.pdb
+D:\Програмирование\Visual_Studio_Projects\c# light\Less1\HomeWork\HoneWork_7\HomeWork_7_2_Amnesty\obj\Debug\HomeWork_7_2_Amnesty.csprojAssemblyReference.cache
+D:\Програмирование\Visual_Studio_Projects\c# light\Less1\HomeWork\HoneWork_7\HomeWork_7_2_Amnesty\obj\Debug\HomeWork_7_2_Amnesty.csproj.CoreCompileInputs.cache
+D:\Програмирование\Visual_Studio_Projects\c# light\Less1\HomeWork\HoneWork_7\HomeWork_7_2_Amnesty\obj\Debug\HomeWork_7_2.exe
+D:\Програмирование\Visual_Studio_Projects\c# light\Less1\HomeWork\HoneWork_7\HomeWork_7_2_Amnesty\obj\Debug\HomeWork_7_2.pdb

@@ -26,30 +26,27 @@ namespace HomeWork_7_2_Amnesty
             #endregion
 
             Console.WriteLine("До амнистии: ");
-            foreach (var criminal in criminals)
-            {
-                Console.Write($"{criminal.Fullname} преступление - {criminal.criminalTip}");
-                if (criminal.IsInCustody)
-                    Console.WriteLine(" - под стражей");
-            }
+            ShowCriminals(criminals);
 
-            var amnesty = criminals.Where(criminal => criminal.criminalTip == CriminalTip.AntiGovernment);
-            foreach (var criminal in amnesty)
-                criminal.Release();
+            criminals.RemoveAll(criminal => criminal.CriminalTip == CriminalTip.AntiGovernment);
 
             Console.WriteLine("После амнистии");
 
+            ShowCriminals(criminals);
+
+            Console.ReadLine();
+        }
+
+        public static void ShowCriminals(List<Criminal> criminals)
+        {
             foreach (var criminal in criminals)
             {
-                Console.Write($"{criminal.Fullname} преступление - {criminal.criminalTip}");
+                Console.Write($"{criminal.Fullname} преступление - {criminal.CriminalTip}");
                 if (criminal.IsInCustody)
                     Console.WriteLine(" - под стражей.");
                 else
                     Console.WriteLine(" - оправдан.");
             }
-
-            
-            Console.ReadLine();
         }
     }
 
@@ -64,11 +61,6 @@ namespace HomeWork_7_2_Amnesty
             CriminalTip = criminalTip;
             Fullname = fullName;
             IsInCustody = true;
-        }
-
-        public void Release()
-        {
-            IsInCustody = false;
         }
     }
 
