@@ -11,12 +11,12 @@
 using System;
 using System.Reflection;
 
-[assembly: System.Reflection.AssemblyCompanyAttribute("HomeWork_7_4")]
+[assembly: System.Reflection.AssemblyCompanyAttribute("HomeWork_7_5_DefinitionOfDelay")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
 [assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
-[assembly: System.Reflection.AssemblyProductAttribute("HomeWork_7_4")]
-[assembly: System.Reflection.AssemblyTitleAttribute("HomeWork_7_4")]
+[assembly: System.Reflection.AssemblyProductAttribute("HomeWork_7_5_DefinitionOfDelay")]
+[assembly: System.Reflection.AssemblyTitleAttribute("HomeWork_7_5_DefinitionOfDelay")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
 
 // Создано классом WriteCodeFragment MSBuild.

@@ -7,7 +7,7 @@ using System.Linq;
 //Требуется написать запрос для определения топ 3 игроков по уровню и топ 3 игроков по силе, после чего вывести каждый топ.
 //2 запроса получится.
 
-namespace HomeWork_7_4
+namespace HomeWork_7_4_PlayersTop
 {
     class Program
     {
