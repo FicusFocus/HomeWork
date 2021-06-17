@@ -1,0 +1,7 @@
+D:\DoNotComeIn\projects\GitHub Repositories\HomeWork\HoneWork_7\HomeWork_7_6_WeaponsReport\bin\Debug\HomeWork_7_6_WeaponsReport.exe.config
+D:\DoNotComeIn\projects\GitHub Repositories\HomeWork\HoneWork_7\HomeWork_7_6_WeaponsReport\bin\Debug\HomeWork_7_6_WeaponsReport.exe
+D:\DoNotComeIn\projects\GitHub Repositories\HomeWork\HoneWork_7\HomeWork_7_6_WeaponsReport\bin\Debug\HomeWork_7_6_WeaponsReport.pdb
+D:\DoNotComeIn\projects\GitHub Repositories\HomeWork\HoneWork_7\HomeWork_7_6_WeaponsReport\obj\Debug\HomeWork_7_6_WeaponsReport.csprojAssemblyReference.cache
+D:\DoNotComeIn\projects\GitHub Repositories\HomeWork\HoneWork_7\HomeWork_7_6_WeaponsReport\obj\Debug\HomeWork_7_6_WeaponsReport.csproj.CoreCompileInputs.cache
+D:\DoNotComeIn\projects\GitHub Repositories\HomeWork\HoneWork_7\HomeWork_7_6_WeaponsReport\obj\Debug\HomeWork_7_6_WeaponsReport.exe
+D:\DoNotComeIn\projects\GitHub Repositories\HomeWork\HoneWork_7\HomeWork_7_6_WeaponsReport\obj\Debug\HomeWork_7_6_WeaponsReport.pdb
