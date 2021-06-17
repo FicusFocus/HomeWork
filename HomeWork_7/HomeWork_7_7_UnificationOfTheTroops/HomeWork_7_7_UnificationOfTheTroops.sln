@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30320.27
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HomeWork_7_7_UnificationOfTheTroops", "HomeWork_7_7_UnificationOfTheTroops.csproj", "{A20E6ABA-A106-4347-9C25-F3986D8550CE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A20E6ABA-A106-4347-9C25-F3986D8550CE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A20E6ABA-A106-4347-9C25-F3986D8550CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A20E6ABA-A106-4347-9C25-F3986D8550CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A20E6ABA-A106-4347-9C25-F3986D8550CE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {99098F17-729D-4290-B21D-828F157F9A8E}
+	EndGlobalSection
+EndGlobal
