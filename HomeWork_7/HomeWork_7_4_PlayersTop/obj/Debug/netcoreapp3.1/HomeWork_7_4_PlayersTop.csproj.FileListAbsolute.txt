@@ -1,0 +1,13 @@
+D:\DoNotComeIn\projects\GitHub Repositories\HomeWork\HomeWork_7\HomeWork_7_4_PlayersTop\bin\Debug\netcoreapp3.1\HomeWork_7_4_PlayersTop.exe
+D:\DoNotComeIn\projects\GitHub Repositories\HomeWork\HomeWork_7\HomeWork_7_4_PlayersTop\bin\Debug\netcoreapp3.1\HomeWork_7_4_PlayersTop.deps.json
+D:\DoNotComeIn\projects\GitHub Repositories\HomeWork\HomeWork_7\HomeWork_7_4_PlayersTop\bin\Debug\netcoreapp3.1\HomeWork_7_4_PlayersTop.runtimeconfig.json
+D:\DoNotComeIn\projects\GitHub Repositories\HomeWork\HomeWork_7\HomeWork_7_4_PlayersTop\bin\Debug\netcoreapp3.1\HomeWork_7_4_PlayersTop.runtimeconfig.dev.json
+D:\DoNotComeIn\projects\GitHub Repositories\HomeWork\HomeWork_7\HomeWork_7_4_PlayersTop\bin\Debug\netcoreapp3.1\HomeWork_7_4_PlayersTop.dll
+D:\DoNotComeIn\projects\GitHub Repositories\HomeWork\HomeWork_7\HomeWork_7_4_PlayersTop\bin\Debug\netcoreapp3.1\HomeWork_7_4_PlayersTop.pdb
+D:\DoNotComeIn\projects\GitHub Repositories\HomeWork\HomeWork_7\HomeWork_7_4_PlayersTop\obj\Debug\netcoreapp3.1\HomeWork_7_4_PlayersTop.csprojAssemblyReference.cache
+D:\DoNotComeIn\projects\GitHub Repositories\HomeWork\HomeWork_7\HomeWork_7_4_PlayersTop\obj\Debug\netcoreapp3.1\HomeWork_7_4_PlayersTop.AssemblyInfoInputs.cache
+D:\DoNotComeIn\projects\GitHub Repositories\HomeWork\HomeWork_7\HomeWork_7_4_PlayersTop\obj\Debug\netcoreapp3.1\HomeWork_7_4_PlayersTop.AssemblyInfo.cs
+D:\DoNotComeIn\projects\GitHub Repositories\HomeWork\HomeWork_7\HomeWork_7_4_PlayersTop\obj\Debug\netcoreapp3.1\HomeWork_7_4_PlayersTop.csproj.CoreCompileInputs.cache
+D:\DoNotComeIn\projects\GitHub Repositories\HomeWork\HomeWork_7\HomeWork_7_4_PlayersTop\obj\Debug\netcoreapp3.1\HomeWork_7_4_PlayersTop.dll
+D:\DoNotComeIn\projects\GitHub Repositories\HomeWork\HomeWork_7\HomeWork_7_4_PlayersTop\obj\Debug\netcoreapp3.1\HomeWork_7_4_PlayersTop.pdb
+D:\DoNotComeIn\projects\GitHub Repositories\HomeWork\HomeWork_7\HomeWork_7_4_PlayersTop\obj\Debug\netcoreapp3.1\HomeWork_7_4_PlayersTop.genruntimeconfig.cache

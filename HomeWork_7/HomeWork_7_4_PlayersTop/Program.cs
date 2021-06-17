@@ -2,11 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 
-//У нас есть список всех игроков(минимум 10). 
-//У каждого игрока есть поля: имя, уровень, сила.
-//Требуется написать запрос для определения топ 3 игроков по уровню и топ 3 игроков по силе, после чего вывести каждый топ.
-//2 запроса получится.
-
 namespace HomeWork_7_4_PlayersTop
 {
     class Program
@@ -27,6 +22,23 @@ namespace HomeWork_7_4_PlayersTop
             players.Add(new Player("Капатыч", 79, 201));
             players.Add(new Player("Купесь", 85, 193));
 
+            var topByLvl = players.OrderByDescending(player => player.Lvl).Take(3);
+            var topByStrength = players.OrderByDescending(player => player.Strength).Take(3);
+
+            Console.WriteLine("          Топ оп уровню: ");
+            ShowPlayersInfo(topByLvl.ToList());
+            Console.WriteLine("          Топ по силе: ");
+            ShowPlayersInfo(topByStrength.ToList());
+
+            Console.ReadLine();
+        }
+
+        public static void ShowPlayersInfo(List<Player> players)
+        {
+            foreach (var player in players)
+                Console.WriteLine($"{player.Name}. Уровень - {player.Lvl}, сила - {player.Strength}");
+
+            Console.WriteLine("");
         }
     }
 
@@ -38,7 +50,7 @@ namespace HomeWork_7_4_PlayersTop
 
         public Player(string name, int lvl, int strength)
         {
-            name = name;
+            Name = name;
             Lvl = lvl;
             Strength = strength;
         }
