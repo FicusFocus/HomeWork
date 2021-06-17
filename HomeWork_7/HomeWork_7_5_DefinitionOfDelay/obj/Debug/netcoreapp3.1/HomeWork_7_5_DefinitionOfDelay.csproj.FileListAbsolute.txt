@@ -1,0 +1,13 @@
+D:\DoNotComeIn\projects\GitHub Repositories\HomeWork\HomeWork_7\HomeWork_7_5_DefinitionOfDelay\bin\Debug\netcoreapp3.1\HomeWork_7_5_DefinitionOfDelay.exe
+D:\DoNotComeIn\projects\GitHub Repositories\HomeWork\HomeWork_7\HomeWork_7_5_DefinitionOfDelay\bin\Debug\netcoreapp3.1\HomeWork_7_5_DefinitionOfDelay.deps.json
+D:\DoNotComeIn\projects\GitHub Repositories\HomeWork\HomeWork_7\HomeWork_7_5_DefinitionOfDelay\bin\Debug\netcoreapp3.1\HomeWork_7_5_DefinitionOfDelay.runtimeconfig.json
+D:\DoNotComeIn\projects\GitHub Repositories\HomeWork\HomeWork_7\HomeWork_7_5_DefinitionOfDelay\bin\Debug\netcoreapp3.1\HomeWork_7_5_DefinitionOfDelay.runtimeconfig.dev.json
+D:\DoNotComeIn\projects\GitHub Repositories\HomeWork\HomeWork_7\HomeWork_7_5_DefinitionOfDelay\bin\Debug\netcoreapp3.1\HomeWork_7_5_DefinitionOfDelay.dll
+D:\DoNotComeIn\projects\GitHub Repositories\HomeWork\HomeWork_7\HomeWork_7_5_DefinitionOfDelay\bin\Debug\netcoreapp3.1\HomeWork_7_5_DefinitionOfDelay.pdb
+D:\DoNotComeIn\projects\GitHub Repositories\HomeWork\HomeWork_7\HomeWork_7_5_DefinitionOfDelay\obj\Debug\netcoreapp3.1\HomeWork_7_5_DefinitionOfDelay.csprojAssemblyReference.cache
+D:\DoNotComeIn\projects\GitHub Repositories\HomeWork\HomeWork_7\HomeWork_7_5_DefinitionOfDelay\obj\Debug\netcoreapp3.1\HomeWork_7_5_DefinitionOfDelay.AssemblyInfoInputs.cache
+D:\DoNotComeIn\projects\GitHub Repositories\HomeWork\HomeWork_7\HomeWork_7_5_DefinitionOfDelay\obj\Debug\netcoreapp3.1\HomeWork_7_5_DefinitionOfDelay.AssemblyInfo.cs
+D:\DoNotComeIn\projects\GitHub Repositories\HomeWork\HomeWork_7\HomeWork_7_5_DefinitionOfDelay\obj\Debug\netcoreapp3.1\HomeWork_7_5_DefinitionOfDelay.csproj.CoreCompileInputs.cache
+D:\DoNotComeIn\projects\GitHub Repositories\HomeWork\HomeWork_7\HomeWork_7_5_DefinitionOfDelay\obj\Debug\netcoreapp3.1\HomeWork_7_5_DefinitionOfDelay.dll
+D:\DoNotComeIn\projects\GitHub Repositories\HomeWork\HomeWork_7\HomeWork_7_5_DefinitionOfDelay\obj\Debug\netcoreapp3.1\HomeWork_7_5_DefinitionOfDelay.pdb
+D:\DoNotComeIn\projects\GitHub Repositories\HomeWork\HomeWork_7\HomeWork_7_5_DefinitionOfDelay\obj\Debug\netcoreapp3.1\HomeWork_7_5_DefinitionOfDelay.genruntimeconfig.cache
