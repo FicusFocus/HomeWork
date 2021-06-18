@@ -29,12 +29,11 @@ namespace HomeWork_7_2_Amnesty
             ShowCriminals(criminals);
 
             var amnestyCriminals = criminals.Where(criminal => criminal.CriminalTip != CriminalTip.AntiGovernment);
-            //criminals = amnestyCriminals.ToList();
+            criminals = amnestyCriminals.ToList();
 
             Console.WriteLine("После амнистии");
 
-            //ShowCriminals(criminals);
-            ShowCriminals(amnestyCriminals.ToList());
+            ShowCriminals(criminals);
 
             Console.ReadLine();
         }
