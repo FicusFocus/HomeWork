@@ -1,0 +1,7 @@
+D:\DoNotComeIn\projects\GitHub Repositories\HomeWork\HomeWork_7\HomeWork_7_7_UnificationOfTheTroops\bin\Debug\HomeWork_7_7_UnificationOfTheTroops.exe.config
+D:\DoNotComeIn\projects\GitHub Repositories\HomeWork\HomeWork_7\HomeWork_7_7_UnificationOfTheTroops\bin\Debug\HomeWork_7_7_UnificationOfTheTroops.exe
+D:\DoNotComeIn\projects\GitHub Repositories\HomeWork\HomeWork_7\HomeWork_7_7_UnificationOfTheTroops\bin\Debug\HomeWork_7_7_UnificationOfTheTroops.pdb
+D:\DoNotComeIn\projects\GitHub Repositories\HomeWork\HomeWork_7\HomeWork_7_7_UnificationOfTheTroops\obj\Debug\HomeWork_7_7_UnificationOfTheTroops.csprojAssemblyReference.cache
+D:\DoNotComeIn\projects\GitHub Repositories\HomeWork\HomeWork_7\HomeWork_7_7_UnificationOfTheTroops\obj\Debug\HomeWork_7_7_UnificationOfTheTroops.csproj.CoreCompileInputs.cache
+D:\DoNotComeIn\projects\GitHub Repositories\HomeWork\HomeWork_7\HomeWork_7_7_UnificationOfTheTroops\obj\Debug\HomeWork_7_7_UnificationOfTheTroops.exe
+D:\DoNotComeIn\projects\GitHub Repositories\HomeWork\HomeWork_7\HomeWork_7_7_UnificationOfTheTroops\obj\Debug\HomeWork_7_7_UnificationOfTheTroops.pdb
