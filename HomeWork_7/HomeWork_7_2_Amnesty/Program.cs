@@ -28,7 +28,8 @@ namespace HomeWork_7_2_Amnesty
             Console.WriteLine("До амнистии: ");
             ShowCriminals(criminals);
 
-            criminals.RemoveAll(criminal => criminal.CriminalTip == CriminalTip.AntiGovernment);
+            var amnestyCriminals = criminals.Where(criminal => criminal.CriminalTip != CriminalTip.AntiGovernment);
+            criminals = amnestyCriminals.ToList();
 
             Console.WriteLine("После амнистии");
 
