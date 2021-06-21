@@ -11,14 +11,14 @@ namespace HomeWork_7_7_UnificationOfTheTroops
     {
         static void Main(string[] args)
         {
-            List<Soldier> ferstSquad = new List<Soldier>();
+            List<Soldier> firstSquad = new List<Soldier>();
             List<Soldier> secondSquad = new List<Soldier>();
 
-            ferstSquad.Add(new Soldier("Даниил", "Бондарев", Ranks.Cadet));
-            ferstSquad.Add(new Soldier("Александр", "Волков", Ranks.Cadet));
-            ferstSquad.Add(new Soldier("Артем", "Феоктистов", Ranks.Captain));
-            ferstSquad.Add(new Soldier("Еврегий", "Бредихин", Ranks.Cadet));
-            ferstSquad.Add(new Soldier("Павел", "Шабанов", Ranks.Cadet));
+            firstSquad.Add(new Soldier("Даниил", "Бондарев", Ranks.Cadet));
+            firstSquad.Add(new Soldier("Александр", "Волков", Ranks.Cadet));
+            firstSquad.Add(new Soldier("Артем", "Феоктистов", Ranks.Captain));
+            firstSquad.Add(new Soldier("Еврегий", "Бредихин", Ranks.Cadet));
+            firstSquad.Add(new Soldier("Павел", "Шабанов", Ranks.Cadet));
 
             secondSquad.Add(new Soldier("Василий", "Пупкин", Ranks.Captain));
             secondSquad.Add(new Soldier("Николай", "Заречный", Ranks.Cadet));
@@ -26,11 +26,12 @@ namespace HomeWork_7_7_UnificationOfTheTroops
             secondSquad.Add(new Soldier("Андрей", "Ефимов", Ranks.Cadet));
             secondSquad.Add(new Soldier("Николай", "Прокопов", Ranks.Cadet));
 
-            var filteredFerstSquad = ferstSquad.Where(soldier => soldier.SecondName.StartsWith("Б"));
-            ferstSquad.RemoveAll(soldier => soldier.SecondName.StartsWith("Б"));
+            var filteredFirstSquad = firstSquad.Where(soldier => soldier.SecondName.StartsWith("Б"));
+            var result = firstSquad.Except(filteredFirstSquad);
+            firstSquad = result.ToList();
 
-            var updateSecondSquad = secondSquad.Union(filteredFerstSquad);
-            secondSquad = updateSecondSquad.ToList();
+            var uppdateSecoudSquad = secondSquad.Union(filteredFirstSquad);
+            secondSquad = uppdateSecoudSquad.ToList();
 
             Console.WriteLine("Новый второй отряд:");
 
@@ -39,7 +40,7 @@ namespace HomeWork_7_7_UnificationOfTheTroops
 
             Console.WriteLine("\nНовый первый отряд");
 
-            foreach (var soldier in ferstSquad)
+            foreach (var soldier in firstSquad)
                 Console.WriteLine($"{soldier.SecondName}");
 
             Console.ReadLine();
