@@ -5,3 +5,10 @@ D:\DoNotComeIn\projects\GitHub Repositories\HomeWork\HomeWork_7\HomeWork_7_7_Uni
 D:\DoNotComeIn\projects\GitHub Repositories\HomeWork\HomeWork_7\HomeWork_7_7_UnificationOfTheTroops\obj\Debug\HomeWork_7_7_UnificationOfTheTroops.csproj.CoreCompileInputs.cache
 D:\DoNotComeIn\projects\GitHub Repositories\HomeWork\HomeWork_7\HomeWork_7_7_UnificationOfTheTroops\obj\Debug\HomeWork_7_7_UnificationOfTheTroops.exe
 D:\DoNotComeIn\projects\GitHub Repositories\HomeWork\HomeWork_7\HomeWork_7_7_UnificationOfTheTroops\obj\Debug\HomeWork_7_7_UnificationOfTheTroops.pdb
+D:\Програмирование\Visual_Studio_Projects\c# light\Less1\HomeWork\HomeWork_7\HomeWork_7_7_UnificationOfTheTroops\bin\Debug\HomeWork_7_7_UnificationOfTheTroops.exe.config
+D:\Програмирование\Visual_Studio_Projects\c# light\Less1\HomeWork\HomeWork_7\HomeWork_7_7_UnificationOfTheTroops\bin\Debug\HomeWork_7_7_UnificationOfTheTroops.exe
+D:\Програмирование\Visual_Studio_Projects\c# light\Less1\HomeWork\HomeWork_7\HomeWork_7_7_UnificationOfTheTroops\bin\Debug\HomeWork_7_7_UnificationOfTheTroops.pdb
+D:\Програмирование\Visual_Studio_Projects\c# light\Less1\HomeWork\HomeWork_7\HomeWork_7_7_UnificationOfTheTroops\obj\Debug\HomeWork_7_7_UnificationOfTheTroops.csprojAssemblyReference.cache
+D:\Програмирование\Visual_Studio_Projects\c# light\Less1\HomeWork\HomeWork_7\HomeWork_7_7_UnificationOfTheTroops\obj\Debug\HomeWork_7_7_UnificationOfTheTroops.csproj.CoreCompileInputs.cache
+D:\Програмирование\Visual_Studio_Projects\c# light\Less1\HomeWork\HomeWork_7\HomeWork_7_7_UnificationOfTheTroops\obj\Debug\HomeWork_7_7_UnificationOfTheTroops.exe
+D:\Програмирование\Visual_Studio_Projects\c# light\Less1\HomeWork\HomeWork_7\HomeWork_7_7_UnificationOfTheTroops\obj\Debug\HomeWork_7_7_UnificationOfTheTroops.pdb

@@ -2,9 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 
-//Есть 2 списка в солдатами.
-//Всех бойцов из отряда 1, у которых фамилия начинается на букву Б, требуется перевести в отряд 2
-
 namespace HomeWork_7_7_UnificationOfTheTroops
 {
     class Program
@@ -27,11 +24,9 @@ namespace HomeWork_7_7_UnificationOfTheTroops
             secondSquad.Add(new Soldier("Николай", "Прокопов", Ranks.Cadet));
 
             var filteredFirstSquad = firstSquad.Where(soldier => soldier.SecondName.StartsWith("Б"));
-            var result = firstSquad.Except(filteredFirstSquad);
-            firstSquad = result.ToList();
+            firstSquad = firstSquad.Except(filteredFirstSquad).ToList();
 
-            var uppdateSecoudSquad = secondSquad.Union(filteredFirstSquad);
-            secondSquad = uppdateSecoudSquad.ToList();
+            secondSquad = secondSquad.Union(filteredFirstSquad).ToList();
 
             Console.WriteLine("Новый второй отряд:");
 
