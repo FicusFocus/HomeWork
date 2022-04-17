@@ -1,0 +1,7 @@
+D:\Програмирование\Visual_Studio_Projects\c# light\Less1\HomeWork\StringSpliter\StringSpliter\bin\Debug\StringSpliter.exe.config
+D:\Програмирование\Visual_Studio_Projects\c# light\Less1\HomeWork\StringSpliter\StringSpliter\bin\Debug\StringSpliter.exe
+D:\Програмирование\Visual_Studio_Projects\c# light\Less1\HomeWork\StringSpliter\StringSpliter\bin\Debug\StringSpliter.pdb
+D:\Програмирование\Visual_Studio_Projects\c# light\Less1\HomeWork\StringSpliter\StringSpliter\obj\Debug\StringSpliter.csproj.AssemblyReference.cache
+D:\Програмирование\Visual_Studio_Projects\c# light\Less1\HomeWork\StringSpliter\StringSpliter\obj\Debug\StringSpliter.csproj.CoreCompileInputs.cache
+D:\Програмирование\Visual_Studio_Projects\c# light\Less1\HomeWork\StringSpliter\StringSpliter\obj\Debug\StringSpliter.exe
+D:\Програмирование\Visual_Studio_Projects\c# light\Less1\HomeWork\StringSpliter\StringSpliter\obj\Debug\StringSpliter.pdb
